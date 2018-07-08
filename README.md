@@ -32,13 +32,13 @@ texts_to_sequences() 得到每句的词索引表示、pad_sequences() 填充为�
 
 #### 4.svm
 
-差分 diff() 或连接 concat() 两句的特征得到 merge_features、SVC() 分类
+substract() 两句相减得到 diff 特征、multiply() 两句相乘得到 prod 特征
 
-#### 5.cnn
+concat() 连接 diff 与 prod 得到 merge_features，SVC() 分类
+
+#### 5.nn
 
 
-
-#### 6.rnn
 
 
 
