@@ -1,0 +1,234 @@
+cnn_siam_parallel_5000 train 2018-06-04 09:37:56
+cnn_siam_parallel_5000 train 2018-06-04 13:51:27
+cnn_siam_parallel_5000 train f1  0.976
+cnn_siam_parallel_5000 train acc 0.990
+
+cnn_siam_parallel_5000 dev f1  0.224
+cnn_siam_parallel_5000 dev acc 0.749
+
+cnn_siam_serial_5000 train 2018-06-04 13:51:30
+cnn_siam_serial_5000 train 2018-06-04 16:40:20
+cnn_siam_serial_5000 train f1  1.000
+cnn_siam_serial_5000 train acc 1.000
+
+cnn_siam_serial_5000 dev f1  0.266
+cnn_siam_serial_5000 dev acc 0.758
+
+cnn_siam_parallel_1000 train 2018-06-04 19:25:22
+cnn_siam_parallel_1000 train 2018-06-04 20:16:49
+cnn_siam_parallel_1000 train f1  0.991
+cnn_siam_parallel_1000 train acc 0.996
+
+cnn_siam_parallel_1000 dev f1  0.265
+cnn_siam_parallel_1000 dev acc 0.753
+
+cnn_siam_serial_1000 train 2018-06-04 20:16:52
+cnn_siam_serial_1000 train 2018-06-04 20:50:56
+cnn_siam_serial_1000 train f1  0.999
+cnn_siam_serial_1000 train acc 0.999
+
+cnn_siam_serial_1000 dev f1  0.287
+cnn_siam_serial_1000 dev acc 0.749
+
+cnn_siam_parallel_500 train 2018-06-05 11:26:57
+cnn_siam_parallel_500 train 2018-06-05 12:29:48
+cnn_siam_parallel_500 train f1  0.695
+cnn_siam_parallel_500 train acc 0.842
+
+cnn_siam_parallel_500 dev f1  0.413
+cnn_siam_parallel_500 dev acc 0.681
+
+cnn_siam_serial_500 train 2018-06-05 12:29:53
+cnn_siam_serial_500 train 2018-06-05 13:17:26
+cnn_siam_serial_500 train f1  0.610
+cnn_siam_serial_500 train acc 0.886
+
+cnn_siam_serial_500 dev f1  0.267
+cnn_siam_serial_500 dev acc 0.805
+
+cnn_siam_parallel_500 train 2018-06-06 21:15:42
+cnn_siam_parallel_500 train 2018-06-06 21:58:15
+cnn_siam_parallel_500 train f1  0.999
+cnn_siam_parallel_500 train acc 0.999
+
+cnn_siam_parallel_500 dev f1  0.319
+cnn_siam_parallel_500 dev acc 0.781
+
+cnn_siam_serial_500 train 2018-06-06 21:58:18
+cnn_siam_serial_500 train 2018-06-06 22:29:00
+cnn_siam_serial_500 train f1  0.998
+cnn_siam_serial_500 train acc 0.999
+
+cnn_siam_serial_500 dev f1  0.296
+cnn_siam_serial_500 dev acc 0.776
+
+cnn_siam_parallel_500 train 2018-06-07 19:37:38
+cnn_siam_parallel_500 train 2018-06-07 20:20:45
+cnn_siam_parallel_500 train f1  0.997
+cnn_siam_parallel_500 train acc 0.999
+
+cnn_siam_parallel_500 dev f1  0.288
+cnn_siam_parallel_500 dev acc 0.794
+
+cnn_siam_serial_500 train 2018-06-07 20:20:47
+cnn_siam_serial_500 train 2018-06-07 20:49:47
+cnn_siam_serial_500 train f1  0.998
+cnn_siam_serial_500 train acc 0.999
+
+cnn_siam_serial_500 dev f1  0.296
+cnn_siam_serial_500 dev acc 0.765
+
+2018-06-15 11:36:32 cnn_siam_parallel_500 train
+2018-06-15 12:14:02 cnn_siam_parallel_500 train
+cnn_siam_parallel_500 train f1  0.999
+cnn_siam_parallel_500 train acc 0.999
+
+cnn_siam_parallel_500 dev f1  0.298
+cnn_siam_parallel_500 dev acc 0.786
+
+2018-06-15 12:14:05 cnn_siam_serial_500 train
+2018-06-15 12:39:42 cnn_siam_serial_500 train
+cnn_siam_serial_500 train f1  0.997
+cnn_siam_serial_500 train acc 0.999
+
+cnn_siam_serial_500 dev f1  0.295
+cnn_siam_serial_500 dev acc 0.759
+
+2018-06-16 21:22:21 cnn_siam_parallel_500 train
+2018-06-16 21:59:54 cnn_siam_parallel_500 train
+cnn_siam_parallel_500 train f1  0.999
+cnn_siam_parallel_500 train acc 1.000
+
+cnn_siam_parallel_500 dev f1  0.308
+cnn_siam_parallel_500 dev acc 0.786
+
+2018-06-17 00:14:39 cnn_siam_parallel_500 train
+2018-06-17 00:52:13 cnn_siam_parallel_500 train
+cnn_siam_parallel_500 train f1  0.999
+cnn_siam_parallel_500 train acc 1.000
+
+cnn_siam_parallel_500 dev f1  0.315
+cnn_siam_parallel_500 dev acc 0.787
+
+cnn_siam_parallel_500_0.2 dev f1  0.403
+cnn_siam_parallel_500_0.2 dev acc 0.645
+
+2018-06-19 15:35:35 cnn_siam_parallel_500 train
+2018-06-19 16:13:25 cnn_siam_parallel_500 train
+cnn_siam_parallel_500_0.2 train f1  0.997
+cnn_siam_parallel_500_0.2 train acc 0.999
+
+cnn_siam_parallel_500_0.2 dev f1  0.398
+cnn_siam_parallel_500_0.2 dev acc 0.666
+
+2018-06-19 16:13:28 cnn_siam_serial_500 train
+2018-06-19 16:39:13 cnn_siam_serial_500 train
+cnn_siam_serial_500_0.2 train f1  0.999
+cnn_siam_serial_500_0.2 train acc 0.999
+
+cnn_siam_serial_500_0.2 dev f1  0.370
+cnn_siam_serial_500_0.2 dev acc 0.642
+
+2018-06-21 11:03:33 cnn_siam_parallel train
+2018-06-21 11:26:12 cnn_siam_parallel train
+cnn_siam_parallel_300_0.2 train f1  0.996
+cnn_siam_parallel_300_0.2 train acc 0.999
+
+cnn_siam_parallel_300_0.2 dev f1  0.405
+cnn_siam_parallel_300_0.2 dev acc 0.689
+
+2018-06-21 11:26:17 cnn_siam_serial train
+2018-06-21 11:41:48 cnn_siam_serial train
+cnn_siam_serial_300_0.5 train f1  0.997
+cnn_siam_serial_300_0.5 train acc 0.999
+
+cnn_siam_serial_300_0.2 dev f1  0.360
+cnn_siam_serial_300_0.2 dev acc 0.585
+
+2018-06-21 15:38:21 cnn_siam_parallel train
+2018-06-21 15:43:07 cnn_siam_parallel train
+2018-06-21 16:06:08 cnn_siam_parallel train
+cnn_siam_parallel_300_0.3 train f1  0.581
+cnn_siam_parallel_300_0.3 train acc 0.828
+
+cnn_siam_parallel_300_0.2 dev f1  0.458
+cnn_siam_parallel_300_0.2 dev acc 0.692
+
+2018-06-21 16:06:14 cnn_siam_serial train
+2018-06-21 16:21:45 cnn_siam_serial train
+cnn_siam_serial_300_0.3 train f1  0.710
+cnn_siam_serial_300_0.3 train acc 0.892
+
+cnn_siam_serial_300_0.2 dev f1  0.407
+cnn_siam_serial_300_0.2 dev acc 0.657
+
+2018-06-21 20:44:45 cnn_siam_parallel train
+2018-06-21 21:07:45 cnn_siam_parallel train
+cnn_siam_parallel_300_0.2 train f1  0.460
+cnn_siam_parallel_300_0.2 train acc 0.696
+
+cnn_siam_parallel_300_0.2 dev f1  0.442
+cnn_siam_parallel_300_0.2 dev acc 0.713
+
+2018-06-21 21:07:51 cnn_siam_serial train
+2018-06-21 21:23:19 cnn_siam_serial train
+cnn_siam_serial_300_0.2 train f1  0.399
+cnn_siam_serial_300_0.2 train acc 0.691
+
+cnn_siam_serial_300_0.2 dev f1  0.387
+cnn_siam_serial_300_0.2 dev acc 0.683
+
+cnn_siam_parallel_1000_0.1 dev f1  0.290
+cnn_siam_parallel_1000_0.1 dev acc 0.574
+
+cnn_siam_serial_1000_0.1 dev f1  0.314
+cnn_siam_serial_1000_0.1 dev acc 0.333
+
+2018-07-04 15:06:32 cnn_siam_parallel train
+2018-07-04 17:04:15 cnn_siam_parallel train
+cnn_siam_parallel_1000_0.3 train f1  0.528
+cnn_siam_parallel_1000_0.3 train acc 0.817
+
+cnn_siam_parallel_1000_0.2 dev f1  0.455
+cnn_siam_parallel_1000_0.2 dev acc 0.703
+
+2018-07-04 17:04:23 cnn_siam_serial train
+2018-07-04 18:51:40 cnn_siam_serial train
+cnn_siam_serial_1000_0.3 train f1  0.495
+cnn_siam_serial_1000_0.3 train acc 0.816
+
+cnn_siam_serial_1000_0.2 dev f1  0.396
+cnn_siam_serial_1000_0.2 dev acc 0.662
+
+2018-07-05 10:11:41 cnn_siam_parallel train
+2018-07-05 11:08:35 cnn_siam_parallel train
+cnn_siam_parallel_500_0.3 train f1  0.534
+cnn_siam_parallel_500_0.3 train acc 0.817
+
+cnn_siam_parallel_500_0.2 dev f1  0.477
+cnn_siam_parallel_500_0.2 dev acc 0.721
+
+2018-07-05 11:08:42 cnn_siam_serial train
+2018-07-05 11:55:55 cnn_siam_serial train
+cnn_siam_serial_500_0.2 train f1  0.482
+cnn_siam_serial_500_0.2 train acc 0.721
+
+cnn_siam_serial_500_0.2 dev f1  0.419
+cnn_siam_serial_500_0.2 dev acc 0.684
+
+2018-07-05 19:55:32 cnn_siam_parallel train
+2018-07-05 20:07:13 cnn_siam_parallel train
+cnn_siam_parallel_100_0.3 train f1  0.487
+cnn_siam_parallel_100_0.3 train acc 0.811
+
+cnn_siam_parallel_100_0.2 dev f1  0.467
+cnn_siam_parallel_100_0.2 dev acc 0.714
+
+2018-07-05 20:07:20 cnn_siam_serial train
+2018-07-05 20:15:40 cnn_siam_serial train
+cnn_siam_serial_100_0.3 train f1  0.496
+cnn_siam_serial_100_0.3 train acc 0.783
+
+cnn_siam_serial_100_0.3 dev f1  0.425
+cnn_siam_serial_100_0.3 dev acc 0.774
+

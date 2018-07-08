@@ -1,0 +1,136 @@
+svm_linear_bow_diff train 2018-05-28 17:34:24
+svm_linear_bow_diff train 2018-05-28 18:05:04
+svm_linear_bow_diff train f1  0.415
+svm_linear_bow_diff train acc 0.616
+
+svm_linear_bow_diff dev f1  0.306
+svm_linear_bow_diff dev acc 0.529
+
+svm_linear_tfidf_diff train 2018-05-28 18:06:20
+svm_linear_tfidf_diff train 2018-05-28 18:28:36
+svm_linear_tfidf_diff train f1  0.415
+svm_linear_tfidf_diff train acc 0.603
+
+svm_linear_tfidf_diff dev f1  0.302
+svm_linear_tfidf_diff dev acc 0.517
+
+svm_linear_bow_concat train 2018-05-28 18:30:19
+svm_linear_bow_concat train 2018-05-28 18:43:14
+svm_linear_bow_concat train f1  0.441
+svm_linear_bow_concat train acc 0.775
+
+svm_linear_bow_concat dev f1  0.273
+svm_linear_bow_concat dev acc 0.697
+
+svm_rbf_bow_diff train 2018-05-28 18:44:03
+svm_rbf_bow_diff train 2018-05-28 19:07:19
+svm_rbf_bow_diff train f1  0.355
+svm_rbf_bow_diff train acc 0.216
+
+svm_rbf_bow_diff dev f1  0.364
+svm_rbf_bow_diff dev acc 0.223
+
+svm_linear_bow_diff train 2018-06-07 19:38:08
+svm_linear_bow_diff train 2018-06-07 22:24:42
+svm_linear_bow_diff train f1  0.340
+svm_linear_bow_diff train acc 0.586
+
+svm_linear_bow_diff dev f1  0.247
+svm_linear_bow_diff dev acc 0.524
+
+svm_linear_tfidf_diff train 2018-06-07 22:30:03
+svm_linear_tfidf_diff train 2018-06-08 00:18:46
+svm_linear_tfidf_diff train f1  0.340
+svm_linear_tfidf_diff train acc 0.573
+
+svm_linear_tfidf_diff dev f1  0.254
+svm_linear_tfidf_diff dev acc 0.510
+
+svm_linear_bow_concat train 2018-06-08 00:26:32
+svm_linear_bow_concat train 2018-06-08 05:58:16
+svm_linear_bow_concat train f1  0.448
+svm_linear_bow_concat train acc 0.669
+
+svm_linear_bow_concat dev f1  0.349
+svm_linear_bow_concat dev acc 0.608
+
+svm_rbf_bow_diff train 2018-06-08 06:06:15
+svm_rbf_bow_diff train 2018-06-08 07:32:44
+svm_rbf_bow_diff train f1  0.309
+svm_rbf_bow_diff train acc 0.193
+
+svm_rbf_bow_diff dev f1  0.308
+svm_rbf_bow_diff dev acc 0.191
+
+2018-06-15 11:36:22 svm_linear_bow_diff train
+2018-06-15 13:36:07 svm_linear_bow_diff train
+svm_linear_bow_diff train f1  0.340
+svm_linear_bow_diff train acc 0.583
+
+svm_linear_bow_diff dev f1  0.258
+svm_linear_bow_diff dev acc 0.518
+
+2018-06-15 13:40:13 svm_linear_tfidf_diff train
+2018-06-15 15:01:07 svm_linear_tfidf_diff train
+svm_linear_tfidf_diff train f1  0.340
+svm_linear_tfidf_diff train acc 0.572
+
+svm_linear_tfidf_diff dev f1  0.264
+svm_linear_tfidf_diff dev acc 0.510
+
+2018-06-15 15:07:06 svm_linear_bow_concat train
+2018-06-15 19:15:28 svm_linear_bow_concat train
+svm_linear_bow_concat train f1  0.450
+svm_linear_bow_concat train acc 0.672
+
+svm_linear_bow_concat dev f1  0.354
+svm_linear_bow_concat dev acc 0.608
+
+2018-06-15 19:21:35 svm_rbf_bow_diff train
+2018-06-15 20:25:10 svm_rbf_bow_diff train
+svm_rbf_bow_diff train f1  0.312
+svm_rbf_bow_diff train acc 0.364
+
+svm_rbf_bow_diff dev f1  0.299
+svm_rbf_bow_diff dev acc 0.349
+
+2018-06-16 21:22:13 svm_rbf_bow_concat train
+2018-06-16 23:04:11 svm_rbf_bow_concat train
+svm_rbf_bow_concat train f1  0.322
+svm_rbf_bow_concat train acc 0.422
+
+svm_rbf_bow_concat dev f1  0.320
+svm_rbf_bow_concat dev acc 0.419
+
+2018-06-21 20:44:44 svm_linear_bow_concat train
+2018-06-22 05:28:12 svm_linear_bow_concat train
+svm_linear_bow_concat_0.1 train f1  0.309
+svm_linear_bow_concat_0.1 train acc 0.183
+
+svm_linear_bow_concat_0.1 dev f1  0.308
+svm_linear_bow_concat_0.1 dev acc 0.182
+
+2018-07-04 21:39:49 svm_linear_bow train
+2018-07-05 02:38:11 svm_linear_bow train
+svm_linear_bow_0.1 train f1  0.309
+svm_linear_bow_0.1 train acc 0.185
+
+2018-07-05 02:41:17 svm_linear_tfidf train
+2018-07-05 04:31:09 svm_linear_tfidf train
+svm_linear_tfidf_0.1 train f1  0.309
+svm_linear_tfidf_0.1 train acc 0.183
+
+2018-07-05 04:35:00 svm_rbf_bow train
+2018-07-05 05:05:15 svm_rbf_bow train
+svm_rbf_bow_0.2 train f1  0.468
+svm_rbf_bow_0.2 train acc 0.717
+
+svm_linear_bow_0.1 dev f1  0.308
+svm_linear_bow_0.1 dev acc 0.184
+
+svm_linear_tfidf_0.1 dev f1  0.308
+svm_linear_tfidf_0.1 dev acc 0.182
+
+svm_rbf_bow_0.2 dev f1  0.402
+svm_rbf_bow_0.2 dev acc 0.681
+
