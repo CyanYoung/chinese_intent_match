@@ -26,30 +26,21 @@ def siam(paths):
 
 
 def join(paths):
-    paths['dnn_join_average'] = prefix + 'model/dnn/join_average.h5'
     paths['dnn_join_flat'] = prefix + 'model/dnn/join_flat.h5'
     paths['cnn_join_parallel'] = prefix + 'model/cnn/join_parallel.h5'
     paths['cnn_join_serial'] = prefix + 'model/cnn/join_serial.h5'
     paths['rnn_join_plain'] = prefix + 'model/rnn/join_plain.h5'
     paths['rnn_join_stack'] = prefix + 'model/rnn/join_stack.h5'
-    paths['rnn_join_attend'] = prefix + 'model/rnn/join_attend.h5'
-    paths['rnn_join_bi_attend'] = prefix + 'model/rnn/join_bi_attend.h5'
-    # nn(paths, 'dnn', 'join_average', 100, 'train', thre=None)
-    # nn(paths, 'dnn', 'join_average', 100, 'dev', thre=None)
     # nn(paths, 'dnn', 'join_flat', 100, 'train', thre=None)
     # nn(paths, 'dnn', 'join_flat', 100, 'dev', thre=None)
-    nn(paths, 'cnn', 'join_parallel', 100, 'train', thre=None)
-    nn(paths, 'cnn', 'join_parallel', 100, 'dev', thre=None)
-    nn(paths, 'cnn', 'join_serial', 100, 'train', thre=None)
-    nn(paths, 'cnn', 'join_serial', 100, 'dev', thre=None)
-    # nn(paths, 'rnn', 'join_plain', 100, 'train', thre=None)
-    # nn(paths, 'rnn', 'join_plain', 100, 'dev', thre=None)
-    # nn(paths, 'rnn', 'join_stack', 100, 'train', thre=None)
-    # nn(paths, 'rnn', 'join_stack', 100, 'dev', thre=None)
-    # nn(paths, 'rnn', 'join_attend', 100, 'train', thre=None)
-    # nn(paths, 'rnn', 'join_attend', 100, 'dev', thre=None)
-    # nn(paths, 'rnn', 'join_bi_attend', 100, 'train', thre=None)
-    # nn(paths, 'rnn', 'join_bi_attend', 100, 'dev', thre=None)
+    # nn(paths, 'cnn', 'join_parallel', 100, 'train', thre=None)
+    # nn(paths, 'cnn', 'join_parallel', 100, 'dev', thre=None)
+    # nn(paths, 'cnn', 'join_serial', 100, 'train', thre=None)
+    # nn(paths, 'cnn', 'join_serial', 100, 'dev', thre=None)
+    nn(paths, 'rnn', 'join_plain', 100, 'train', thre=None)
+    nn(paths, 'rnn', 'join_plain', 100, 'dev', thre=None)
+    nn(paths, 'rnn', 'join_stack', 100, 'train', thre=None)
+    nn(paths, 'rnn', 'join_stack', 100, 'dev', thre=None)
 
 
 if __name__ == '__main__':

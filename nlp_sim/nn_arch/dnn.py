@@ -24,19 +24,6 @@ def dnn_siam_average(embed_input1, embed_input2):
     return fc4(z)
 
 
-def dnn_join_average(embed_input1, embed_input2):
-    fc1 = Dense(50, activation='relu')
-    fc2 = Dense(50, activation='relu')
-    fc3 = Dense(1, activation='sigmoid')
-    dot_input = Dot(2)([embed_input1, embed_input2])
-    x = Lambda(lambda a: K.mean(a, axis=1))(dot_input)
-    x = fc1(x)
-    x = Dropout(0.5)(x)
-    x = fc2(x)
-    x = Dropout(0.5)(x)
-    return fc3(x)
-
-
 def dnn_join_flat(embed_input1, embed_input2):
     fc1 = Dense(1000, activation='relu')
     fc2 = Dense(1000, activation='relu')

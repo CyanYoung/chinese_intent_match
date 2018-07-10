@@ -1,4 +1,4 @@
-## Text Match 2018-5
+## Text Match 2018-6
 
 测试命令：bash run.sh nlp_sim/data/test.csv nlp_sim/data/test_pred.csv
 
@@ -34,7 +34,7 @@ texts_to_sequences() 得到每句的词索引表示、pad_sequences() 填充为�
 
 #### 4.svm
 
-substract() 两句相减得到 diff 特征、multiply() 两句相乘得到 prod 特征
+subtract() 两句相减得到 diff 特征、multiply() 两句相乘得到 prod 特征
 
 concat() 连接 diff 与 prod 得到 merge_features，SVC() 分类
 

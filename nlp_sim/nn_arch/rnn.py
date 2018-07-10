@@ -1,6 +1,6 @@
 from keras.layers import LSTM, Dense, Bidirectional
 from keras.layers import BatchNormalization, Dropout, Concatenate, Flatten
-from keras.layers import Permute, Subtract, Multiply, Lambda
+from keras.layers import Permute, Subtract, Multiply, Dot, Lambda
 
 import keras.backend as K
 
@@ -87,3 +87,21 @@ def rnn_siam_bi_attend(embed_input1, embed_input2, seq_len=30):
     z = fc1(z)
     z = Dropout(0.5)(z)
     return fc2(z)
+
+
+def rnn_join_plain(embed_input1, embed_input2):
+    ra = LSTM(50, activation='tanh')
+    fc = Dense(1, activation='sigmoid')
+    dot_input = Dot(2)([embed_input1, embed_input2])
+    x = ra(dot_input)
+    return fc(x)
+
+
+def rnn_join_stack(embed_input1, embed_input2):
+    ra1 = LSTM(50, activation='tanh', return_sequences=True)
+    ra2 = LSTM(50, activation='tanh')
+    fc = Dense(1, activation='sigmoid')
+    dot_input = Dot(2)([embed_input1, embed_input2])
+    x = ra1(dot_input)
+    x = ra2(x)
+    return fc(x)

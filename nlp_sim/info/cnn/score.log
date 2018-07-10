@@ -248,3 +248,19 @@ cnn_join_serial_100_0.4 train acc 0.946
 cnn_join_serial_100_0.2 dev f1  0.353
 cnn_join_serial_100_0.2 dev acc 0.690
 
+2018-07-09 09:29:07 cnn_join_parallel train
+2018-07-09 10:31:33 cnn_join_parallel train
+cnn_join_parallel_100_0.2 train f1  0.379
+cnn_join_parallel_100_0.2 train acc 0.604
+
+cnn_join_parallel_100_0.2 dev f1  0.371
+cnn_join_parallel_100_0.2 dev acc 0.654
+
+2018-07-09 10:31:50 cnn_join_serial train
+2018-07-09 11:15:02 cnn_join_serial train
+cnn_join_serial_100_0.3 train f1  0.562
+cnn_join_serial_100_0.3 train acc 0.873
+
+cnn_join_serial_100_0.2 dev f1  0.342
+cnn_join_serial_100_0.2 dev acc 0.611
+

@@ -15,8 +15,9 @@ from nlp_sim.nn_arch.cnn import cnn_siam_parallel, cnn_siam_serial
 from nlp_sim.nn_arch.rnn import rnn_siam_plain, rnn_siam_stack
 from nlp_sim.nn_arch.rnn import rnn_siam_attend, rnn_siam_bi_attend
 
-from nlp_sim.nn_arch.dnn import dnn_join_average, dnn_join_flat
+from nlp_sim.nn_arch.dnn import dnn_join_flat
 from nlp_sim.nn_arch.cnn import cnn_join_parallel, cnn_join_serial
+from nlp_sim.nn_arch.rnn import rnn_join_plain, rnn_join_stack
 
 
 loggers = {'dnn': get_loggers('dnn', 'nlp_sim/info/dnn/'),
@@ -30,10 +31,11 @@ funcs = {'dnn_siam_average': dnn_siam_average,
          'rnn_siam_stack': rnn_siam_stack,
          'rnn_siam_attend': rnn_siam_attend,
          'rnn_siam_bi_attend': rnn_siam_bi_attend,
-         'dnn_join_average': dnn_join_average,
          'dnn_join_flat': dnn_join_flat,
          'cnn_join_parallel': cnn_join_parallel,
-         'cnn_join_serial': cnn_join_serial}
+         'cnn_join_serial': cnn_join_serial,
+         'rnn_join_plain': rnn_join_plain,
+         'rnn_join_stack': rnn_join_stack}
 
 
 def split(pad):

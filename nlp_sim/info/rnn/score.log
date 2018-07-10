@@ -209,3 +209,19 @@ rnn_siam_stack_100_0.6 train acc 0.998
 rnn_siam_stack_100_0.3 dev f1  0.510
 rnn_siam_stack_100_0.3 dev acc 0.779
 
+2018-07-10 14:45:54 rnn_join_plain train
+2018-07-10 15:08:41 rnn_join_plain train
+rnn_join_plain_100_0.4 train f1  0.638
+rnn_join_plain_100_0.4 train acc 0.869
+
+rnn_join_plain_100_0.2 dev f1  0.377
+rnn_join_plain_100_0.2 dev acc 0.676
+
+2018-07-10 15:08:50 rnn_join_stack train
+2018-07-10 15:49:57 rnn_join_stack train
+rnn_join_stack_100_0.4 train f1  0.894
+rnn_join_stack_100_0.4 train acc 0.961
+
+rnn_join_stack_100_0.2 dev f1  0.378
+rnn_join_stack_100_0.2 dev acc 0.713
+
