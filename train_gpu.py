@@ -31,12 +31,12 @@ def join(paths):
     paths['cnn_join_serial'] = prefix + 'model/cnn/join_serial.h5'
     paths['rnn_join_plain'] = prefix + 'model/rnn/join_plain.h5'
     paths['rnn_join_stack'] = prefix + 'model/rnn/join_stack.h5'
-    # nn(paths, 'dnn', 'join_flat', 100, 'train', thre=None)
-    # nn(paths, 'dnn', 'join_flat', 100, 'dev', thre=None)
-    # nn(paths, 'cnn', 'join_parallel', 100, 'train', thre=None)
-    # nn(paths, 'cnn', 'join_parallel', 100, 'dev', thre=None)
-    # nn(paths, 'cnn', 'join_serial', 100, 'train', thre=None)
-    # nn(paths, 'cnn', 'join_serial', 100, 'dev', thre=None)
+    nn(paths, 'dnn', 'join_flat', 100, 'train', thre=None)
+    nn(paths, 'dnn', 'join_flat', 100, 'dev', thre=None)
+    nn(paths, 'cnn', 'join_parallel', 100, 'train', thre=None)
+    nn(paths, 'cnn', 'join_parallel', 100, 'dev', thre=None)
+    nn(paths, 'cnn', 'join_serial', 100, 'train', thre=None)
+    nn(paths, 'cnn', 'join_serial', 100, 'dev', thre=None)
     nn(paths, 'rnn', 'join_plain', 100, 'train', thre=None)
     nn(paths, 'rnn', 'join_plain', 100, 'dev', thre=None)
     nn(paths, 'rnn', 'join_stack', 100, 'train', thre=None)
@@ -53,5 +53,5 @@ if __name__ == '__main__':
     paths['train_label'] = prefix + 'data/train_label.txt'
     paths['dev_label'] = prefix + 'data/dev_label.txt'
     paths['embed'] = prefix + 'feature/embed.pkl'
-    # siam(paths)
+    siam(paths)
     join(paths)

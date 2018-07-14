@@ -1,4 +1,4 @@
-## Text Match 2018-6
+## Semantic Match 2018-6
 
 测试命令：bash run.sh nlp_sim/data/test.csv nlp_sim/data/test_pred.csv
 
