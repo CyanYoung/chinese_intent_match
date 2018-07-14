@@ -49,7 +49,7 @@ def tfidf(bow_feature, tfidf_model, tfidf_feature, mode):
 def word2vec(sents, word2vec):
     sents_split = list()
     for sent in sents:
-        sents_split.append(sent.split())
+        sents_split.append(sent.split(' '))
     model = Word2Vec(sents_split, size=200, window=3, min_count=4)
     word_vecs = model.wv  # keyed vec
     del model
@@ -89,7 +89,7 @@ def pad(sents, word2ind, pad):
 
 
 def vectorize(paths, mode):
-    sents = load_sent(paths['data_cut'])
+    sents = load_sent(paths['data_clean'])
     stop_words = load_word(paths['stop_word'])
     rare_words = load_word(paths['rare_word'])
     invalid_words = stop_words + rare_words
@@ -103,25 +103,25 @@ def vectorize(paths, mode):
 
 if __name__ == '__main__':
     paths = dict()
-    paths['data_cut'] = 'data/train_cut.csv'
+    paths['data_clean'] = 'data/train_clean.csv'
     paths['stop_word'] = 'dict/stop_word.txt'
     paths['rare_word'] = 'dict/rare_word.txt'
     paths['bow_model'] = 'model/vec/bow.pkl'
     paths['tfidf_model'] = 'model/vec/tfidf.pkl'
-    paths['bow_feature'] = 'feature/bow_train.pkl'
-    paths['tfidf_feature'] = 'feature/tfidf_train.pkl'
+    paths['bow_feature'] = 'feature/svm/bow_train.pkl'
+    paths['tfidf_feature'] = 'feature/svm/tfidf_train.pkl'
     paths['word2ind'] = 'model/vec/word2ind.pkl'
-    paths['word2vec'] = 'feature/word2vec.pkl'
-    paths['embed'] = 'feature/embed.pkl'
-    paths['pad'] = 'feature/pad_train.pkl'
+    paths['word2vec'] = 'feature/nn/word2vec.pkl'
+    paths['embed'] = 'feature/nn/embed.pkl'
+    paths['pad'] = 'feature/nn/pad_train.pkl'
     vectorize(paths, 'train')
-    paths['data_cut'] = 'data/dev_cut.csv'
-    paths['bow_feature'] = 'feature/bow_dev.pkl'
-    paths['tfidf_feature'] = 'feature/tfidf_dev.pkl'
-    paths['pad'] = 'feature/pad_dev.pkl'
+    paths['data_clean'] = 'data/dev_clean.csv'
+    paths['bow_feature'] = 'feature/svm/bow_dev.pkl'
+    paths['tfidf_feature'] = 'feature/svm/tfidf_dev.pkl'
+    paths['pad'] = 'feature/nn/pad_dev.pkl'
     vectorize(paths, 'dev')
-    # paths['data_cut'] = 'data/test_cut.csv'
-    # paths['bow_feature'] = 'feature/bow_test.pkl'
-    # paths['tfidf_feature'] = 'feature/tfidf_test.pkl'
-    # paths['pad'] = 'feature/pad_test.pkl'
+    # paths['data_clean'] = 'data/test_clean.csv'
+    # paths['bow_feature'] = 'feature/svm/bow_test.pkl'
+    # paths['tfidf_feature'] = 'feature/svm/tfidf_test.pkl'
+    # paths['pad'] = 'feature/nn/pad_test.pkl'
     # vectorize(paths, 'test')

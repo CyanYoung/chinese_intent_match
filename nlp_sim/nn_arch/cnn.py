@@ -2,16 +2,15 @@ from keras.layers import Conv1D, Conv2D, Dense
 from keras.layers import MaxPooling1D, GlobalMaxPooling1D, MaxPooling2D, GlobalMaxPooling2D
 from keras.layers import BatchNormalization, Dropout, Concatenate, Flatten, Reshape
 from keras.layers import Subtract, Multiply, Dot, Lambda
-from keras.regularizers import l2
 
 import keras.backend as K
 
 
 def cnn_siam_parallel(embed_input1, embed_input2):
-    ca1 = Conv1D(filters=64, kernel_size=2, activation='relu', kernel_regularizer=l2(0.001))
-    ca2 = Conv1D(filters=64, kernel_size=3, activation='relu', kernel_regularizer=l2(0.001))
-    ca3 = Conv1D(filters=64, kernel_size=4, activation='relu', kernel_regularizer=l2(0.001))
-    ca4 = Conv1D(filters=64, kernel_size=5, activation='relu', kernel_regularizer=l2(0.001))
+    ca1 = Conv1D(filters=64, kernel_size=2, activation='relu')
+    ca2 = Conv1D(filters=64, kernel_size=3, activation='relu')
+    ca3 = Conv1D(filters=64, kernel_size=4, activation='relu')
+    ca4 = Conv1D(filters=64, kernel_size=5, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     x1 = ca1(embed_input1)
@@ -50,8 +49,8 @@ def cnn_siam_parallel(embed_input1, embed_input2):
 
 
 def cnn_siam_serial(embed_input1, embed_input2):
-    ca1 = Conv1D(filters=128, kernel_size=3, activation='relu', kernel_regularizer=l2(0.001))
-    ca2 = Conv1D(filters=128, kernel_size=4, activation='relu', kernel_regularizer=l2(0.001))
+    ca1 = Conv1D(filters=128, kernel_size=3, activation='relu')
+    ca2 = Conv1D(filters=128, kernel_size=4, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     x = ca1(embed_input1)

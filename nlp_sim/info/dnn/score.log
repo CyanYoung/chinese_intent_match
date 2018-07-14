@@ -101,4 +101,3 @@ dnn_join_flat_100_0.3 train acc 0.952
 
 dnn_join_flat_100_0.2 dev f1  0.352
 dnn_join_flat_100_0.2 dev acc 0.552
-

@@ -46,12 +46,12 @@ def join(paths):
 if __name__ == '__main__':
     paths = dict()
     prefix = 'nlp_sim/'
-    paths['train_cut'] = prefix + 'data/train_cut.csv'
-    paths['dev_cut'] = prefix + 'data/dev_cut.csv'
-    paths['pad_train'] = prefix + 'feature/pad_train.pkl'
-    paths['pad_dev'] = prefix + 'feature/pad_dev.pkl'
+    paths['train_clean'] = prefix + 'data/train_clean.csv'
+    paths['dev_clean'] = prefix + 'data/dev_clean.csv'
+    paths['pad_train'] = prefix + 'feature/nn/pad_train.pkl'
+    paths['pad_dev'] = prefix + 'feature/nn/pad_dev.pkl'
     paths['train_label'] = prefix + 'data/train_label.txt'
     paths['dev_label'] = prefix + 'data/dev_label.txt'
-    paths['embed'] = prefix + 'feature/embed.pkl'
+    paths['embed'] = prefix + 'feature/nn/embed.pkl'
     siam(paths)
     join(paths)
