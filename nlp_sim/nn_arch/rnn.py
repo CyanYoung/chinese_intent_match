@@ -5,6 +5,9 @@ from keras.layers import Permute, Subtract, Multiply, Dot, Lambda
 import keras.backend as K
 
 
+seq_len = 30
+
+
 def rnn_siam_plain(embed_input1, embed_input2):
     ra = LSTM(300, activation='tanh')
     fc1 = Dense(100, activation='relu')
@@ -54,7 +57,7 @@ def attention(input, seq_len, reduce):
     return output
 
 
-def rnn_siam_attend(embed_input1, embed_input2, seq_len=30):
+def rnn_siam_attend(embed_input1, embed_input2):
     ra = LSTM(300, activation='tanh', return_sequences=True)
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
@@ -71,7 +74,7 @@ def rnn_siam_attend(embed_input1, embed_input2, seq_len=30):
     return fc2(z)
 
 
-def rnn_siam_bi_attend(embed_input1, embed_input2, seq_len=30):
+def rnn_siam_bi_attend(embed_input1, embed_input2):
     ra = LSTM(300, activation='tanh', return_sequences=True)
     ba = Bidirectional(ra, merge_mode='concat')
     fc1 = Dense(100, activation='relu')

@@ -6,6 +6,9 @@ from keras.layers import Subtract, Multiply, Dot, Lambda
 import keras.backend as K
 
 
+seq_len = 30
+
+
 def cnn_siam_parallel(embed_input1, embed_input2):
     ca1 = Conv1D(filters=64, kernel_size=2, activation='relu')
     ca2 = Conv1D(filters=64, kernel_size=3, activation='relu')
@@ -75,7 +78,7 @@ def cnn_siam_serial(embed_input1, embed_input2):
     return fc2(z)
 
 
-def cnn_join_parallel(embed_input1, embed_input2, seq_len=30):
+def cnn_join_parallel(embed_input1, embed_input2):
     ca1 = Conv2D(filters=64, kernel_size=2, activation='relu')
     ca2 = Conv2D(filters=64, kernel_size=3, activation='relu')
     ca3 = Conv2D(filters=64, kernel_size=4, activation='relu')
@@ -103,7 +106,7 @@ def cnn_join_parallel(embed_input1, embed_input2, seq_len=30):
     return fc2(x)
 
 
-def cnn_join_serial(embed_input1, embed_input2, seq_len=30):
+def cnn_join_serial(embed_input1, embed_input2):
     ca1 = Conv2D(filters=128, kernel_size=3, activation='relu')
     ca2 = Conv2D(filters=128, kernel_size=4, activation='relu')
     fc1 = Dense(100, activation='relu')
