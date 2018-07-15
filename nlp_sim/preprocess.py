@@ -85,10 +85,10 @@ if __name__ == '__main__':
     paths['len_freq'] = 'dict/len_freq.csv'
     paths['vocab_freq'] = 'dict/vocab_freq.csv'
     paths['rare_word'] = 'dict/rare_word.txt'
-    preprocess(paths, 'train', char=False)
+    preprocess(paths, 'train', char=True)
     paths['data'] = 'data/dev.csv'
     paths['data_clean'] = 'data/dev_clean.csv'
-    preprocess(paths, 'dev', char=False)
-    # paths['data'] = 'data/test.csv'
-    # paths['data_clean'] = 'data/test_clean.csv'
-    # preprocess(paths, 'test', char=False)
+    preprocess(paths, 'dev', char=True)
+    paths['data'] = 'data/test.csv'
+    paths['data_clean'] = 'data/test_clean.csv'
+    preprocess(paths, 'test', char=True)

@@ -55,6 +55,10 @@ def word2vec(sents, word2vec):
     del model
     with open(word2vec, 'wb') as f:
         pk.dump(word_vecs, f)
+    if __name__ == '__main__':
+        words = ['*', '#', '$']
+        for word in words:
+            print(word_vecs.most_similar(word))
 
 
 def embed(sents, word2ind, word2vec, embed, stop_words):
@@ -120,8 +124,8 @@ if __name__ == '__main__':
     paths['tfidf_feature'] = 'feature/svm/tfidf_dev.pkl'
     paths['pad'] = 'feature/nn/pad_dev.pkl'
     vectorize(paths, 'dev')
-    # paths['data_clean'] = 'data/test_clean.csv'
-    # paths['bow_feature'] = 'feature/svm/bow_test.pkl'
-    # paths['tfidf_feature'] = 'feature/svm/tfidf_test.pkl'
-    # paths['pad'] = 'feature/nn/pad_test.pkl'
-    # vectorize(paths, 'test')
+    paths['data_clean'] = 'data/test_clean.csv'
+    paths['bow_feature'] = 'feature/svm/bow_test.pkl'
+    paths['tfidf_feature'] = 'feature/svm/tfidf_test.pkl'
+    paths['pad'] = 'feature/nn/pad_test.pkl'
+    vectorize(paths, 'test')

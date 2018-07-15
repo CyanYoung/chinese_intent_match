@@ -66,6 +66,6 @@ def svm(paths, kernel, feature, mode, thre):
         raise KeyError
     probs = model.predict_proba(merge_features)[:, 1]
     if mode == 'train' or mode == 'dev':
-        trial(paths['data_cut'], probs, labels, logger, name, mode)
+        trial(paths['data_clean'], probs, labels, logger, name, mode)
     elif mode == 'test':
         return probs > thre

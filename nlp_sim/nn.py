@@ -58,7 +58,7 @@ def build(embed_mat, seq_len, name):
                             output_dim=embed_dim,
                             weights=[embed_mat],
                             input_length=seq_len,
-                            trainable=False)
+                            trainable=True)
     input1 = Input(shape=(seq_len,), dtype='int32')
     input2 = Input(shape=(seq_len,), dtype='int32')
     embed_input1 = embed_layer(input1)
@@ -99,12 +99,12 @@ def nn(paths, name, arch, epoch, mode, thre):
                   batch_size=128, epochs=epoch, verbose=True, callbacks=[check_point],
                   validation_data=([pad_dev1, pad_dev2], dev_labels))
         log_state(logger[0], name, mode)
-        check(paths['train_cut'], model, pad_train1, pad_train2, train_labels, logger, epoch, name, 'train')
+        check(paths['train_clean'], model, pad_train1, pad_train2, train_labels, logger, epoch, name, 'train')
     elif mode == 'dev':
         pad_dev1, pad_dev2 = split(paths['pad_dev'])
         dev_labels = load_label(paths['dev_label'])
         model = load_model(paths[name])
-        check(paths['dev_cut'], model, pad_dev1, pad_dev2, dev_labels, logger, epoch, name, 'dev')
+        check(paths['dev_clean'], model, pad_dev1, pad_dev2, dev_labels, logger, epoch, name, 'dev')
     elif mode == 'test':
         pad_mat1, pad_mat2 = split(paths['pad'])
         model = load_model(paths[name])

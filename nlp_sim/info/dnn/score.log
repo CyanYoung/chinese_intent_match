@@ -101,3 +101,12 @@ dnn_join_flat_100_0.3 train acc 0.952
 
 dnn_join_flat_100_0.2 dev f1  0.352
 dnn_join_flat_100_0.2 dev acc 0.552
+
+2018-07-14 16:16:34 dnn_siam_average train
+2018-07-14 16:19:08 dnn_siam_average train
+dnn_siam_average_100_0.6 train f1  0.923
+dnn_siam_average_100_0.6 train acc 0.971
+
+dnn_siam_average_100_0.3 dev f1  0.492
+dnn_siam_average_100_0.3 dev acc 0.791
+
