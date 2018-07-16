@@ -10,10 +10,10 @@ seq_len = 30
 
 
 def cnn_siam_parallel(embed_input1, embed_input2):
-    ca1 = Conv1D(filters=64, kernel_size=2, activation='relu')
-    ca2 = Conv1D(filters=64, kernel_size=3, activation='relu')
-    ca3 = Conv1D(filters=64, kernel_size=4, activation='relu')
-    ca4 = Conv1D(filters=64, kernel_size=5, activation='relu')
+    ca1 = Conv1D(filters=32, kernel_size=2, activation='relu')
+    ca2 = Conv1D(filters=32, kernel_size=3, activation='relu')
+    ca3 = Conv1D(filters=32, kernel_size=4, activation='relu')
+    ca4 = Conv1D(filters=32, kernel_size=5, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     x1 = ca1(embed_input1)
@@ -52,8 +52,8 @@ def cnn_siam_parallel(embed_input1, embed_input2):
 
 
 def cnn_siam_serial(embed_input1, embed_input2):
-    ca1 = Conv1D(filters=128, kernel_size=3, activation='relu')
-    ca2 = Conv1D(filters=128, kernel_size=4, activation='relu')
+    ca1 = Conv1D(filters=64, kernel_size=2, activation='relu')
+    ca2 = Conv1D(filters=64, kernel_size=3, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     x = ca1(embed_input1)
@@ -79,10 +79,10 @@ def cnn_siam_serial(embed_input1, embed_input2):
 
 
 def cnn_join_parallel(embed_input1, embed_input2):
-    ca1 = Conv2D(filters=64, kernel_size=2, activation='relu')
-    ca2 = Conv2D(filters=64, kernel_size=3, activation='relu')
-    ca3 = Conv2D(filters=64, kernel_size=4, activation='relu')
-    ca4 = Conv2D(filters=64, kernel_size=5, activation='relu')
+    ca1 = Conv2D(filters=32, kernel_size=2, activation='relu')
+    ca2 = Conv2D(filters=32, kernel_size=3, activation='relu')
+    ca3 = Conv2D(filters=32, kernel_size=4, activation='relu')
+    ca4 = Conv2D(filters=32, kernel_size=5, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])
@@ -107,8 +107,8 @@ def cnn_join_parallel(embed_input1, embed_input2):
 
 
 def cnn_join_serial(embed_input1, embed_input2):
-    ca1 = Conv2D(filters=128, kernel_size=3, activation='relu')
-    ca2 = Conv2D(filters=128, kernel_size=4, activation='relu')
+    ca1 = Conv2D(filters=64, kernel_size=2, activation='relu')
+    ca2 = Conv2D(filters=64, kernel_size=3, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])

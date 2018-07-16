@@ -257,3 +257,51 @@ rnn_siam_bi_attend_100_0.4 train acc 0.998
 rnn_siam_bi_attend_100_0.2 dev f1  0.505
 rnn_siam_bi_attend_100_0.2 dev acc 0.756
 
+2018-07-15 11:10:21 rnn_siam_plain train
+2018-07-15 11:59:24 rnn_siam_plain train
+rnn_siam_plain_100_0.6 train f1  0.999
+rnn_siam_plain_100_0.6 train acc 0.999
+
+rnn_siam_plain_100_0.3 dev f1  0.541
+rnn_siam_plain_100_0.3 dev acc 0.818
+
+2018-07-15 11:59:37 rnn_siam_stack train
+2018-07-15 13:39:08 rnn_siam_stack train
+rnn_siam_stack_100_0.6 train f1  0.994
+rnn_siam_stack_100_0.6 train acc 0.998
+
+rnn_siam_stack_100_0.3 dev f1  0.537
+rnn_siam_stack_100_0.3 dev acc 0.781
+
+2018-07-15 13:39:35 rnn_siam_attend train
+2018-07-15 14:32:54 rnn_siam_attend train
+rnn_siam_attend_100_0.5 train f1  0.985
+rnn_siam_attend_100_0.5 train acc 0.995
+
+rnn_siam_attend_100_0.3 dev f1  0.522
+rnn_siam_attend_100_0.3 dev acc 0.807
+
+2018-07-15 17:03:00 rnn_siam_bi_attend train
+2018-07-15 18:50:49 rnn_siam_bi_attend train
+rnn_siam_bi_attend_100_0.5 train f1  0.995
+rnn_siam_bi_attend_100_0.5 train acc 0.998
+
+rnn_siam_bi_attend_100_0.2 dev f1  0.521
+rnn_siam_bi_attend_100_0.2 dev acc 0.764
+
+2018-07-15 20:48:41 rnn_join_plain train
+2018-07-15 21:12:37 rnn_join_plain train
+rnn_join_plain_100_0.5 train f1  0.959
+rnn_join_plain_100_0.5 train acc 0.985
+
+rnn_join_plain_100_0.2 dev f1  0.418
+rnn_join_plain_100_0.2 dev acc 0.674
+
+2018-07-15 21:12:45 rnn_join_stack train
+2018-07-15 21:56:57 rnn_join_stack train
+rnn_join_stack_100_0.5 train f1  0.985
+rnn_join_stack_100_0.5 train acc 0.995
+
+rnn_join_stack_100_0.3 dev f1  0.445
+rnn_join_stack_100_0.3 dev acc 0.783
+

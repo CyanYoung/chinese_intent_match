@@ -134,3 +134,27 @@ svm_linear_tfidf_0.1 dev acc 0.182
 svm_rbf_bow_0.2 dev f1  0.402
 svm_rbf_bow_0.2 dev acc 0.681
 
+2018-07-15 10:42:30 svm_linear_bow train
+2018-07-16 13:22:28 svm_linear_bow train
+svm_linear_bow_0.1 train f1  0.310
+svm_linear_bow_0.1 train acc 0.186
+
+2018-07-16 13:27:26 svm_linear_tfidf train
+2018-07-16 17:58:43 svm_linear_tfidf train
+svm_linear_tfidf_0.1 train f1  0.309
+svm_linear_tfidf_0.1 train acc 0.185
+
+2018-07-16 18:05:18 svm_rbf_bow train
+2018-07-16 19:10:19 svm_rbf_bow train
+svm_rbf_bow_0.2 train f1  0.603
+svm_rbf_bow_0.2 train acc 0.837
+
+svm_linear_bow_0.1 dev f1  0.308
+svm_linear_bow_0.1 dev acc 0.185
+
+svm_linear_tfidf_0.1 dev f1  0.308
+svm_linear_tfidf_0.1 dev acc 0.184
+
+svm_rbf_bow_0.2 dev f1  0.507
+svm_rbf_bow_0.2 dev acc 0.787
+
