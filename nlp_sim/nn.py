@@ -20,6 +20,9 @@ from nlp_sim.nn_arch.cnn import cnn_join_parallel, cnn_join_serial
 from nlp_sim.nn_arch.rnn import rnn_join_plain, rnn_join_stack
 
 
+batch_size = 512
+
+
 loggers = {'dnn': get_loggers('dnn', 'nlp_sim/info/dnn/'),
            'cnn': get_loggers('cnn', 'nlp_sim/info/cnn/'),
            'rnn': get_loggers('rnn', 'nlp_sim/info/rnn/')}
@@ -76,7 +79,7 @@ def build(embed_mat, seq_len, name):
 
 
 def check(sent, model, pad_mat1, pad_mat2, labels, logger, epoch, name, mode):
-    probs = model.predict([pad_mat1, pad_mat2], batch_size=512)
+    probs = model.predict([pad_mat1, pad_mat2], batch_size=batch_size)
     probs = np.reshape(probs, (1, -1))[0]
     trial(sent, probs, labels, logger, '_'.join([name, str(epoch)]), mode)
 
@@ -96,7 +99,7 @@ def nn(paths, name, arch, epoch, mode, thre):
         check_point = ModelCheckpoint(paths[name], monitor='val_loss', verbose=True, save_best_only=True)
         log_state(logger[0], name, mode)
         model.fit([pad_train1, pad_train2], train_labels,
-                  batch_size=512, epochs=epoch, verbose=True, callbacks=[check_point],
+                  batch_size=batch_size, epochs=epoch, verbose=True, callbacks=[check_point],
                   validation_data=([pad_dev1, pad_dev2], dev_labels))
         log_state(logger[0], name, mode)
         check(paths['train_clean'], model, pad_train1, pad_train2, train_labels, logger, epoch, name, 'train')
@@ -108,7 +111,7 @@ def nn(paths, name, arch, epoch, mode, thre):
     elif mode == 'test':
         pad_mat1, pad_mat2 = split(paths['pad'])
         model = load_model(paths[name])
-        probs = model.predict([pad_mat1, pad_mat2], batch_size=512)
+        probs = model.predict([pad_mat1, pad_mat2], batch_size=batch_size)
         probs = np.reshape(probs, (1, -1))[0]
         return probs > thre
     else:

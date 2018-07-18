@@ -12,9 +12,12 @@ from keras.preprocessing.sequence import pad_sequences
 from nlp_sim.util.load import load_word, load_sent
 
 
-def bow(sents, bow_model, bow_feature, invalid_words, mode):
+min_freq = 5
+
+
+def bow(sents, bow_model, bow_feature, stop_words, mode):
     if mode == 'train':
-        model = CountVectorizer(stop_words=invalid_words, token_pattern='\w+', min_df=0)
+        model = CountVectorizer(stop_words=stop_words, token_pattern='\w+', min_df=min_freq)
         model.fit(sents)
         with open(bow_model, 'wb') as f:
             pk.dump(model, f)
@@ -41,7 +44,7 @@ def tfidf(bow_feature, tfidf_model, tfidf_feature, mode):
             model = pk.load(f)
     else:
         raise KeyError
-    sent_word_weights = model.fit_transform(sent_word_counts)
+    sent_word_weights = model.transform(sent_word_counts)
     with open(tfidf_feature, 'wb') as f:
         pk.dump(sent_word_weights, f)
 
@@ -50,7 +53,7 @@ def word2vec(sents, word2vec):
     sents_split = list()
     for sent in sents:
         sents_split.append(sent.split(' '))
-    model = Word2Vec(sents_split, size=200, window=3, min_count=4)
+    model = Word2Vec(sents_split, size=200, window=3, min_count=min_freq)
     word_vecs = model.wv  # keyed vec
     del model
     with open(word2vec, 'wb') as f:
@@ -95,9 +98,7 @@ def pad(sents, word2ind, pad):
 def vectorize(paths, mode):
     sents = load_sent(paths['data_clean'])
     stop_words = load_word(paths['stop_word'])
-    rare_words = load_word(paths['rare_word'])
-    invalid_words = stop_words + rare_words
-    bow(sents, paths['bow_model'], paths['bow_feature'], invalid_words, mode)
+    bow(sents, paths['bow_model'], paths['bow_feature'], stop_words, mode)
     tfidf(paths['bow_feature'], paths['tfidf_model'], paths['tfidf_feature'], mode)
     if mode == 'train':
         word2vec(sents, paths['word2vec'])
@@ -109,7 +110,6 @@ if __name__ == '__main__':
     paths = dict()
     paths['data_clean'] = 'data/train_clean.csv'
     paths['stop_word'] = 'dict/stop_word.txt'
-    paths['rare_word'] = 'dict/rare_word.txt'
     paths['bow_model'] = 'model/vec/bow.pkl'
     paths['tfidf_model'] = 'model/vec/tfidf.pkl'
     paths['bow_feature'] = 'feature/svm/bow_train.pkl'

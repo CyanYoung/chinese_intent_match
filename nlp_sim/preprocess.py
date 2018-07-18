@@ -6,6 +6,9 @@ import jieba
 from collections import Counter
 
 
+min_freq = 5
+
+
 def delete(data, data_clean, invalid_punc):
     reg = '[ '  # space
     with open(invalid_punc, 'r') as f:
@@ -63,9 +66,9 @@ def preprocess(paths, mode, char):
         with open(paths['vocab_freq'], 'w') as fc:
             fc.write('vocab,freq' + '\n')
             with open(paths['rare_word'], 'w') as fr:
-                for vocab, freq in vocab_count.most_common():
-                    fc.write(vocab + ',' + str(freq) + '\n')
-                    if freq < 5:
+                for vocab, count in vocab_count.most_common():
+                    fc.write(vocab + ',' + str(count) + '\n')
+                    if count < min_freq:
                         fr.write(vocab + '\n')
         len_count = Counter(text_lens)
         with open(paths['len_freq'], 'w') as f:
