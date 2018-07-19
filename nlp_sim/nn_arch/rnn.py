@@ -124,3 +124,13 @@ def rnn_join_stack(embed_input1, embed_input2):
     x = ra1(dot_input)
     x = ra2(x)
     return fc(x)
+
+
+def rnn_join_bi(embed_input1, embed_input2):
+    ra = LSTM(50, activation='tanh')
+    ba = Bidirectional(ra, merge_mode='concat')
+    fc = Dense(1, activation='sigmoid')
+    dot_input = Dot(2)([embed_input1, embed_input2])
+    x = ba(dot_input)
+    return fc(x)
+

@@ -5,7 +5,7 @@ from nlp_sim.nn_arch.rnn import rnn_siam_attend, rnn_siam_bi_attend
 
 from nlp_sim.nn_arch.dnn import dnn_join_flat
 from nlp_sim.nn_arch.cnn import cnn_join_parallel, cnn_join_serial
-from nlp_sim.nn_arch.rnn import rnn_join_plain, rnn_join_stack
+from nlp_sim.nn_arch.rnn import rnn_join_plain, rnn_join_stack, rnn_join_bi
 
 from nlp_sim.util.log import get_loggers
 
@@ -31,7 +31,8 @@ funcs = {'dnn_siam_average': dnn_siam_average,
          'cnn_join_parallel': cnn_join_parallel,
          'cnn_join_serial': cnn_join_serial,
          'rnn_join_plain': rnn_join_plain,
-         'rnn_join_stack': rnn_join_stack}
+         'rnn_join_stack': rnn_join_stack,
+         'rnn_join_bi': rnn_join_bi}
 
 
 def map_name(name):

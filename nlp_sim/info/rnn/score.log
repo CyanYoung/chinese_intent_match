@@ -305,3 +305,19 @@ rnn_join_stack_100_0.5 train acc 0.995
 rnn_join_stack_100_0.3 dev f1  0.445
 rnn_join_stack_100_0.3 dev acc 0.783
 
+2018-07-19 09:59:31 rnn_siam_bi train
+2018-07-19 11:06:05 rnn_siam_bi train
+rnn_siam_bi_100_0.5 train f1  0.999
+rnn_siam_bi_100_0.5 train acc 1.000
+
+rnn_siam_bi_100_0.3 dev f1  0.544
+rnn_siam_bi_100_0.3 dev acc 0.819
+
+2018-07-19 14:20:31 rnn_join_bi train
+2018-07-19 14:31:51 rnn_join_bi train
+rnn_join_bi_100_0.3 train f1  0.960
+rnn_join_bi_100_0.3 train acc 0.985
+
+rnn_join_bi_100_0.3 dev f1  0.435
+rnn_join_bi_100_0.3 dev acc 0.772
+
