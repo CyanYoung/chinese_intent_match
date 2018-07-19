@@ -45,6 +45,22 @@ def rnn_siam_stack(embed_input1, embed_input2):
     return fc2(z)
 
 
+def rnn_siam_bi(embed_input1, embed_input2):
+    ra = LSTM(300, activation='tanh')
+    ba = Bidirectional(ra, merge_mode='concat')
+    fc1 = Dense(100, activation='relu')
+    fc2 = Dense(1, activation='sigmoid')
+    x = ba(embed_input1)
+    y = ba(embed_input2)
+    diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
+    prod = Multiply()([x, y])
+    z = Concatenate()([x, y, diff, prod])
+    z = Dropout(0.5)(z)
+    z = fc1(z)
+    z = Dropout(0.5)(z)
+    return fc2(z)
+
+
 def attention(input, seq_len, reduce):
     x = Permute((2, 1))(input)
     x = Dense(seq_len, activation='softmax')(x)

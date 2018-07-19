@@ -6,11 +6,9 @@ from scipy.sparse import csr_matrix
 from sklearn.svm import SVC
 
 from nlp_sim.util.load import load_label
+from nlp_sim.util.map import map_name, map_logger
 from nlp_sim.util.trial import trial
-from nlp_sim.util.log import get_loggers, log_state
-
-
-logger = get_loggers('svm', 'nlp_sim/info/svm/')
+from nlp_sim.util.log import log_state
 
 
 def subtract(sent_features):
@@ -44,6 +42,7 @@ def concat(sent_features):
 
 
 def svm(paths, kernel, feature, mode, thre):
+    logger = map_logger('svm')
     name = '_'.join(['svm', kernel, feature])
     with open(paths[feature + '_feature'], 'rb') as f:
         sent_features = pk.load(f)
@@ -52,7 +51,8 @@ def svm(paths, kernel, feature, mode, thre):
     merge_features = csr_matrix(np.hstack((diff, prod)))
     if mode == 'train':
         labels = load_label(paths['label'])
-        model = SVC(C=10.0, kernel=kernel, probability=True, verbose=True)
+        kernel = map_name(kernel)
+        model = SVC(C=1.0, kernel=kernel, probability=True, verbose=True)
         log_state(logger[0], name, mode)
         model.fit(merge_features, labels)
         log_state(logger[0], name, mode)

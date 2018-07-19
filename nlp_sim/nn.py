@@ -7,38 +7,12 @@ from keras.models import Model, load_model
 from keras.callbacks import ModelCheckpoint
 
 from nlp_sim.util.load import load_label
+from nlp_sim.util.map import map_logger, map_func
 from nlp_sim.util.trial import trial
-from nlp_sim.util.log import get_loggers, log_state
-
-from nlp_sim.nn_arch.dnn import dnn_siam_average
-from nlp_sim.nn_arch.cnn import cnn_siam_parallel, cnn_siam_serial
-from nlp_sim.nn_arch.rnn import rnn_siam_plain, rnn_siam_stack
-from nlp_sim.nn_arch.rnn import rnn_siam_attend, rnn_siam_bi_attend
-
-from nlp_sim.nn_arch.dnn import dnn_join_flat
-from nlp_sim.nn_arch.cnn import cnn_join_parallel, cnn_join_serial
-from nlp_sim.nn_arch.rnn import rnn_join_plain, rnn_join_stack
+from nlp_sim.util.log import log_state
 
 
 batch_size = 512
-
-
-loggers = {'dnn': get_loggers('dnn', 'nlp_sim/info/dnn/'),
-           'cnn': get_loggers('cnn', 'nlp_sim/info/cnn/'),
-           'rnn': get_loggers('rnn', 'nlp_sim/info/rnn/')}
-
-funcs = {'dnn_siam_average': dnn_siam_average,
-         'cnn_siam_parallel': cnn_siam_parallel,
-         'cnn_siam_serial': cnn_siam_serial,
-         'rnn_siam_plain': rnn_siam_plain,
-         'rnn_siam_stack': rnn_siam_stack,
-         'rnn_siam_attend': rnn_siam_attend,
-         'rnn_siam_bi_attend': rnn_siam_bi_attend,
-         'dnn_join_flat': dnn_join_flat,
-         'cnn_join_parallel': cnn_join_parallel,
-         'cnn_join_serial': cnn_join_serial,
-         'rnn_join_plain': rnn_join_plain,
-         'rnn_join_stack': rnn_join_stack}
 
 
 def split(pad):
@@ -66,10 +40,8 @@ def build(embed_mat, seq_len, name):
     input2 = Input(shape=(seq_len,), dtype='int32')
     embed_input1 = embed_layer(input1)
     embed_input2 = embed_layer(input2)
-    if name in funcs.keys():
-        output = funcs[name](embed_input1, embed_input2)
-    else:
-        raise KeyError
+    func = map_func(name)
+    output = func(embed_input1, embed_input2)
     model = Model([input1, input2], output)
     model.summary()
     model.compile(loss='binary_crossentropy',
@@ -85,7 +57,7 @@ def check(sent, model, pad_mat1, pad_mat2, labels, logger, epoch, name, mode):
 
 
 def nn(paths, name, arch, epoch, mode, thre):
-    logger = loggers[name]
+    logger = map_logger(name)
     name = '_'.join([name, arch])
     if mode == 'train':
         with open(paths['embed'], 'rb') as f:
