@@ -10,10 +10,10 @@ seq_len = 30
 
 
 def cnn_siam_parallel(embed_input1, embed_input2):
-    ca1 = Conv1D(filters=32, kernel_size=2, activation='relu')
-    ca2 = Conv1D(filters=32, kernel_size=3, activation='relu')
-    ca3 = Conv1D(filters=32, kernel_size=4, activation='relu')
-    ca4 = Conv1D(filters=32, kernel_size=5, activation='relu')
+    ca1 = Conv1D(filters=32, kernel_size=1, activation='relu')
+    ca2 = Conv1D(filters=32, kernel_size=2, activation='relu')
+    ca3 = Conv1D(filters=32, kernel_size=3, activation='relu')
+    ca4 = Conv1D(filters=32, kernel_size=4, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     x1 = ca1(embed_input1)
@@ -52,20 +52,20 @@ def cnn_siam_parallel(embed_input1, embed_input2):
 
 
 def cnn_siam_serial(embed_input1, embed_input2):
-    ca1 = Conv1D(filters=64, kernel_size=2, activation='relu')
-    ca2 = Conv1D(filters=64, kernel_size=3, activation='relu')
+    ca2 = Conv1D(filters=64, kernel_size=2, activation='relu')
+    ca3 = Conv1D(filters=64, kernel_size=3, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
-    x = ca1(embed_input1)
+    x = ca2(embed_input1)
     x = BatchNormalization()(x)
     x = MaxPooling1D(3)(x)
-    x = ca2(x)
+    x = ca3(x)
     x = BatchNormalization()(x)
     x = MaxPooling1D(3)(x)
-    y = ca1(embed_input2)
+    y = ca2(embed_input2)
     y = BatchNormalization()(y)
     y = MaxPooling1D(3)(y)
-    y = ca2(y)
+    y = ca3(y)
     y = BatchNormalization()(y)
     y = MaxPooling1D(3)(y)
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
@@ -79,10 +79,10 @@ def cnn_siam_serial(embed_input1, embed_input2):
 
 
 def cnn_join_parallel(embed_input1, embed_input2):
-    ca1 = Conv2D(filters=32, kernel_size=2, activation='relu')
-    ca2 = Conv2D(filters=32, kernel_size=3, activation='relu')
-    ca3 = Conv2D(filters=32, kernel_size=4, activation='relu')
-    ca4 = Conv2D(filters=32, kernel_size=5, activation='relu')
+    ca1 = Conv2D(filters=32, kernel_size=1, activation='relu')
+    ca2 = Conv2D(filters=32, kernel_size=2, activation='relu')
+    ca3 = Conv2D(filters=32, kernel_size=3, activation='relu')
+    ca4 = Conv2D(filters=32, kernel_size=4, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])
@@ -107,16 +107,16 @@ def cnn_join_parallel(embed_input1, embed_input2):
 
 
 def cnn_join_serial(embed_input1, embed_input2):
-    ca1 = Conv2D(filters=64, kernel_size=2, activation='relu')
-    ca2 = Conv2D(filters=64, kernel_size=3, activation='relu')
+    ca2 = Conv2D(filters=64, kernel_size=2, activation='relu')
+    ca3 = Conv2D(filters=64, kernel_size=3, activation='relu')
     fc1 = Dense(100, activation='relu')
     fc2 = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])
     dot_input = Reshape((seq_len, seq_len, 1))(dot_input)
-    x = ca1(dot_input)
+    x = ca2(dot_input)
     x = BatchNormalization()(x)
     x = MaxPooling2D(2)(x)
-    x = ca2(x)
+    x = ca3(x)
     x = BatchNormalization()(x)
     x = MaxPooling2D(2)(x)
     x = Flatten()(x)

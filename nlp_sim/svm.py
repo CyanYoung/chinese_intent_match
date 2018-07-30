@@ -52,7 +52,7 @@ def svm(paths, kernel, feature, mode, thre):
     if mode == 'train':
         labels = load_label(paths['label'])
         kernel = map_name(kernel)
-        model = SVC(C=1.0, kernel=kernel, probability=True, verbose=True)
+        model = SVC(C=100.0, kernel=kernel, probability=True, verbose=True)
         log_state(logger[0], name, mode)
         model.fit(merge_features, labels)
         log_state(logger[0], name, mode)

@@ -8,7 +8,7 @@ from nlp_sim.nn import nn
 
 def test(paths, output, model):
     if model == 'svm':
-        preds = svm(paths, 'linear', 'bow', 'test', thre=0.2)
+        preds = svm(paths, 'rbf', 'bow', 'test', thre=0.2)
     elif model == 'dnn':
         preds = nn(paths, 'dnn', 'siam_average', 500, 'test', thre=0.3)
     elif model == 'cnn':
