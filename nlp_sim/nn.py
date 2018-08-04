@@ -4,6 +4,7 @@ import numpy as np
 
 from keras.layers import Input, Embedding
 from keras.models import Model, load_model
+from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 
 from nlp_sim.util.load import load_label
@@ -31,11 +32,8 @@ def split(pad):
 
 def build(embed_mat, seq_len, name):
     vocab_num, embed_dim = embed_mat.shape
-    embed_layer = Embedding(input_dim=vocab_num,
-                            output_dim=embed_dim,
-                            weights=[embed_mat],
-                            input_length=seq_len,
-                            trainable=True)
+    embed_layer = Embedding(input_dim=vocab_num, output_dim=embed_dim,
+                            weights=[embed_mat], input_length=seq_len, trainable=True)
     input1 = Input(shape=(seq_len,), dtype='int32')
     input2 = Input(shape=(seq_len,), dtype='int32')
     embed_input1 = embed_layer(input1)
@@ -44,9 +42,7 @@ def build(embed_mat, seq_len, name):
     output = func(embed_input1, embed_input2)
     model = Model([input1, input2], output)
     model.summary()
-    model.compile(loss='binary_crossentropy',
-                  optimizer='adam',
-                  metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
     return model
 
 

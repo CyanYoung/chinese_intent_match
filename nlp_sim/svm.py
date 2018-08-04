@@ -3,7 +3,7 @@ import pickle as pk
 import numpy as np
 from scipy.sparse import csr_matrix
 
-from sklearn.svm import SVC
+from sklearn.svm import SVC, libsvm
 
 from nlp_sim.util.load import load_label
 from nlp_sim.util.map import map_name, map_logger

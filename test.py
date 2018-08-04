@@ -31,7 +31,7 @@ if __name__ == '__main__':
     paths['invalid_punc'] = prefix + 'dict/invalid_punc.txt'
     paths['homonym'] = prefix + 'dict/homonym.csv'
     paths['synonym'] = prefix + 'dict/synonym.csv'
-    paths['special_word'] = prefix + 'dict/special_word.txt'
+    paths['cut_word'] = prefix + 'dict/cut_word.txt'
     paths['vocab_freq'] = prefix + 'dict/vocab_freq.csv'
     paths['stop_word'] = prefix + 'dict/stop_word.txt'
     paths['rare_word'] = prefix + 'dict/rare_word.txt'

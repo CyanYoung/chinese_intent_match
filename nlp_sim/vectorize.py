@@ -12,7 +12,10 @@ from keras.preprocessing.sequence import pad_sequences
 from nlp_sim.util.load import load_word, load_sent
 
 
+embed_dim = 200
 min_freq = 5
+max_vocab = 5000
+seq_len = 30
 
 
 def bow(sents, bow_model, bow_feature, stop_words, mode):
@@ -53,7 +56,7 @@ def word2vec(sents, word2vec):
     sents_split = list()
     for sent in sents:
         sents_split.append(sent.split(' '))
-    model = Word2Vec(sents_split, size=200, window=3, min_count=min_freq)
+    model = Word2Vec(sents_split, size=embed_dim, window=3, min_count=min_freq, negative=5, iter=100)
     word_vecs = model.wv  # keyed vec
     del model
     with open(word2vec, 'wb') as f:
@@ -65,8 +68,6 @@ def word2vec(sents, word2vec):
 
 
 def embed(sents, word2ind, word2vec, embed, stop_words):
-    max_vocab = 4000
-    embed_dim = 200
     model = Tokenizer(num_words=max_vocab)
     model.fit_on_texts(sents)
     with open(word2ind, 'wb') as f:
@@ -86,7 +87,6 @@ def embed(sents, word2ind, word2vec, embed, stop_words):
 
 
 def pad(sents, word2ind, pad):
-    seq_len = 30
     with open(word2ind, 'rb') as f:
         model = pk.load(f)
     seqs = model.texts_to_sequences(sents)

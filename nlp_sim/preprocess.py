@@ -46,7 +46,7 @@ def insert(field, texts, text_lens, vocabs, char):
 def preprocess(paths, mode, char):
     delete(paths['data'], paths['data_clean'], paths['invalid_punc'])
     replace(paths['data_clean'], paths['homonym'], paths['synonym'])
-    jieba.load_userdict(paths['special_word'])
+    jieba.load_userdict(paths['cut_word'])
     nums = list()
     text1s = list()
     text2s = list()
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     paths['invalid_punc'] = 'dict/invalid_punc.txt'
     paths['homonym'] = 'dict/homonym.csv'
     paths['synonym'] = 'dict/synonym.csv'
-    paths['special_word'] = 'dict/special_word.txt'
+    paths['cut_word'] = 'dict/cut_word.txt'
     paths['len_freq'] = 'dict/len_freq.csv'
     paths['vocab_freq'] = 'dict/vocab_freq.csv'
     paths['rare_word'] = 'dict/rare_word.txt'
