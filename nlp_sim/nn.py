@@ -16,8 +16,8 @@ from nlp_sim.util.log import log_state
 batch_size = 512
 
 
-def split(pad):
-    with open(pad, 'rb') as f:
+def split(path_pad):
+    with open(path_pad, 'rb') as f:
         pad_mat = pk.load(f)
     mat_shape = pad_mat.shape
     pad_mat1 = np.zeros((int(mat_shape[0] / 2), mat_shape[1]))

@@ -13,53 +13,52 @@ from nlp_sim.util.load import load_word, load_sent
 
 
 embed_dim = 200
-min_freq = 5
-max_vocab = 5000
+min_freq = 3
+max_vocab = 2000
 seq_len = 30
 
 
-def bow(sents, bow_model, bow_feature, stop_words, mode):
+def bow(sents, path_bow_model, path_bow_feature, stop_words, mode):
     if mode == 'train':
         model = CountVectorizer(stop_words=stop_words, token_pattern='\w+', min_df=min_freq)
         model.fit(sents)
-        with open(bow_model, 'wb') as f:
+        with open(path_bow_model, 'wb') as f:
             pk.dump(model, f)
     elif mode == 'dev' or mode == 'test':
-        with open(bow_model, 'rb') as f:
+        with open(path_bow_model, 'rb') as f:
             model = pk.load(f)
     else:
         raise KeyError
     sent_word_counts = model.transform(sents)  # sparse mat
-    with open(bow_feature, 'wb') as f:
+    with open(path_bow_feature, 'wb') as f:
         pk.dump(sent_word_counts, f)
 
 
-def tfidf(bow_feature, tfidf_model, tfidf_feature, mode):
-    with open(bow_feature, 'rb') as f:
+def tfidf(path_bow_feature, path_tfidf_model, path_tfidf_feature, mode):
+    with open(path_bow_feature, 'rb') as f:
         sent_word_counts = pk.load(f)
     if mode == 'train':
         model = TfidfTransformer()
         model.fit(sent_word_counts)
-        with open(tfidf_model, 'wb') as f:
+        with open(path_tfidf_model, 'wb') as f:
             pk.dump(model, f)
     elif mode == 'dev' or mode == 'test':
-        with open(tfidf_model, 'rb') as f:
+        with open(path_tfidf_model, 'rb') as f:
             model = pk.load(f)
     else:
         raise KeyError
     sent_word_weights = model.transform(sent_word_counts)
-    with open(tfidf_feature, 'wb') as f:
+    with open(path_tfidf_feature, 'wb') as f:
         pk.dump(sent_word_weights, f)
 
 
-def word2vec(sents, word2vec):
+def word2vec(sents, path_word2vec):
     sents_split = list()
     for sent in sents:
         sents_split.append(sent.split(' '))
     model = Word2Vec(sents_split, size=embed_dim, window=3, min_count=min_freq, negative=5, iter=100)
     word_vecs = model.wv  # keyed vec
-    del model
-    with open(word2vec, 'wb') as f:
+    with open(path_word2vec, 'wb') as f:
         pk.dump(word_vecs, f)
     if __name__ == '__main__':
         words = ['*', '#', '$']
@@ -67,13 +66,13 @@ def word2vec(sents, word2vec):
             print(word_vecs.most_similar(word))
 
 
-def embed(sents, word2ind, word2vec, embed, stop_words):
+def embed(sents, path_word2ind, path_word2vec, path_embed, stop_words):
     model = Tokenizer(num_words=max_vocab)
     model.fit_on_texts(sents)
-    with open(word2ind, 'wb') as f:
+    with open(path_word2ind, 'wb') as f:
         pk.dump(model, f)
     word_inds = model.word_index
-    with open(word2vec, 'rb') as f:
+    with open(path_word2vec, 'rb') as f:
         word_vecs = pk.load(f)
     vocab = word_vecs.vocab
     vocab_num = min(max_vocab, len(word_inds))
@@ -82,16 +81,16 @@ def embed(sents, word2ind, word2vec, embed, stop_words):
         if word not in stop_words and word in vocab:
             if ind < max_vocab:
                 embed_mat[ind] = word_vecs[word]
-    with open(embed, 'wb') as f:
+    with open(path_embed, 'wb') as f:
         pk.dump(embed_mat, f)
 
 
-def pad(sents, word2ind, pad):
-    with open(word2ind, 'rb') as f:
+def pad(sents, path_word2ind, path_pad):
+    with open(path_word2ind, 'rb') as f:
         model = pk.load(f)
     seqs = model.texts_to_sequences(sents)
     pad_mat = pad_sequences(seqs, maxlen=seq_len)
-    with open(pad, 'wb') as f:
+    with open(path_pad, 'wb') as f:
         pk.dump(pad_mat, f)
 
 

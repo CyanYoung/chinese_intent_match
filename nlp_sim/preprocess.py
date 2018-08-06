@@ -6,30 +6,27 @@ import jieba
 from collections import Counter
 
 
-min_freq = 5
-
-
-def delete(data, data_clean, invalid_punc):
+def delete(path_data, path_data_clean, path_invalid_punc):
     reg = '[ '  # space
-    with open(invalid_punc, 'r') as f:
+    with open(path_invalid_punc, 'r') as f:
         for line in f:
             reg = reg + line.strip()
     reg = reg + ']'
-    with open(data, 'r') as f:
+    with open(path_data, 'r') as f:
         data = f.read()
     data = re.sub(reg, '', data)
-    with open(data_clean, 'w') as f:
+    with open(path_data_clean, 'w') as f:
         f.write(data)
 
 
-def replace(data_clean, homonym, synonym):
-    with open(data_clean, 'r') as f:
+def replace(path_data_clean, path_homonym, path_synonym):
+    with open(path_data_clean, 'r') as f:
         data = f.read()
-    for std, nstd in pd.read_csv(homonym).values:
+    for std, nstd in pd.read_csv(path_homonym).values:
         data = re.sub(nstd, std, data)
-    for std, nstd in pd.read_csv(synonym).values:
+    for std, nstd in pd.read_csv(path_synonym).values:
         data = re.sub(nstd, std, data)
-    with open(data_clean, 'w') as f:
+    with open(path_data_clean, 'w') as f:
         f.write(data)
 
 
@@ -41,6 +38,14 @@ def insert(field, texts, text_lens, vocabs, char):
     texts.append(' '.join(words))
     text_lens.append(len(words))
     vocabs.extend(words)
+
+
+def count(path_freq, items):
+    item_freq = Counter(items)
+    with open(path_freq, 'w') as f:
+        f.write('item,freq' + '\n')
+        for item, freq in item_freq.most_common():
+            f.write(str(item) + ',' + str(freq) + '\n')
 
 
 def preprocess(paths, mode, char):
@@ -62,19 +67,8 @@ def preprocess(paths, mode, char):
         for num, text1, text2 in zip(nums, text1s, text2s):
             f.write(num + ',' + text1 + ',' + text2 + '\n')
     if mode == 'train':
-        vocab_count = Counter(vocabs)
-        with open(paths['vocab_freq'], 'w') as fc:
-            fc.write('vocab,freq' + '\n')
-            with open(paths['rare_word'], 'w') as fr:
-                for vocab, count in vocab_count.most_common():
-                    fc.write(vocab + ',' + str(count) + '\n')
-                    if count < min_freq:
-                        fr.write(vocab + '\n')
-        len_count = Counter(text_lens)
-        with open(paths['len_freq'], 'w') as f:
-            f.write('len,freq' + '\n')
-            for text_len, freq in len_count.most_common():
-                f.write(str(text_len) + ',' + str(freq) + '\n')
+        count(paths['len_freq'], text_lens)
+        count(paths['vocab_freq'], vocabs)
 
 
 if __name__ == '__main__':
@@ -87,7 +81,6 @@ if __name__ == '__main__':
     paths['cut_word'] = 'dict/cut_word.txt'
     paths['len_freq'] = 'dict/len_freq.csv'
     paths['vocab_freq'] = 'dict/vocab_freq.csv'
-    paths['rare_word'] = 'dict/rare_word.txt'
     preprocess(paths, 'train', char=True)
     paths['data'] = 'data/dev.csv'
     paths['data_clean'] = 'data/dev_clean.csv'

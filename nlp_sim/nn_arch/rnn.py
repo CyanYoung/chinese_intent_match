@@ -133,4 +133,3 @@ def rnn_join_bi(embed_input1, embed_input2):
     dot_input = Dot(2)([embed_input1, embed_input2])
     x = ba(dot_input)
     return fc(x)
-

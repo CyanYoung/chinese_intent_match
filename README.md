@@ -8,25 +8,19 @@ train 70% / dev 20% / test 10% 划分，reindex() 重建索引、统计正例
 
 #### 2.preprocess
 
-delete() 删除无效标点符 invalid_punc
+delete() 删除无效符号，replace() 替换同音词、同义词
 
-replace() 替换同音词 homonym、同义词 synonym
-
-jieba.load_userdict() 切分特殊词 special_word
-
-Counter() 统计词频 vocab_freq，选出低频词 rare_word
+jieba.load_userdict() 导入切分词，Counter() 统计词频
 
 #### 3.vectorize
 
-合并停用词 stop_word 与 rare_word 为无效词 invalid_word
-
-CountVectorizer() 过滤 invalid_word 得到每句的词频特征 bow
+CountVectorizer() 过滤停用词、低频词得到每句的词频特征 bow
 
 TfidfTransformer() 通过 bow 得到每句的词权特征 tfidf
 
-Word2Vec() 设置 min_count 过滤低频词得到词向量 word2vec
+Word2Vec() 过滤低频词得到词向量 word2vec
 
-Tokenizer() 建立词与索引的转换 word2ind
+Tokenizer() 建立词与索引的映射 word2ind
 
 结合 word2ind 与 word2vec 得到 embed_mat、即 ind2vec
 
@@ -40,3 +34,10 @@ concat() 连接 diff 与 prod 得到 merge_features，SVC() 分类
 
 #### 5.nn
 
+dnn：词向量算术平均 average、连接 flat
+
+cnn：parallel 单层多核，serial 双层单核
+
+rnn：plain 单层单向，siam_stack 双层单向，siam_bi 单层双向
+
+序列加权平均 siam_attend 单层单向、siam_bi_attend 单层双向

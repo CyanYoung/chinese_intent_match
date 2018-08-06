@@ -1,10 +1,10 @@
 from random import shuffle
 
 
-def reindex(data, label, lines, mode):
+def reindex(path_data, path_label, lines, mode):
     pos = 0
-    with open(data, 'w') as fd:
-        with open(label, 'w') as fl:
+    with open(path_data, 'w') as fd:
+        with open(path_label, 'w') as fl:
             for ind, val in enumerate(lines):
                 fields = val.split('\t')
                 fields[0] = str(ind + 1)
