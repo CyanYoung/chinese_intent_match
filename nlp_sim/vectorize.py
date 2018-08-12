@@ -18,7 +18,7 @@ max_vocab = 2000
 seq_len = 30
 
 
-def bow(sents, path_bow_model, path_bow_feature, stop_words, mode):
+def bow(sents, path_bow_model, path_bow_feat, stop_words, mode):
     if mode == 'train':
         model = CountVectorizer(stop_words=stop_words, token_pattern='\w+', min_df=min_freq)
         model.fit(sents)
@@ -30,12 +30,12 @@ def bow(sents, path_bow_model, path_bow_feature, stop_words, mode):
     else:
         raise KeyError
     sent_word_counts = model.transform(sents)  # sparse mat
-    with open(path_bow_feature, 'wb') as f:
+    with open(path_bow_feat, 'wb') as f:
         pk.dump(sent_word_counts, f)
 
 
-def tfidf(path_bow_feature, path_tfidf_model, path_tfidf_feature, mode):
-    with open(path_bow_feature, 'rb') as f:
+def tfidf(path_bow_feat, path_tfidf_model, path_tfidf_feat, mode):
+    with open(path_bow_feat, 'rb') as f:
         sent_word_counts = pk.load(f)
     if mode == 'train':
         model = TfidfTransformer()
@@ -48,7 +48,7 @@ def tfidf(path_bow_feature, path_tfidf_model, path_tfidf_feature, mode):
     else:
         raise KeyError
     sent_word_weights = model.transform(sent_word_counts)
-    with open(path_tfidf_feature, 'wb') as f:
+    with open(path_tfidf_feat, 'wb') as f:
         pk.dump(sent_word_weights, f)
 
 
@@ -97,8 +97,8 @@ def pad(sents, path_word2ind, path_pad):
 def vectorize(paths, mode):
     sents = load_sent(paths['data_clean'])
     stop_words = load_word(paths['stop_word'])
-    bow(sents, paths['bow_model'], paths['bow_feature'], stop_words, mode)
-    tfidf(paths['bow_feature'], paths['tfidf_model'], paths['tfidf_feature'], mode)
+    bow(sents, paths['bow_model'], paths['bow_feat'], stop_words, mode)
+    tfidf(paths['bow_feat'], paths['tfidf_model'], paths['tfidf_feat'], mode)
     if mode == 'train':
         word2vec(sents, paths['word2vec'])
         embed(sents, paths['word2ind'], paths['word2vec'], paths['embed'], stop_words)
@@ -111,20 +111,20 @@ if __name__ == '__main__':
     paths['stop_word'] = 'dict/stop_word.txt'
     paths['bow_model'] = 'model/vec/bow.pkl'
     paths['tfidf_model'] = 'model/vec/tfidf.pkl'
-    paths['bow_feature'] = 'feature/svm/bow_train.pkl'
-    paths['tfidf_feature'] = 'feature/svm/tfidf_train.pkl'
+    paths['bow_feat'] = 'feat/svm/bow_train.pkl'
+    paths['tfidf_feat'] = 'feat/svm/tfidf_train.pkl'
     paths['word2ind'] = 'model/vec/word2ind.pkl'
-    paths['word2vec'] = 'feature/nn/word2vec.pkl'
-    paths['embed'] = 'feature/nn/embed.pkl'
-    paths['pad'] = 'feature/nn/pad_train.pkl'
+    paths['word2vec'] = 'feat/nn/word2vec.pkl'
+    paths['embed'] = 'feat/nn/embed.pkl'
+    paths['pad'] = 'feat/nn/pad_train.pkl'
     vectorize(paths, 'train')
     paths['data_clean'] = 'data/dev_clean.csv'
-    paths['bow_feature'] = 'feature/svm/bow_dev.pkl'
-    paths['tfidf_feature'] = 'feature/svm/tfidf_dev.pkl'
-    paths['pad'] = 'feature/nn/pad_dev.pkl'
+    paths['bow_feat'] = 'feat/svm/bow_dev.pkl'
+    paths['tfidf_feat'] = 'feat/svm/tfidf_dev.pkl'
+    paths['pad'] = 'feat/nn/pad_dev.pkl'
     vectorize(paths, 'dev')
     paths['data_clean'] = 'data/test_clean.csv'
-    paths['bow_feature'] = 'feature/svm/bow_test.pkl'
-    paths['tfidf_feature'] = 'feature/svm/tfidf_test.pkl'
-    paths['pad'] = 'feature/nn/pad_test.pkl'
+    paths['bow_feat'] = 'feat/svm/bow_test.pkl'
+    paths['tfidf_feat'] = 'feat/svm/tfidf_test.pkl'
+    paths['pad'] = 'feat/nn/pad_test.pkl'
     vectorize(paths, 'test')

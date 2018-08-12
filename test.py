@@ -36,11 +36,11 @@ if __name__ == '__main__':
     paths['stop_word'] = prefix + 'dict/stop_word.txt'
     paths['bow_model'] = prefix + 'model/vec/bow.pkl'
     paths['tfidf_model'] = prefix + 'model/vec/tfidf.pkl'
-    paths['bow_feature'] = prefix + 'feature/svm/bow_test.pkl'
-    paths['tfidf_feature'] = prefix + 'feature/svm/tfidf_test.pkl'
+    paths['bow_feat'] = prefix + 'feat/svm/bow_test.pkl'
+    paths['tfidf_feat'] = prefix + 'feat/svm/tfidf_test.pkl'
     paths['word2ind'] = prefix + 'model/vec/word2ind.pkl'
-    paths['pad'] = prefix + 'feature/nn/pad_test.pkl'
-    paths['embed'] = prefix + 'feature/nn/embed.pkl'
+    paths['pad'] = prefix + 'feat/nn/pad_test.pkl'
+    paths['embed'] = prefix + 'feat/nn/embed.pkl'
     preprocess(paths, 'test', char=True)
     vectorize(paths, 'test')
     paths['svm_line_bow'] = prefix + 'model/svm/line_bow.pkl'
