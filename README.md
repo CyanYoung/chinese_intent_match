@@ -1,4 +1,4 @@
-## Semantic Match 2018-6
+## Chinese Semantic Match 2018-6
 
 测试命令：bash run.sh nlp_sim/data/test.csv nlp_sim/data/test_pred.csv
 
@@ -8,7 +8,7 @@ train 70% / dev 20% / test 10% 划分，reindex() 重建索引、统计正例
 
 #### 2.preprocess
 
-delete() 删除无效符号，replace() 替换同音词、同义词
+delete() 去除无效符号，replace() 替换同音词、同义词
 
 jieba.load_userdict() 导入切分词，Counter() 统计词频
 
