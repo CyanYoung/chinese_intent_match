@@ -336,3 +336,19 @@ cnn_join_serial_100_0.4 train acc 0.928
 cnn_join_serial_100_0.2 dev f1  0.458
 cnn_join_serial_100_0.2 dev acc 0.703
 
+2018-08-17 10:46:47 cnn_siam_parallel train
+2018-08-17 10:50:30 cnn_siam_parallel train
+cnn_siam_parallel_100_0.3 train f1  0.821
+cnn_siam_parallel_100_0.3 train acc 0.927
+
+cnn_siam_parallel_100_0.3 dev f1  0.543
+cnn_siam_parallel_100_0.3 dev acc 0.810
+
+2018-08-17 10:50:35 cnn_siam_serial train
+2018-08-17 10:54:16 cnn_siam_serial train
+cnn_siam_serial_100_0.5 train f1  0.921
+cnn_siam_serial_100_0.5 train acc 0.970
+
+cnn_siam_serial_100_0.3 dev f1  0.470
+cnn_siam_serial_100_0.3 dev acc 0.794
+
