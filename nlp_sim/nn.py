@@ -2,8 +2,8 @@ import pickle as pk
 
 import numpy as np
 
-from keras.layers import Input, Embedding
 from keras.models import Model, load_model
+from keras.layers import Input, Embedding
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 
@@ -30,14 +30,14 @@ def split(path_pad):
     return pad_mat1, pad_mat2
 
 
-def build(embed_mat, seq_len, name):
-    vocab_num, embed_dim = embed_mat.shape
-    embed_layer = Embedding(input_dim=vocab_num, output_dim=embed_dim,
-                            weights=[embed_mat], input_length=seq_len, trainable=True)
+def build(name, embed_mat, seq_len):
+    vocab_num, embed_len = embed_mat.shape
+    embed = Embedding(input_dim=vocab_num, output_dim=embed_len,
+                      weights=[embed_mat], input_length=seq_len, trainable=True)
     input1 = Input(shape=(seq_len,), dtype='int32')
     input2 = Input(shape=(seq_len,), dtype='int32')
-    embed_input1 = embed_layer(input1)
-    embed_input2 = embed_layer(input2)
+    embed_input1 = embed(input1)
+    embed_input2 = embed(input2)
     func = map_func(name)
     output = func(embed_input1, embed_input2)
     model = Model([input1, input2], output)
@@ -63,7 +63,7 @@ def nn(paths, name, arch, epoch, mode, thre):
         pad_dev1, pad_dev2 = split(paths['pad_dev'])
         dev_labels = load_label(paths['dev_label'])
         seq_len = pad_train1.shape[1]
-        model = build(embed_mat, seq_len, name)
+        model = build(name, embed_mat, seq_len)
         check_point = ModelCheckpoint(paths[name], monitor='val_loss', verbose=True, save_best_only=True)
         log_state(logger[0], name, mode)
         model.fit([pad_train1, pad_train2], train_labels,

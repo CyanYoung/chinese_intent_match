@@ -12,7 +12,7 @@ from keras.preprocessing.sequence import pad_sequences
 from nlp_sim.util.load import load_word, load_sent
 
 
-embed_dim = 200
+embed_len = 200
 min_freq = 3
 max_vocab = 2000
 seq_len = 30
@@ -52,13 +52,13 @@ def tfidf(path_bow_feat, path_tfidf_model, path_tfidf_feat, mode):
         pk.dump(sent_word_weights, f)
 
 
-def word2vec(sents, path_word2vec):
-    sents_split = list()
+def word2vec(sents, path_word_vec):
+    split_sents = list()
     for sent in sents:
-        sents_split.append(sent.split(' '))
-    model = Word2Vec(sents_split, size=embed_dim, window=3, min_count=min_freq, negative=5, iter=100)
+        split_sents.append(sent.split(' '))
+    model = Word2Vec(split_sents, size=embed_len, window=3, min_count=min_freq, negative=5, iter=100)
     word_vecs = model.wv  # keyed vec
-    with open(path_word2vec, 'wb') as f:
+    with open(path_word_vec, 'wb') as f:
         pk.dump(word_vecs, f)
     if __name__ == '__main__':
         words = ['*', '#', '$']
@@ -66,17 +66,17 @@ def word2vec(sents, path_word2vec):
             print(word_vecs.most_similar(word))
 
 
-def embed(sents, path_word2ind, path_word2vec, path_embed, stop_words):
+def embed(sents, path_word2ind, path_word_vec, path_embed, stop_words):
     model = Tokenizer(num_words=max_vocab)
     model.fit_on_texts(sents)
+    word_inds = model.word_index
     with open(path_word2ind, 'wb') as f:
         pk.dump(model, f)
-    word_inds = model.word_index
-    with open(path_word2vec, 'rb') as f:
+    with open(path_word_vec, 'rb') as f:
         word_vecs = pk.load(f)
     vocab = word_vecs.vocab
     vocab_num = min(max_vocab, len(word_inds))
-    embed_mat = np.zeros((vocab_num, embed_dim))
+    embed_mat = np.zeros((vocab_num, embed_len))
     for word, ind in word_inds.items():
         if word not in stop_words and word in vocab:
             if ind < max_vocab:
@@ -100,8 +100,8 @@ def vectorize(paths, mode):
     bow(sents, paths['bow_model'], paths['bow_feat'], stop_words, mode)
     tfidf(paths['bow_feat'], paths['tfidf_model'], paths['tfidf_feat'], mode)
     if mode == 'train':
-        word2vec(sents, paths['word2vec'])
-        embed(sents, paths['word2ind'], paths['word2vec'], paths['embed'], stop_words)
+        word2vec(sents, paths['word_vec'])
+        embed(sents, paths['word2ind'], paths['word_vec'], paths['embed'], stop_words)
     pad(sents, paths['word2ind'], paths['pad'])
 
 
@@ -114,7 +114,7 @@ if __name__ == '__main__':
     paths['bow_feat'] = 'feat/svm/bow_train.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_train.pkl'
     paths['word2ind'] = 'model/vec/word2ind.pkl'
-    paths['word2vec'] = 'feat/nn/word2vec.pkl'
+    paths['word_vec'] = 'feat/nn/word_vec.pkl'
     paths['embed'] = 'feat/nn/embed.pkl'
     paths['pad'] = 'feat/nn/pad_train.pkl'
     vectorize(paths, 'train')
