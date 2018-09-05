@@ -89,9 +89,9 @@ def pad(sents, path_word2ind, path_pad):
     with open(path_word2ind, 'rb') as f:
         model = pk.load(f)
     seqs = model.texts_to_sequences(sents)
-    pad_mat = pad_sequences(seqs, maxlen=seq_len)
+    pad_seqs = pad_sequences(seqs, maxlen=seq_len)
     with open(path_pad, 'wb') as f:
-        pk.dump(pad_mat, f)
+        pk.dump(pad_seqs, f)
 
 
 def vectorize(paths, mode):

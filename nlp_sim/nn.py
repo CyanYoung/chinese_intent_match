@@ -18,16 +18,16 @@ batch_size = 512
 
 def split(path_pad):
     with open(path_pad, 'rb') as f:
-        pad_mat = pk.load(f)
-    mat_shape = pad_mat.shape
-    pad_mat1 = np.zeros((int(mat_shape[0] / 2), mat_shape[1]))
-    pad_mat2 = np.zeros((int(mat_shape[0] / 2), mat_shape[1]))
-    for i in range(len(pad_mat) - 1):
+        pad_seqs = pk.load(f)
+    mat_shape = pad_seqs.shape
+    pad_seq1s = np.zeros((int(mat_shape[0] / 2), mat_shape[1]))
+    pad_seq2s = np.zeros((int(mat_shape[0] / 2), mat_shape[1]))
+    for i in range(len(pad_seqs) - 1):
         if not i % 2:
-            pad_mat1[int(i / 2)] = pad_mat[i]
+            pad_seq1s[int(i / 2)] = pad_seqs[i]
         else:
-            pad_mat2[int(i / 2)] = pad_mat[i]
-    return pad_mat1, pad_mat2
+            pad_seq2s[int(i / 2)] = pad_seqs[i]
+    return pad_seq1s, pad_seq2s
 
 
 def build(name, embed_mat, seq_len):
@@ -46,8 +46,8 @@ def build(name, embed_mat, seq_len):
     return model
 
 
-def check(sent, model, pad_mat1, pad_mat2, labels, logger, epoch, name, mode):
-    probs = model.predict([pad_mat1, pad_mat2], batch_size=batch_size)
+def check(sent, model, pad_seq1s, pad_seq2s, labels, logger, epoch, name, mode):
+    probs = model.predict([pad_seq1s, pad_seq2s], batch_size=batch_size)
     probs = np.reshape(probs, (1, -1))[0]
     trial(sent, probs, labels, logger, '_'.join([name, str(epoch)]), mode)
 
@@ -77,9 +77,9 @@ def nn(paths, name, arch, epoch, mode, thre):
         model = load_model(paths[name])
         check(paths['dev_clean'], model, pad_dev1, pad_dev2, dev_labels, logger, epoch, name, 'dev')
     elif mode == 'test':
-        pad_mat1, pad_mat2 = split(paths['pad'])
+        pad_seq1s, pad_seq2s = split(paths['pad'])
         model = load_model(paths[name])
-        probs = model.predict([pad_mat1, pad_mat2], batch_size=batch_size)
+        probs = model.predict([pad_seq1s, pad_seq2s], batch_size=batch_size)
         probs = np.reshape(probs, (1, -1))[0]
         return probs > thre
     else:
