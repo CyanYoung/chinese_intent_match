@@ -361,3 +361,19 @@ rnn_siam_bi_attend_100_0.2 train acc 0.999
 rnn_siam_bi_attend_100_0.3 dev f1  0.546
 rnn_siam_bi_attend_100_0.3 dev acc 0.808
 
+2018-09-05 16:26:57 rnn_siam_plain train
+2018-09-05 16:42:53 rnn_siam_plain train
+rnn_siam_plain_100_0.6 train f1  1.000
+rnn_siam_plain_100_0.6 train acc 1.000
+
+rnn_siam_plain_100_0.3 dev f1  0.551
+rnn_siam_plain_100_0.3 dev acc 0.817
+
+2018-09-05 16:43:03 rnn_siam_stack train
+2018-09-05 17:14:42 rnn_siam_stack train
+rnn_siam_stack_100_0.4 train f1  0.999
+rnn_siam_stack_100_0.4 train acc 0.999
+
+rnn_siam_stack_100_0.3 dev f1  0.543
+rnn_siam_stack_100_0.3 dev acc 0.807
+
