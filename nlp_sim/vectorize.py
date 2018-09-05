@@ -53,10 +53,10 @@ def tfidf(path_bow_feat, path_tfidf_model, path_tfidf_feat, mode):
 
 
 def word2vec(sents, path_word_vec):
-    split_sents = list()
+    sent_words = list()
     for sent in sents:
-        split_sents.append(sent.split(' '))
-    model = Word2Vec(split_sents, size=embed_len, window=3, min_count=min_freq, negative=5, iter=100)
+        sent_words.append(sent.split())
+    model = Word2Vec(sent_words, size=embed_len, window=3, min_count=min_freq, negative=5, iter=10)
     word_vecs = model.wv  # keyed vec
     with open(path_word_vec, 'wb') as f:
         pk.dump(word_vecs, f)
@@ -67,7 +67,7 @@ def word2vec(sents, path_word_vec):
 
 
 def embed(sents, path_word2ind, path_word_vec, path_embed, stop_words):
-    model = Tokenizer(num_words=max_vocab)
+    model = Tokenizer(num_words=max_vocab, filters='')
     model.fit_on_texts(sents)
     word_inds = model.word_index
     with open(path_word2ind, 'wb') as f:
