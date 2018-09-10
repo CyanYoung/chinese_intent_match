@@ -14,7 +14,7 @@ from nlp_sim.util.load import load_word, load_sent
 
 embed_len = 200
 min_freq = 3
-max_vocab = 2000
+max_vocab = 5000
 seq_len = 30
 
 
@@ -75,7 +75,7 @@ def embed(sents, path_word2ind, path_word_vec, path_embed, stop_words):
     with open(path_word_vec, 'rb') as f:
         word_vecs = pk.load(f)
     vocab = word_vecs.vocab
-    vocab_num = min(max_vocab, len(word_inds))
+    vocab_num = min(max_vocab, len(word_inds) + 1)
     embed_mat = np.zeros((vocab_num, embed_len))
     for word, ind in word_inds.items():
         if word not in stop_words and word in vocab:
