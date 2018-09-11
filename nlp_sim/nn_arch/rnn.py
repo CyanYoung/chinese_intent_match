@@ -10,8 +10,8 @@ seq_len = 30
 
 def rnn_siam_plain(embed_input1, embed_input2):
     ra = LSTM(300, activation='tanh')
-    fc1 = Dense(100, activation='relu')
-    fc2 = Dense(1, activation='sigmoid')
+    da1 = Dense(100, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = Masking()(embed_input1)
     x = ra(x)
     y = Masking()(embed_input2)
@@ -20,16 +20,16 @@ def rnn_siam_plain(embed_input1, embed_input2):
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
     z = Dropout(0.5)(z)
-    z = fc1(z)
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return fc2(z)
+    return da2(z)
 
 
 def rnn_siam_stack(embed_input1, embed_input2):
     ra1 = LSTM(300, activation='tanh', return_sequences=True)
     ra2 = LSTM(300, activation='tanh')
-    fc1 = Dense(100, activation='relu')
-    fc2 = Dense(1, activation='sigmoid')
+    da1 = Dense(100, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = Masking()(embed_input1)
     x = ra1(x)
     x = ra2(x)
@@ -40,16 +40,16 @@ def rnn_siam_stack(embed_input1, embed_input2):
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
     z = Dropout(0.5)(z)
-    z = fc1(z)
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return fc2(z)
+    return da2(z)
 
 
 def rnn_siam_bi(embed_input1, embed_input2):
     ra = LSTM(300, activation='tanh')
     ba = Bidirectional(ra, merge_mode='concat')
-    fc1 = Dense(100, activation='relu')
-    fc2 = Dense(1, activation='sigmoid')
+    da1 = Dense(100, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = Masking()(embed_input1)
     x = ba(x)
     y = Masking()(embed_input2)
@@ -58,9 +58,9 @@ def rnn_siam_bi(embed_input1, embed_input2):
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
     z = Dropout(0.5)(z)
-    z = fc1(z)
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return fc2(z)
+    return da2(z)
 
 
 def attention(input, seq_len, reduce):
@@ -77,8 +77,8 @@ def attention(input, seq_len, reduce):
 
 def rnn_siam_attend(embed_input1, embed_input2):
     ra = LSTM(300, activation='tanh', return_sequences=True)
-    fc1 = Dense(100, activation='relu')
-    fc2 = Dense(1, activation='sigmoid')
+    da1 = Dense(100, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = Masking()(embed_input1)
     x = ra(x)
     x = attention(x, seq_len, reduce=True)
@@ -89,16 +89,16 @@ def rnn_siam_attend(embed_input1, embed_input2):
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
     z = Dropout(0.5)(z)
-    z = fc1(z)
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return fc2(z)
+    return da2(z)
 
 
 def rnn_siam_bi_attend(embed_input1, embed_input2):
     ra = LSTM(300, activation='tanh', return_sequences=True)
     ba = Bidirectional(ra, merge_mode='concat')
-    fc1 = Dense(100, activation='relu')
-    fc2 = Dense(1, activation='sigmoid')
+    da1 = Dense(100, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = Masking()(embed_input1)
     x = ba(x)
     x = attention(x, seq_len, reduce=True)
@@ -109,36 +109,36 @@ def rnn_siam_bi_attend(embed_input1, embed_input2):
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
     z = Dropout(0.5)(z)
-    z = fc1(z)
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return fc2(z)
+    return da2(z)
 
 
 def rnn_join_plain(embed_input1, embed_input2):
     ra = LSTM(50, activation='tanh')
-    fc = Dense(1, activation='sigmoid')
+    da = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])
     x = Masking()(dot_input)
     x = ra(x)
-    return fc(x)
+    return da(x)
 
 
 def rnn_join_stack(embed_input1, embed_input2):
     ra1 = LSTM(50, activation='tanh', return_sequences=True)
     ra2 = LSTM(50, activation='tanh')
-    fc = Dense(1, activation='sigmoid')
+    da = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])
     x = Masking()(dot_input)
     x = ra1(x)
     x = ra2(x)
-    return fc(x)
+    return da(x)
 
 
 def rnn_join_bi(embed_input1, embed_input2):
     ra = LSTM(50, activation='tanh')
     ba = Bidirectional(ra, merge_mode='concat')
-    fc = Dense(1, activation='sigmoid')
+    da = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])
     x = Masking()(dot_input)
     x = ba(x)
-    return fc(x)
+    return da(x)
