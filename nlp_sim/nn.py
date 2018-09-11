@@ -79,7 +79,7 @@ def nn(paths, name, arch, epoch, mode, thre):
     elif mode == 'test':
         pad_seq1s, pad_seq2s = split(paths['pad'])
         model = load_model(paths[name])
-        probs = model.predict([pad_seq1s, pad_seq2s], batch_size=batch_size)
+        probs = model.predict([pad_seq1s, pad_seq2s])
         probs = np.reshape(probs, (1, -1))[0]
         return probs > thre
     else:
