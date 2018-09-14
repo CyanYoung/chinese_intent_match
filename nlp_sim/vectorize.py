@@ -94,13 +94,14 @@ def align(sents, path_word2ind, path_pad):
         pk.dump(pad_seqs, f)
 
 
-def vectorize(paths, mode):
+def vectorize(paths, mode, frozen):
     sents = load_sent(paths['data_clean'])
     stop_words = load_word(paths['stop_word'])
     bow(sents, paths['bow_model'], paths['bow_feat'], stop_words, mode)
     tfidf(paths['bow_feat'], paths['tfidf_model'], paths['tfidf_feat'], mode)
     if mode == 'train':
-        word2vec(sents, paths['word_vec'])
+        if not frozen:
+            word2vec(sents, paths['word_vec'])
         embed(sents, paths['word2ind'], paths['word_vec'], paths['embed'], stop_words)
     align(sents, paths['word2ind'], paths['pad'])
 
@@ -117,14 +118,14 @@ if __name__ == '__main__':
     paths['word_vec'] = 'feat/nn/word_vec.pkl'
     paths['embed'] = 'feat/nn/embed.pkl'
     paths['pad'] = 'feat/nn/pad_train.pkl'
-    vectorize(paths, 'train')
+    vectorize(paths, 'train', frozen=True)
     paths['data_clean'] = 'data/dev_clean.csv'
     paths['bow_feat'] = 'feat/svm/bow_dev.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_dev.pkl'
     paths['pad'] = 'feat/nn/pad_dev.pkl'
-    vectorize(paths, 'dev')
+    vectorize(paths, 'dev', frozen=True)
     paths['data_clean'] = 'data/test_clean.csv'
     paths['bow_feat'] = 'feat/svm/bow_test.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_test.pkl'
     paths['pad'] = 'feat/nn/pad_test.pkl'
-    vectorize(paths, 'test')
+    vectorize(paths, 'test', frozen=True)
