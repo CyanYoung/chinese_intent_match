@@ -61,7 +61,7 @@ def tune(sents, path_word2vec, path_word_vec):
     with open(path_word_vec, 'wb') as f:
         pk.dump(word_vecs, f)
     if __name__ == '__main__':
-        words = ['*', '#', '$']
+        words = ['*', '元', '日']
         for word in words:
             print(word_vecs.most_similar(word))
 

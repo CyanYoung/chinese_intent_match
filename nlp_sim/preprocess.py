@@ -7,7 +7,7 @@ from collections import Counter
 
 
 def delete(path_data, path_data_clean, path_invalid_punc):
-    reg = '[ '  # space
+    reg = '[ '
     with open(path_invalid_punc, 'r') as f:
         for line in f:
             reg = reg + line.strip()
