@@ -368,3 +368,4 @@ cnn_siam_serial_100_0.5 train acc 0.973
 cnn_siam_serial_100_0.3 dev f1  0.485
 cnn_siam_serial_100_0.3 dev acc 0.781
 
+2018-09-14 15:36:27 cnn_siam_serial train

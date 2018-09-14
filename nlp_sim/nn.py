@@ -13,7 +13,7 @@ from nlp_sim.util.trial import trial
 from nlp_sim.util.log import log_state
 
 
-batch_size = 512
+batch_size = 32
 
 
 def split(path_pad):
