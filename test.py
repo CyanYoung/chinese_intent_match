@@ -10,11 +10,11 @@ def test(paths, path_output, model):
     if model == 'svm':
         preds = svm(paths, 'rbf', 'bow', 'test', thre=0.2)
     elif model == 'dnn':
-        preds = nn(paths, 'dnn', 'siam_average', 100, 'test', thre=0.3)
+        preds = nn(paths, 'dnn', 'siam_average', 10, 'test', thre=0.3)
     elif model == 'cnn':
-        preds = nn(paths, 'cnn', 'siam_parallel', 100, 'test', thre=0.2)
+        preds = nn(paths, 'cnn', 'siam_parallel', 20, 'test', thre=0.2)
     elif model == 'rnn':
-        preds = nn(paths, 'rnn', 'siam_plain', 100, 'test', thre=0.3)
+        preds = nn(paths, 'rnn', 'siam_plain', 10, 'test', thre=0.3)
     else:
         raise KeyError
     with open(path_output, 'w') as f:
@@ -42,7 +42,7 @@ if __name__ == '__main__':
     paths['pad'] = prefix + 'feat/nn/pad_test.pkl'
     paths['embed'] = prefix + 'feat/nn/embed.pkl'
     preprocess(paths, 'test', char=True)
-    vectorize(paths, 'test', frozen=True)
+    vectorize(paths, 'test', tran=True)
     paths['svm_line_bow'] = prefix + 'model/svm/line_bow.pkl'
     paths['svm_line_tfidf'] = prefix + 'model/svm/line_tfidf.pkl'
     paths['svm_rbf_bow'] = prefix + 'model/svm/rbf_bow.pkl'
