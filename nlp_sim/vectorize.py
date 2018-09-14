@@ -50,22 +50,6 @@ def tfidf(path_bow_feat, path_tfidf_model, path_tfidf_feat, mode):
         pk.dump(sent_word_weights, f)
 
 
-def tune(sents, path_word2vec, path_word_vec):
-    sent_words = list()
-    for sent in sents:
-        sent_words.append(sent.split())
-    with open(path_word2vec, 'rb') as f:
-        model = pk.load(f)
-    model.train(sent_words, epochs=10)
-    word_vecs = model.wv
-    with open(path_word_vec, 'wb') as f:
-        pk.dump(word_vecs, f)
-    if __name__ == '__main__':
-        words = ['*', '元', '日']
-        for word in words:
-            print(word_vecs.most_similar(word))
-
-
 def embed(sents, path_word2ind, path_word_vec, path_embed, stop_words):
     model = Tokenizer(num_words=max_vocab, filters='')
     model.fit_on_texts(sents)
@@ -94,14 +78,12 @@ def align(sents, path_word2ind, path_pad):
         pk.dump(pad_seqs, f)
 
 
-def vectorize(paths, mode, tran):
+def vectorize(paths, mode):
     sents = load_sent(paths['data_clean'])
     stop_words = load_word(paths['stop_word'])
     bow(sents, paths['bow_model'], paths['bow_feat'], stop_words, mode)
     tfidf(paths['bow_feat'], paths['tfidf_model'], paths['tfidf_feat'], mode)
     if mode == 'train':
-        if tran:
-            tune(sents, paths['word2vec'], paths['word_vec'])
         embed(sents, paths['word2ind'], paths['word_vec'], paths['embed'], stop_words)
     align(sents, paths['word2ind'], paths['pad'])
 
@@ -119,14 +101,14 @@ if __name__ == '__main__':
     paths['word_vec'] = 'feat/nn/word_vec.pkl'
     paths['embed'] = 'feat/nn/embed.pkl'
     paths['pad'] = 'feat/nn/pad_train.pkl'
-    vectorize(paths, 'train', tran=True)
+    vectorize(paths, 'train')
     paths['data_clean'] = 'data/dev_clean.csv'
     paths['bow_feat'] = 'feat/svm/bow_dev.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_dev.pkl'
     paths['pad'] = 'feat/nn/pad_dev.pkl'
-    vectorize(paths, 'dev', tran=True)
+    vectorize(paths, 'dev')
     paths['data_clean'] = 'data/test_clean.csv'
     paths['bow_feat'] = 'feat/svm/bow_test.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_test.pkl'
     paths['pad'] = 'feat/nn/pad_test.pkl'
-    vectorize(paths, 'test', tran=True)
+    vectorize(paths, 'test')

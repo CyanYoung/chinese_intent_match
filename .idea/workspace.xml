@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="901cf5e2-42e6-4350-aa1b-d5e3bde8e713" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/data/dev_clean.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/data/dev_clean.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/data/test_clean.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/data/test_clean.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/data/train_clean.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/data/train_clean.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/dict/homonym.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/dict/homonym.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/dict/len_freq.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/dict/len_freq.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/dict/synonym.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/dict/synonym.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/dict/vocab_freq.csv" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/dict/vocab_freq.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/preprocess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/vectorize.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/vectorize.py" afterDir="false" />
-    </list>
+    <list default="true" id="901cf5e2-42e6-4350-aa1b-d5e3bde8e713" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +162,7 @@
           <entry key="csv" value="17" />
           <entry key="log" value="3" />
           <entry key="md" value="1" />
-          <entry key="py" value="23" />
+          <entry key="py" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -181,7 +170,7 @@
           <entry key="CSV" value="17" />
           <entry key="Log" value="3" />
           <entry key="Markdown" value="1" />
-          <entry key="Python" value="23" />
+          <entry key="Python" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -216,8 +205,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nlp_sim/vectorize.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="24" lean-forward="true" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+            <state relative-caret-position="412">
+              <caret line="96" column="27" lean-forward="true" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="31" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -249,8 +238,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_gpu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="62" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
+            <state relative-caret-position="585">
+              <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -772,13 +761,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_cpu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -806,13 +788,6 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train_gpu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="62" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -858,6 +833,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nlp_sim/nn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_cpu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_gpu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="43" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/svm.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -865,13 +861,6 @@
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nlp_sim/nn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -887,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/vectorize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="24" lean-forward="true" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+        <state relative-caret-position="412">
+          <caret line="96" column="27" lean-forward="true" selection-start-line="96" selection-start-column="27" selection-end-line="96" selection-end-column="31" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
