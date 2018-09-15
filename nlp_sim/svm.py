@@ -58,14 +58,12 @@ def svm(paths, kernel, feat, mode, thre):
         log_state(logger[0], name, mode)
         with open(paths[name], 'wb') as f:
             pk.dump(model, f)
-    elif mode == 'dev' or mode == 'test':
+    else:
         labels = load_label(paths['label'])
         with open(paths[name], 'rb') as f:
             model = pk.load(f)
-    else:
-        raise KeyError
     probs = model.predict_proba(merge_feats)[:, 1]
     if mode == 'train' or mode == 'dev':
         trial(paths['data_clean'], probs, labels, logger, name, mode)
-    elif mode == 'test':
+    else:
         return probs > thre

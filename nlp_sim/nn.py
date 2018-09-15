@@ -76,11 +76,9 @@ def nn(paths, name, arch, epoch, mode, thre):
         dev_labels = load_label(paths['dev_label'])
         model = load_model(paths[name])
         check(paths['dev_clean'], model, pad_dev1, pad_dev2, dev_labels, logger, epoch, name, 'dev')
-    elif mode == 'test':
+    else:
         pad_seq1s, pad_seq2s = split(paths['pad'])
         model = load_model(paths[name])
         probs = model.predict([pad_seq1s, pad_seq2s])
         probs = np.reshape(probs, (1, -1))[0]
         return probs > thre
-    else:
-        raise KeyError

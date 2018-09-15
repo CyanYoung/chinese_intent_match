@@ -22,11 +22,9 @@ def bow(sents, path_bow_model, path_bow_feat, stop_words, mode):
         model.fit(sents)
         with open(path_bow_model, 'wb') as f:
             pk.dump(model, f)
-    elif mode == 'dev' or mode == 'test':
+    else:
         with open(path_bow_model, 'rb') as f:
             model = pk.load(f)
-    else:
-        raise KeyError
     sent_word_counts = model.transform(sents)
     with open(path_bow_feat, 'wb') as f:
         pk.dump(sent_word_counts, f)
@@ -40,11 +38,9 @@ def tfidf(path_bow_feat, path_tfidf_model, path_tfidf_feat, mode):
         model.fit(sent_word_counts)
         with open(path_tfidf_model, 'wb') as f:
             pk.dump(model, f)
-    elif mode == 'dev' or mode == 'test':
+    else:
         with open(path_tfidf_model, 'rb') as f:
             model = pk.load(f)
-    else:
-        raise KeyError
     sent_word_weights = model.transform(sent_word_counts)
     with open(path_tfidf_feat, 'wb') as f:
         pk.dump(sent_word_weights, f)
