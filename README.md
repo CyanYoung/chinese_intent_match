@@ -18,8 +18,6 @@ CountVectorizer() 过滤停用词、低频词得到每句的词频特征 bow
 
 TfidfTransformer() 通过 bow 得到每句的词权特征 tfidf
 
-Word2Vec() 过滤低频词得到词向量 word2vec
-
 Tokenizer() 建立词与索引的映射 word2ind
 
 结合 word2ind 与 word2vec 得到 embed_mat、即 ind2vec
