@@ -1,6 +1,6 @@
 from keras.layers import LSTM, Dense, Bidirectional, Masking
-from keras.layers import Dropout, Concatenate, Flatten
-from keras.layers import Permute, Subtract, Multiply, Dot, Lambda
+from keras.layers import Dropout, Concatenate, Flatten, Permute
+from keras.layers import Subtract, Multiply, Dot, Lambda
 
 import keras.backend as K
 

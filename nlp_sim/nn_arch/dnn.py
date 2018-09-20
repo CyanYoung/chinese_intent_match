@@ -5,13 +5,14 @@ import keras.backend as K
 
 
 def dnn_siam_average(embed_input1, embed_input2):
+    mean = Lambda(lambda a: K.mean(a, axis=1))
     da1 = Dense(200, activation='relu')
     da2 = Dense(200, activation='relu')
     da3 = Dense(1, activation='sigmoid')
-    x = Lambda(lambda a: K.mean(a, axis=1))(embed_input1)
+    x = mean(embed_input1)
     x = da1(x)
     x = da2(x)
-    y = Lambda(lambda a: K.mean(a, axis=1))(embed_input2)
+    y = mean(embed_input2)
     y = da1(y)
     y = da2(y)
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
