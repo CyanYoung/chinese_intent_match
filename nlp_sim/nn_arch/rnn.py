@@ -11,7 +11,8 @@ seq_len = 30
 def rnn_siam_plain(embed_input1, embed_input2):
     mask = Masking()
     ra = LSTM(200, activation='tanh')
-    da = Dense(1, activation='sigmoid')
+    da1 = Dense(200, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = mask(embed_input1)
     x = ra(x)
     y = mask(embed_input2)
@@ -19,15 +20,17 @@ def rnn_siam_plain(embed_input1, embed_input2):
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return da(z)
+    return da2(z)
 
 
 def rnn_siam_stack(embed_input1, embed_input2):
     mask = Masking()
     ra1 = LSTM(200, activation='tanh', return_sequences=True)
     ra2 = LSTM(200, activation='tanh')
-    da = Dense(1, activation='sigmoid')
+    da1 = Dense(200, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = mask(embed_input1)
     x = ra1(x)
     x = ra2(x)
@@ -37,15 +40,17 @@ def rnn_siam_stack(embed_input1, embed_input2):
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return da(z)
+    return da2(z)
 
 
 def rnn_siam_bi(embed_input1, embed_input2):
     mask = Masking()
     ra = LSTM(200, activation='tanh')
     ba = Bidirectional(ra, merge_mode='concat')
-    da = Dense(1, activation='sigmoid')
+    da1 = Dense(200, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = mask(embed_input1)
     x = ba(x)
     y = mask(embed_input2)
@@ -53,8 +58,9 @@ def rnn_siam_bi(embed_input1, embed_input2):
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return da(z)
+    return da2(z)
 
 
 def attend(input, seq_len, reduce):
@@ -72,7 +78,8 @@ def attend(input, seq_len, reduce):
 def rnn_siam_attend(embed_input1, embed_input2):
     mask = Masking()
     ra = LSTM(200, activation='tanh', return_sequences=True)
-    da = Dense(1, activation='sigmoid')
+    da1 = Dense(200, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = mask(embed_input1)
     x = ra(x)
     x = attend(x, seq_len, reduce=True)
@@ -82,15 +89,17 @@ def rnn_siam_attend(embed_input1, embed_input2):
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return da(z)
+    return da2(z)
 
 
 def rnn_siam_bi_attend(embed_input1, embed_input2):
     mask = Masking()
     ra = LSTM(200, activation='tanh', return_sequences=True)
     ba = Bidirectional(ra, merge_mode='concat')
-    da = Dense(1, activation='sigmoid')
+    da1 = Dense(200, activation='relu')
+    da2 = Dense(1, activation='sigmoid')
     x = mask(embed_input1)
     x = ba(x)
     x = attend(x, seq_len, reduce=True)
@@ -100,8 +109,9 @@ def rnn_siam_bi_attend(embed_input1, embed_input2):
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
+    z = da1(z)
     z = Dropout(0.5)(z)
-    return da(z)
+    return da2(z)
 
 
 def rnn_join_plain(embed_input1, embed_input2):
@@ -110,6 +120,7 @@ def rnn_join_plain(embed_input1, embed_input2):
     dot_input = Dot(2)([embed_input1, embed_input2])
     x = Masking()(dot_input)
     x = ra(x)
+    x = Dropout(0.5)(x)
     return da(x)
 
 
@@ -121,6 +132,7 @@ def rnn_join_stack(embed_input1, embed_input2):
     x = Masking()(dot_input)
     x = ra1(x)
     x = ra2(x)
+    x = Dropout(0.5)(x)
     return da(x)
 
 
@@ -131,4 +143,5 @@ def rnn_join_bi(embed_input1, embed_input2):
     dot_input = Dot(2)([embed_input1, embed_input2])
     x = Masking()(dot_input)
     x = ba(x)
+    x = Dropout(0.5)(x)
     return da(x)
