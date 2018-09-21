@@ -10,22 +10,22 @@ def siam(paths):
     paths['rnn_siam_bi'] = prefix + 'model/rnn/siam_bi.h5'
     paths['rnn_siam_attend'] = prefix + 'model/rnn/siam_attend.h5'
     paths['rnn_siam_bi_attend'] = prefix + 'model/rnn/siam_bi_attend.h5'
-    nn(paths, 'dnn', 'siam_average', 10, 'train', thre=None)
-    nn(paths, 'dnn', 'siam_average', 10, 'dev', thre=None)
-    nn(paths, 'cnn', 'siam_parallel', 20, 'train', thre=None)
-    nn(paths, 'cnn', 'siam_parallel', 20, 'dev', thre=None)
-    nn(paths, 'cnn', 'siam_serial', 20, 'train', thre=None)
-    nn(paths, 'cnn', 'siam_serial', 20, 'dev', thre=None)
-    nn(paths, 'rnn', 'siam_plain', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'siam_plain', 10, 'dev', thre=None)
-    nn(paths, 'rnn', 'siam_stack', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'siam_stack', 10, 'dev', thre=None)
-    nn(paths, 'rnn', 'siam_bi', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'siam_bi', 10, 'dev', thre=None)
-    nn(paths, 'rnn', 'siam_attend', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'siam_attend', 10, 'dev', thre=None)
-    nn(paths, 'rnn', 'siam_bi_attend', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'siam_bi_attend', 10, 'dev', thre=None)
+    nn(paths, 'dnn', 'siam_average', 10, 'train')
+    nn(paths, 'dnn', 'siam_average', 10, 'dev')
+    nn(paths, 'cnn', 'siam_parallel', 20, 'train')
+    nn(paths, 'cnn', 'siam_parallel', 20, 'dev')
+    nn(paths, 'cnn', 'siam_serial', 20, 'train')
+    nn(paths, 'cnn', 'siam_serial', 20, 'dev')
+    nn(paths, 'rnn', 'siam_plain', 10, 'train')
+    nn(paths, 'rnn', 'siam_plain', 10, 'dev')
+    nn(paths, 'rnn', 'siam_stack', 10, 'train')
+    nn(paths, 'rnn', 'siam_stack', 10, 'dev')
+    nn(paths, 'rnn', 'siam_bi', 10, 'train')
+    nn(paths, 'rnn', 'siam_bi', 10, 'dev')
+    nn(paths, 'rnn', 'siam_attend', 10, 'train')
+    nn(paths, 'rnn', 'siam_attend', 10, 'dev')
+    nn(paths, 'rnn', 'siam_bi_attend', 10, 'train')
+    nn(paths, 'rnn', 'siam_bi_attend', 10, 'dev')
 
 
 def join(paths):
@@ -35,18 +35,18 @@ def join(paths):
     paths['rnn_join_plain'] = prefix + 'model/rnn/join_plain.h5'
     paths['rnn_join_stack'] = prefix + 'model/rnn/join_stack.h5'
     paths['rnn_join_bi'] = prefix + 'model/rnn/join_bi.h5'
-    nn(paths, 'dnn', 'join_flat', 10, 'train', thre=None)
-    nn(paths, 'dnn', 'join_flat', 10, 'dev', thre=None)
-    nn(paths, 'cnn', 'join_parallel', 20, 'train', thre=None)
-    nn(paths, 'cnn', 'join_parallel', 20, 'dev', thre=None)
-    nn(paths, 'cnn', 'join_serial', 20, 'train', thre=None)
-    nn(paths, 'cnn', 'join_serial', 20, 'dev', thre=None)
-    nn(paths, 'rnn', 'join_plain', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'join_plain', 10, 'dev', thre=None)
-    nn(paths, 'rnn', 'join_stack', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'join_stack', 10, 'dev', thre=None)
-    nn(paths, 'rnn', 'join_bi', 10, 'train', thre=None)
-    nn(paths, 'rnn', 'join_bi', 10, 'dev', thre=None)
+    nn(paths, 'dnn', 'join_flat', 10, 'train')
+    nn(paths, 'dnn', 'join_flat', 10, 'dev')
+    nn(paths, 'cnn', 'join_parallel', 20, 'train')
+    nn(paths, 'cnn', 'join_parallel', 20, 'dev')
+    nn(paths, 'cnn', 'join_serial', 20, 'train')
+    nn(paths, 'cnn', 'join_serial', 20, 'dev')
+    nn(paths, 'rnn', 'join_plain', 10, 'train')
+    nn(paths, 'rnn', 'join_plain', 10, 'dev')
+    nn(paths, 'rnn', 'join_stack', 10, 'train')
+    nn(paths, 'rnn', 'join_stack', 10, 'dev')
+    nn(paths, 'rnn', 'join_bi', 10, 'train')
+    nn(paths, 'rnn', 'join_bi', 10, 'dev')
 
 
 if __name__ == '__main__':

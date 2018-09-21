@@ -42,7 +42,7 @@ if __name__ == '__main__':
     paths['pad'] = prefix + 'feat/nn/pad_test.pkl'
     paths['embed'] = prefix + 'feat/nn/embed.pkl'
     preprocess(paths, 'test', char=True)
-    vectorize(paths, 'test', tran=True)
+    vectorize(paths, 'test')
     paths['svm_line_bow'] = prefix + 'model/svm/line_bow.pkl'
     paths['svm_line_tfidf'] = prefix + 'model/svm/line_tfidf.pkl'
     paths['svm_rbf_bow'] = prefix + 'model/svm/rbf_bow.pkl'

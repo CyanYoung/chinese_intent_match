@@ -6,6 +6,7 @@ from keras.models import Model, load_model
 from keras.layers import Input, Embedding
 from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
+from keras.utils import plot_model
 
 from nlp_sim.util.load import load_label
 from nlp_sim.util.map import map_logger, map_func
@@ -42,6 +43,7 @@ def build(name, embed_mat, seq_len):
     output = func(embed_input1, embed_input2)
     model = Model([input1, input2], output)
     model.summary()
+    plot_model(model)
     model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
     return model
 
@@ -52,7 +54,7 @@ def check(sent, model, pad_seq1s, pad_seq2s, labels, logger, epoch, name, mode):
     trial(sent, probs, labels, logger, '_'.join([name, str(epoch)]), mode)
 
 
-def nn(paths, name, arch, epoch, mode, thre):
+def nn(paths, name, arch, epoch, mode, thre=None):
     logger = map_logger(name)
     name = '_'.join([name, arch])
     if mode == 'train':
