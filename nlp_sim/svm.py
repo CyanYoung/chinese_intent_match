@@ -41,7 +41,7 @@ def concat(sent_feats):
     return sent_concats
 
 
-def svm(paths, kernel, feat, mode, thre):
+def svm(paths, kernel, feat, mode, thre=None):
     logger = map_logger('svm')
     name = '_'.join(['svm', kernel, feat])
     with open(paths[feat + '_feat'], 'rb') as f:
