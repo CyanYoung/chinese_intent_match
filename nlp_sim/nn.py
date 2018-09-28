@@ -42,7 +42,6 @@ def build(name, embed_mat, seq_len):
     output = func(embed_input1, embed_input2)
     model = Model([input1, input2], output)
     model.summary()
-    raise KeyboardInterrupt
     model.compile(loss='binary_crossentropy', optimizer=Adam(lr=0.001), metrics=['accuracy'])
     return model
 

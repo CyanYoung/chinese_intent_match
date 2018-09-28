@@ -1,11 +1,11 @@
-from keras.layers import LSTM, Dense, Bidirectional, Masking
-from keras.layers import Dropout, Concatenate, Flatten, Permute
-from keras.layers import Subtract, Multiply, Dot, Lambda
+from keras.layers import LSTM, Dense, Masking, Dropout
+from keras.layers import Bidirectional, TimeDistributed, Flatten, RepeatVector, Permute
+from keras.layers import Concatenate, Subtract, Multiply, Dot, Lambda
 
 import keras.backend as K
 
 
-seq_len = 30
+embed_len = 200
 
 
 def rnn_siam_plain(embed_input1, embed_input2):
@@ -57,25 +57,25 @@ def rnn_siam_bi(embed_input1, embed_input2):
     return da(z)
 
 
-def attend(input, seq_len, reduce):
-    x = Permute((2, 1))(input)
-    x = Dense(seq_len, activation='softmax')(x)
-    probs = Permute((2, 1))(x)
-    output = Multiply()([input, probs])
-    if reduce:
-        output = Lambda(lambda a: K.mean(a, axis=1))(output)
-    else:
-        output = Flatten()(output)
-    return output
+def attend(x, embed_len):
+    dn = Dense(1, activation=None)  # query
+    tn = TimeDistributed(dn)
+    y = tn(x)
+    y = Flatten()(y)
+    y = Lambda(lambda a: K.softmax(a))(y)
+    y = RepeatVector(embed_len)(y)
+    y = Permute((2, 1))(y)
+    z = Multiply()([x, y])
+    return Lambda(lambda a: K.mean(a, axis=1))(z)
 
 
 def rnn_siam_attend(embed_input1, embed_input2):
     ra = LSTM(200, activation='tanh', return_sequences=True)
     da = Dense(1, activation='sigmoid')
     x = ra(embed_input1)
-    x = attend(x, seq_len, reduce=True)
+    x = attend(x, embed_len)
     y = ra(embed_input2)
-    y = attend(y, seq_len, reduce=True)
+    y = attend(y, embed_len)
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
@@ -88,9 +88,9 @@ def rnn_siam_bi_attend(embed_input1, embed_input2):
     ba = Bidirectional(ra, merge_mode='concat')
     da = Dense(1, activation='sigmoid')
     x = ba(embed_input1)
-    x = attend(x, seq_len, reduce=True)
+    x = attend(x, embed_len)
     y = ba(embed_input2)
-    y = attend(y, seq_len, reduce=True)
+    y = attend(y, embed_len)
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
