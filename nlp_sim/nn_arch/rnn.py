@@ -70,14 +70,11 @@ def attend(input, seq_len, reduce):
 
 
 def rnn_siam_attend(embed_input1, embed_input2):
-    mask = Masking()
     ra = LSTM(200, activation='tanh', return_sequences=True)
     da = Dense(1, activation='sigmoid')
-    x = mask(embed_input1)
-    x = ra(x)
+    x = ra(embed_input1)
     x = attend(x, seq_len, reduce=True)
-    y = mask(embed_input2)
-    y = ra(y)
+    y = ra(embed_input2)
     y = attend(y, seq_len, reduce=True)
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
@@ -87,15 +84,12 @@ def rnn_siam_attend(embed_input1, embed_input2):
 
 
 def rnn_siam_bi_attend(embed_input1, embed_input2):
-    mask = Masking()
     ra = LSTM(200, activation='tanh', return_sequences=True)
     ba = Bidirectional(ra, merge_mode='concat')
     da = Dense(1, activation='sigmoid')
-    x = mask(embed_input1)
-    x = ba(x)
+    x = ba(embed_input1)
     x = attend(x, seq_len, reduce=True)
-    y = mask(embed_input2)
-    y = ba(y)
+    y = ba(embed_input2)
     y = attend(y, seq_len, reduce=True)
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
