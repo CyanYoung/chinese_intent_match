@@ -58,7 +58,7 @@ def rnn_siam_bi(embed_input1, embed_input2):
 
 
 def attend(x, embed_len):
-    dn = Dense(1, activation=None)  # query
+    dn = Dense(1, activation=None)
     tn = TimeDistributed(dn)
     y = tn(x)
     y = Flatten()(y)
