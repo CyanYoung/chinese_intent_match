@@ -5,12 +5,12 @@ def reindex(path_data, path_label, lines, mode):
     pos = 0
     with open(path_data, 'w') as fd:
         with open(path_label, 'w') as fl:
-            for ind, val in enumerate(lines):
-                fields = val.split('\t')
-                fields[0] = str(ind + 1)
-                fd.write('\t'.join(fields[:3]) + '\n')
-                fl.write(fields[3])
-                pos = pos + int(fields[3])
+            for ind, line in enumerate(lines):
+                num, text1, text2, label = line.strip().split('\t')
+                num = str(ind + 1)
+                fd.write('\t'.join([num, text1, text2]) + '\n')
+                fl.write(label)
+                pos = pos + int(label)
     print('{:<5} pos {:>5} rate {:.3f}'.format(mode, pos, pos / len(lines)))
 
 
@@ -21,8 +21,8 @@ def divide(paths):
         line2s = f.readlines()
     lines = line1s + line2s
     shuffle(lines)
-    bound1 = int(0.7 * len(lines))
-    bound2 = int(0.9 * len(lines))
+    bound1 = int(len(lines) * 0.7)
+    bound2 = int(len(lines) * 0.9)
     reindex(paths['train'], paths['train_label'], lines[:bound1], 'train')
     reindex(paths['dev'], paths['dev_label'], lines[bound1:bound2], 'dev')
     reindex(paths['test'], paths['test_label'], lines[bound2:], 'test')
