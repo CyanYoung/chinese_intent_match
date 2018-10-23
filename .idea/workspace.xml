@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="901cf5e2-42e6-4350-aa1b-d5e3bde8e713" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_gpu.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_gpu.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +150,7 @@
         <counts>
           <entry key="log" value="1" />
           <entry key="md" value="6" />
-          <entry key="py" value="1209" />
+          <entry key="py" value="1304" />
           <entry key="sh" value="1" />
         </counts>
       </usages-collector>
@@ -164,7 +160,7 @@
           <entry key="Bash" value="1" />
           <entry key="Log" value="1" />
           <entry key="Markdown" value="6" />
-          <entry key="Python" value="1209" />
+          <entry key="Python" value="1304" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -261,8 +257,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="210">
+              <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -273,7 +269,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1350">
+            <state relative-caret-position="1024">
               <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
@@ -285,11 +281,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="74" column="13" lean-forward="true" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+            <state relative-caret-position="1050">
+              <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
               <folding>
                 <element signature="e#0#69#0" expanded="true" />
-                <marker date="1540266393078" expanded="true" signature="1813:1825" ph="..." />
               </folding>
             </state>
           </provider>
@@ -425,13 +420,6 @@
               <item name="chinese_intent_match" type="462c0819:PsiDirectoryNode" />
               <item name="nlp_sim" type="462c0819:PsiDirectoryNode" />
               <item name="info" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chinese_intent_match" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chinese_intent_match" type="462c0819:PsiDirectoryNode" />
-              <item name="nlp_sim" type="462c0819:PsiDirectoryNode" />
-              <item name="info" type="462c0819:PsiDirectoryNode" />
-              <item name="rnn" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -921,10 +909,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/keras/layers/recurrent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3">
+          <caret line="2070" column="70" lean-forward="true" selection-start-line="2070" selection-start-column="70" selection-end-line="2070" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="210">
+          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
@@ -933,7 +928,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1350">
+        <state relative-caret-position="1024">
           <caret line="90" column="32" lean-forward="true" selection-start-line="90" selection-start-column="32" selection-end-line="90" selection-end-column="32" />
           <folding>
             <element signature="e#0#46#0" expanded="true" />
@@ -948,20 +943,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/keras/layers/recurrent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="2070" column="70" lean-forward="true" selection-start-line="2070" selection-start-column="70" selection-end-line="2070" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="74" column="13" lean-forward="true" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
+        <state relative-caret-position="1050">
+          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
           <folding>
             <element signature="e#0#69#0" expanded="true" />
-            <marker date="1540266393078" expanded="true" signature="1813:1825" ph="..." />
           </folding>
         </state>
       </provider>
