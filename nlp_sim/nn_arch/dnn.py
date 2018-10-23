@@ -1,5 +1,5 @@
-from keras.layers import Dense, Dropout
-from keras.layers import Concatenate, Subtract, Multiply, Dot, Lambda, Flatten
+from keras.layers import Dense, Dropout, Flatten
+from keras.layers import Concatenate, Subtract, Multiply, Dot, Lambda
 
 import keras.backend as K
 
