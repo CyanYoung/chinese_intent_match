@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="901cf5e2-42e6-4350-aa1b-d5e3bde8e713" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -119,11 +118,11 @@
     <session id="-238951969">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
-          <entry key="project.open.time.1" value="9" />
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.1" value="10" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -133,7 +132,7 @@
           <entry key="log" value="10" />
           <entry key="md" value="5" />
           <entry key="png" value="2" />
-          <entry key="py" value="29" />
+          <entry key="py" value="30" />
           <entry key="sh" value="1" />
         </counts>
       </usages-collector>
@@ -145,14 +144,14 @@
           <entry key="Log" value="10" />
           <entry key="Markdown" value="5" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="29" />
+          <entry key="Python" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="log" value="2" />
           <entry key="md" value="6" />
-          <entry key="py" value="1389" />
+          <entry key="py" value="1424" />
           <entry key="sh" value="1" />
         </counts>
       </usages-collector>
@@ -162,7 +161,7 @@
           <entry key="Bash" value="1" />
           <entry key="Log" value="2" />
           <entry key="Markdown" value="6" />
-          <entry key="Python" value="1389" />
+          <entry key="Python" value="1424" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -214,7 +213,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nlp_sim/preprocess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="630">
               <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -257,10 +256,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nlp_sim/util/map.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            <state relative-caret-position="180">
+              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -271,7 +282,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1230">
+            <state relative-caret-position="269">
               <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
               <folding>
                 <element signature="e#0#46#0" expanded="true" />
@@ -283,8 +294,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+            <state relative-caret-position="1800">
+              <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
               <folding>
                 <element signature="e#0#66#0" expanded="true" />
               </folding>
@@ -295,8 +306,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_gpu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+            <state relative-caret-position="195">
+              <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -372,10 +383,10 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/nlp_sim/divide.py" />
         <option value="$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py" />
-        <option value="$PROJECT_DIR$/train_gpu.py" />
-        <option value="$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py" />
         <option value="$PROJECT_DIR$/nlp_sim/info/rnn/score.log" />
+        <option value="$PROJECT_DIR$/train_gpu.py" />
         <option value="$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py" />
+        <option value="$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py" />
       </list>
     </option>
   </component>
@@ -395,6 +406,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -411,7 +423,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -695,13 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nlp_sim/util/map.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/util/load.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -858,6 +862,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor>
+            <caret column="17" selection-start-column="17" selection-end-column="17" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nlp_sim/preprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/divide.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -875,6 +899,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_gpu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="47" lean-forward="true" selection-start-line="13" selection-start-column="47" selection-end-line="13" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/nn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -885,57 +936,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_gpu.py">
+    <entry file="file://$PROJECT_DIR$/nlp_sim/util/map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nlp_sim/preprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/dnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        <state relative-caret-position="300">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/cnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="82" column="35" lean-forward="true" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="FIRST">
-          <first_editor>
-            <caret column="17" selection-start-column="17" selection-end-column="17" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/nn_arch/rnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="1800">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
           <folding>
             <element signature="e#0#66#0" expanded="true" />
           </folding>
