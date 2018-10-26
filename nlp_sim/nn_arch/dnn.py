@@ -23,7 +23,7 @@ def dnn_siam_average(embed_input1, embed_input2):
 
 
 def dnn_join_flat(embed_input1, embed_input2):
-    da1 = Dense(900, activation='relu')
+    da1 = Dense(500, activation='relu')
     da2 = Dense(200, activation='relu')
     da3 = Dense(1, activation='sigmoid')
     dot_input = Dot(2)([embed_input1, embed_input2])

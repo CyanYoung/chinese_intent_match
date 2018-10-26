@@ -8,7 +8,7 @@ train 70% / dev 20% / test 10% 划分，reindex() 重建索引、统计正例
 
 #### 2.preprocess
 
-delete() 去除无效符号，replace() 替换同音词、同义词
+delete() 去除无效符号，replace() 替换同音、同义词
 
 jieba.load_userdict() 导入切分词，Counter() 统计词频
 
@@ -32,10 +32,6 @@ concat() 连接 diff 与 prod 得到 merge_features，SVC() 分类
 
 #### 5.nn
 
-dnn：词向量算术平均 average、连接 flat
+dnn：average 算术平均、flat 展开，cnn：parallel 单层多核、serial 双层单核
 
-cnn：parallel 单层多核，serial 双层单核
-
-rnn：plain 单层单向，siam_stack 双层单向，siam_bi 单层双向
-
-序列加权平均 siam_attend 单层单向、siam_bi_attend 单层双向
+rnn：plain 单层单向，stack 双层单向，bi 单层双向，attend 加权平均
