@@ -16,30 +16,30 @@ max_vocab = 5000
 seq_len = 30
 
 
-def bow(sents, path_bow_model, path_bow_feat, stop_words, mode):
+def bow(sents, path_bow, path_bow_feat, stop_words, mode):
     if mode == 'train':
         model = CountVectorizer(stop_words=stop_words, token_pattern='\w+', min_df=min_freq)
         model.fit(sents)
-        with open(path_bow_model, 'wb') as f:
+        with open(path_bow, 'wb') as f:
             pk.dump(model, f)
     else:
-        with open(path_bow_model, 'rb') as f:
+        with open(path_bow, 'rb') as f:
             model = pk.load(f)
     sent_word_counts = model.transform(sents)
     with open(path_bow_feat, 'wb') as f:
         pk.dump(sent_word_counts, f)
 
 
-def tfidf(path_bow_feat, path_tfidf_model, path_tfidf_feat, mode):
+def tfidf(path_bow_feat, path_tfidf, path_tfidf_feat, mode):
     with open(path_bow_feat, 'rb') as f:
         sent_word_counts = pk.load(f)
     if mode == 'train':
         model = TfidfTransformer()
         model.fit(sent_word_counts)
-        with open(path_tfidf_model, 'wb') as f:
+        with open(path_tfidf, 'wb') as f:
             pk.dump(model, f)
     else:
-        with open(path_tfidf_model, 'rb') as f:
+        with open(path_tfidf, 'rb') as f:
             model = pk.load(f)
     sent_word_weights = model.transform(sent_word_counts)
     with open(path_tfidf_feat, 'wb') as f:
@@ -77,8 +77,8 @@ def align(sents, path_word2ind, path_pad):
 def vectorize(paths, mode):
     sents = load_sent(paths['data_clean'])
     stop_words = load_word(paths['stop_word'])
-    bow(sents, paths['bow_model'], paths['bow_feat'], stop_words, mode)
-    tfidf(paths['bow_feat'], paths['tfidf_model'], paths['tfidf_feat'], mode)
+    bow(sents, paths['bow'], paths['bow_feat'], stop_words, mode)
+    tfidf(paths['bow_feat'], paths['tfidf'], paths['tfidf_feat'], mode)
     if mode == 'train':
         embed(sents, paths['word2ind'], paths['word_vec'], paths['embed'], stop_words)
     align(sents, paths['word2ind'], paths['pad'])
@@ -88,8 +88,8 @@ if __name__ == '__main__':
     paths = dict()
     paths['data_clean'] = 'data/train_clean.csv'
     paths['stop_word'] = 'dict/stop_word.txt'
-    paths['bow_model'] = 'model/vec/bow.pkl'
-    paths['tfidf_model'] = 'model/vec/tfidf.pkl'
+    paths['bow'] = 'model/vec/bow.pkl'
+    paths['tfidf'] = 'model/vec/tfidf.pkl'
     paths['bow_feat'] = 'feat/svm/bow_train.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_train.pkl'
     paths['word2ind'] = 'model/vec/word2ind.pkl'
