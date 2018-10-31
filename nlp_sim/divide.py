@@ -11,7 +11,7 @@ def reindex(path_data, path_label, lines, mode):
                 fd.write('\t'.join([num, text1, text2]) + '\n')
                 fl.write(label)
                 pos = pos + int(label)
-    print('{:<5} pos {:>5} rate {:.3f}'.format(mode, pos, pos / len(lines)))
+    print('{:<5} pos {:>5} rate {:.2f}'.format(mode, pos, pos / len(lines)))
 
 
 def divide(paths):
