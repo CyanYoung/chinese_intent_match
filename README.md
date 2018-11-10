@@ -10,7 +10,7 @@ train 70% / dev 20% / test 10% 划分，reindex() 重建索引、统计正例
 
 delete() 去除无效符号，replace() 替换同音、同义词
 
-jieba.load_userdict() 导入切分词，Counter() 统计词频
+jieba.load_userdict() 导入非切分词，Counter() 统计词频
 
 #### 3.vectorize
 
