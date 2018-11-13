@@ -1,4 +1,4 @@
-from nlp_sim.nn import nn
+from core.nn import nn
 
 
 def siam(paths):
@@ -51,7 +51,7 @@ def join(paths):
 
 if __name__ == '__main__':
     paths = dict()
-    prefix = 'nlp_sim/'
+    prefix = 'core/'
     paths['train_clean'] = prefix + 'data/train_clean.csv'
     paths['dev_clean'] = prefix + 'data/dev_clean.csv'
     paths['pad_train'] = prefix + 'feat/nn/pad_train.pkl'

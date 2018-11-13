@@ -1,11 +1,11 @@
 from sklearn.metrics import f1_score, accuracy_score
 
-from nlp_sim.util.load import load_label, load_pred
+from core.util.load import load_label, load_pred
 
 
 if __name__ == '__main__':
     paths = dict()
-    prefix = 'nlp_sim/'
+    prefix = 'core/'
     paths['label'] = prefix + 'data/test_label.txt'
     paths['pred'] = prefix + 'data/test_pred.csv'
     labels = load_label(paths['label'])

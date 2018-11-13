@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 
-from nlp_sim.util.load import load_word, load_sent
+from core.util.load import load_word, load_sent
 
 
 embed_len = 200

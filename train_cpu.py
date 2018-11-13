@@ -1,9 +1,9 @@
-from nlp_sim.svm import svm
+from core.svm import svm
 
 
 if __name__ == '__main__':
     paths = dict()
-    prefix = 'nlp_sim/'
+    prefix = 'core/'
     paths['data_clean'] = prefix + 'data/train_clean.csv'
     paths['label'] = prefix + 'data/train_label.txt'
     paths['bow_feat'] = prefix + 'feat/svm/bow_train.pkl'

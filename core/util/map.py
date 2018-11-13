@@ -1,22 +1,22 @@
-from nlp_sim.nn_arch.dnn import dnn_siam_average
-from nlp_sim.nn_arch.cnn import cnn_siam_parallel, cnn_siam_serial
-from nlp_sim.nn_arch.rnn import rnn_siam_plain, rnn_siam_stack, rnn_siam_bi
-from nlp_sim.nn_arch.rnn import rnn_siam_attend, rnn_siam_bi_attend
+from core.nn_arch.dnn import dnn_siam_average
+from core.nn_arch.cnn import cnn_siam_parallel, cnn_siam_serial
+from core.nn_arch.rnn import rnn_siam_plain, rnn_siam_stack, rnn_siam_bi
+from core.nn_arch.rnn import rnn_siam_attend, rnn_siam_bi_attend
 
-from nlp_sim.nn_arch.dnn import dnn_join_flat
-from nlp_sim.nn_arch.cnn import cnn_join_parallel, cnn_join_serial
-from nlp_sim.nn_arch.rnn import rnn_join_plain, rnn_join_stack, rnn_join_bi
+from core.nn_arch.dnn import dnn_join_flat
+from core.nn_arch.cnn import cnn_join_parallel, cnn_join_serial
+from core.nn_arch.rnn import rnn_join_plain, rnn_join_stack, rnn_join_bi
 
-from nlp_sim.util.log import get_loggers
+from core.util.log import get_loggers
 
 
 names = {'line': 'linear'}
 
 
-loggers = {'svm': get_loggers('svm', 'nlp_sim/info/svm/'),
-           'dnn': get_loggers('dnn', 'nlp_sim/info/dnn/'),
-           'cnn': get_loggers('cnn', 'nlp_sim/info/cnn/'),
-           'rnn': get_loggers('rnn', 'nlp_sim/info/rnn/')}
+loggers = {'svm': get_loggers('svm', 'core/info/svm/'),
+           'dnn': get_loggers('dnn', 'core/info/dnn/'),
+           'cnn': get_loggers('cnn', 'core/info/cnn/'),
+           'rnn': get_loggers('rnn', 'core/info/rnn/')}
 
 
 funcs = {'dnn_siam_average': dnn_siam_average,

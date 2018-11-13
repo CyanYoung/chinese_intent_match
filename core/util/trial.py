@@ -2,8 +2,8 @@ import numpy as np
 
 from sklearn.metrics import f1_score
 
-from nlp_sim.util.load import load_sent_pair
-from nlp_sim.util.log import log_state, log_score, log_error
+from core.util.load import load_sent_pair
+from core.util.log import log_state, log_score, log_error
 
 
 def trial(sent, probs, labels, logger, name, mode):

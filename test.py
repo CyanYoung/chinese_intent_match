@@ -1,9 +1,9 @@
 import sys
 
-from nlp_sim.preprocess import preprocess
-from nlp_sim.vectorize import vectorize
-from nlp_sim.svm import svm
-from nlp_sim.nn import nn
+from core.preprocess import preprocess
+from core.vectorize import vectorize
+from core.svm import svm
+from core.nn import nn
 
 
 def test(paths, path_output, model):
@@ -23,7 +23,7 @@ def test(paths, path_output, model):
 if __name__ == '__main__':
     file, path_input, path_output = sys.argv
     paths = dict()
-    prefix = 'nlp_sim/'
+    prefix = 'core/'
     paths['data'] = path_input
     paths['data_clean'] = prefix + 'data/test_clean.csv'
     paths['invalid_punc'] = prefix + 'dict/invalid_punc.txt'

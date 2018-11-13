@@ -5,10 +5,10 @@ from scipy.sparse import csr_matrix
 
 from sklearn.svm import SVC
 
-from nlp_sim.util.load import load_label
-from nlp_sim.util.map import map_name, map_logger
-from nlp_sim.util.trial import trial
-from nlp_sim.util.log import log_state
+from core.util.load import load_label
+from core.util.map import map_name, map_logger
+from core.util.trial import trial
+from core.util.log import log_state
 
 
 def subtract(sent_feats):
