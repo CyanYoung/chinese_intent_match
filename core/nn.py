@@ -13,7 +13,7 @@ from core.util.trial import trial
 from core.util.log import log_state
 
 
-batch_size = 32
+batch_size = 512
 
 
 def split(path_pad):
