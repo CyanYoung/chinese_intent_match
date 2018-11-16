@@ -62,7 +62,7 @@ def attend(x, y, embed_len):
     dn = Dense(1, activation=None)
     tn = TimeDistributed(dn)
     softmax = Activation('softmax')
-    mean = Lambda(lambda a: K.mean(a, axis=1))
+    sum = Lambda(lambda a: K.sum(a, axis=1))
     p = da(x)
     p = tn(p)
     p = Flatten()(p)
@@ -70,7 +70,7 @@ def attend(x, y, embed_len):
     p = RepeatVector(embed_len)(p)
     p = Permute((2, 1))(p)
     x = Multiply()([x, p])
-    x = mean(x)
+    x = sum(x)
     p = da(y)
     p = tn(p)
     p = Flatten()(p)
@@ -78,7 +78,7 @@ def attend(x, y, embed_len):
     p = RepeatVector(embed_len)(p)
     p = Permute((2, 1))(p)
     y = Multiply()([y, p])
-    y = mean(y)
+    y = sum(y)
     return x, y
 
 
