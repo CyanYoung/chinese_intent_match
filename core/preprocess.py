@@ -6,9 +6,9 @@ import jieba
 from collections import Counter
 
 
-def delete(path_data, path_data_clean, path_invalid_punc):
+def delete(path_data, path_data_clean, path_inval_punc):
     reg = '[ '
-    with open(path_invalid_punc, 'r') as f:
+    with open(path_inval_punc, 'r') as f:
         for line in f:
             reg = reg + line.strip()
     reg = reg + ']'
@@ -49,14 +49,11 @@ def count(path_freq, items):
 
 
 def preprocess(paths, mode, char):
-    delete(paths['data'], paths['data_clean'], paths['invalid_punc'])
+    delete(paths['data'], paths['data_clean'], paths['inval_punc'])
     replace(paths['data_clean'], paths['homonym'], paths['synonym'])
     jieba.load_userdict(paths['cut_word'])
-    nums = list()
-    text1s = list()
-    text2s = list()
-    text_lens = list()
-    vocabs = list()
+    nums, text1s, text2s = list(), list(), list()
+    text_lens, vocabs = list(), list()
     with open(paths['data_clean'], 'r') as f:
         for line in f:
             num, text1, text2 = line.strip().split('\t')
@@ -76,12 +73,12 @@ if __name__ == '__main__':
     paths = dict()
     paths['data'] = 'data/train.csv'
     paths['data_clean'] = 'data/train_clean.csv'
-    paths['invalid_punc'] = 'dict/invalid_punc.txt'
+    paths['inval_punc'] = 'dict/inval_punc.txt'
     paths['homonym'] = 'dict/homonym.csv'
     paths['synonym'] = 'dict/synonym.csv'
     paths['cut_word'] = 'dict/cut_word.txt'
-    paths['len_freq'] = 'dict/len_freq.csv'
-    paths['vocab_freq'] = 'dict/vocab_freq.csv'
+    paths['len_freq'] = 'stat/len_freq.csv'
+    paths['vocab_freq'] = 'stat/vocab_freq.csv'
     preprocess(paths, 'train', char=True)
     paths['data'] = 'data/dev.csv'
     paths['data_clean'] = 'data/dev_clean.csv'
