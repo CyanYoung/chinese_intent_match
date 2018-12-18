@@ -19,12 +19,12 @@ def delete(path_data, path_data_clean, path_inval_punc):
         f.write(data)
 
 
-def replace(path_data_clean, path_homonym, path_synonym):
+def replace(path_data_clean, path_homo, path_syno):
     with open(path_data_clean, 'r') as f:
         data = f.read()
-    for std, nstd in pd.read_csv(path_homonym).values:
+    for std, nstd in pd.read_csv(path_homo).values:
         data = re.sub(nstd, std, data)
-    for std, nstd in pd.read_csv(path_synonym).values:
+    for std, nstd in pd.read_csv(path_syno).values:
         data = re.sub(nstd, std, data)
     with open(path_data_clean, 'w') as f:
         f.write(data)
@@ -50,7 +50,7 @@ def count(path_freq, items):
 
 def preprocess(paths, mode, char):
     delete(paths['data'], paths['data_clean'], paths['inval_punc'])
-    replace(paths['data_clean'], paths['homonym'], paths['synonym'])
+    replace(paths['data_clean'], paths['homo'], paths['syno'])
     jieba.load_userdict(paths['cut_word'])
     nums, text1s, text2s = list(), list(), list()
     text_lens, vocabs = list(), list()
@@ -74,8 +74,8 @@ if __name__ == '__main__':
     paths['data'] = 'data/train.csv'
     paths['data_clean'] = 'data/train_clean.csv'
     paths['inval_punc'] = 'dict/inval_punc.txt'
-    paths['homonym'] = 'dict/homo.csv'
-    paths['synonym'] = 'dict/syno.csv'
+    paths['homo'] = 'dict/homo.csv'
+    paths['syno'] = 'dict/syno.csv'
     paths['cut_word'] = 'dict/cut_word.txt'
     paths['len_freq'] = 'stat/len_freq.csv'
     paths['vocab_freq'] = 'stat/vocab_freq.csv'

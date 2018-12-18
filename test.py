@@ -27,8 +27,8 @@ if __name__ == '__main__':
     paths['data'] = path_input
     paths['data_clean'] = prefix + 'data/test_clean.csv'
     paths['invalid_punc'] = prefix + 'dict/invalid_punc.txt'
-    paths['homonym'] = prefix + 'dict/homo.csv'
-    paths['synonym'] = prefix + 'dict/syno.csv'
+    paths['homo'] = prefix + 'dict/homo.csv'
+    paths['syno'] = prefix + 'dict/syno.csv'
     paths['cut_word'] = prefix + 'dict/cut_word.txt'
     paths['vocab_freq'] = prefix + 'dict/vocab_freq.csv'
     paths['stop_word'] = prefix + 'dict/stop_word.txt'
