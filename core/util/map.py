@@ -13,10 +13,10 @@ from core.util.log import get_loggers
 names = {'line': 'linear'}
 
 
-loggers = {'svm': get_loggers('svm', 'core/info/svm/'),
-           'dnn': get_loggers('dnn', 'core/info/dnn/'),
-           'cnn': get_loggers('cnn', 'core/info/cnn/'),
-           'rnn': get_loggers('rnn', 'core/info/rnn/')}
+loggers = {'svm': get_loggers('svm', 'core/log/svm/'),
+           'dnn': get_loggers('dnn', 'core/log/dnn/'),
+           'cnn': get_loggers('cnn', 'core/log/cnn/'),
+           'rnn': get_loggers('rnn', 'core/log/rnn/')}
 
 
 funcs = {'dnn_siam_average': dnn_siam_average,
