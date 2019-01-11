@@ -93,7 +93,6 @@ if __name__ == '__main__':
     paths['bow_feat'] = 'feat/svm/bow_train.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_train.pkl'
     paths['word2ind'] = 'model/vec/word2ind.pkl'
-    paths['word2vec'] = 'model/vec/word2vec.pkl'
     paths['word_vec'] = 'feat/nn/word_vec.pkl'
     paths['embed'] = 'feat/nn/embed.pkl'
     paths['pad'] = 'feat/nn/pad_train.pkl'
