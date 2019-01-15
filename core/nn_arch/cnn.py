@@ -1,6 +1,6 @@
-from keras.layers import Conv1D, Conv2D, Dense
-from keras.layers import MaxPooling1D, GlobalMaxPooling1D, MaxPooling2D, GlobalMaxPooling2D, Dropout
-from keras.layers import Flatten, Reshape, Concatenate, Subtract, Multiply, Dot, Lambda
+from keras.layers import Conv1D, Conv2D, Dense, Dropout, Lambda
+from keras.layers import MaxPooling1D, GlobalMaxPooling1D, MaxPooling2D, GlobalMaxPooling2D
+from keras.layers import Flatten, Reshape, Concatenate, Subtract, Multiply, Dot
 
 import keras.backend as K
 
