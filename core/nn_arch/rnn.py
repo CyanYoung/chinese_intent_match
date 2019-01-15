@@ -1,5 +1,5 @@
 from keras.layers import LSTM, Dense, Masking, Dropout, Activation
-from keras.layers import Bidirectional, TimeDistributed, Flatten, RepeatVector, Permute
+from keras.layers import Bidirectional, Flatten, RepeatVector, Permute
 from keras.layers import Concatenate, Subtract, Multiply, Dot, Lambda
 
 import keras.backend as K
@@ -59,12 +59,11 @@ def rnn_siam_bi(embed_input1, embed_input2):
 
 def attend(x, y, embed_len):
     da = Dense(200, activation='tanh')
-    dn = Dense(1, activation=None)
-    tn = TimeDistributed(dn)
+    dn = Dense(1)
     softmax = Activation('softmax')
     sum = Lambda(lambda a: K.sum(a, axis=1))
     p = da(x)
-    p = tn(p)
+    p = dn(p)
     p = Flatten()(p)
     p = softmax(p)
     p = RepeatVector(embed_len)(p)
@@ -72,7 +71,7 @@ def attend(x, y, embed_len):
     x = Multiply()([x, p])
     x = sum(x)
     p = da(y)
-    p = tn(p)
+    p = dn(p)
     p = Flatten()(p)
     p = softmax(p)
     p = RepeatVector(embed_len)(p)
