@@ -67,8 +67,8 @@ def preprocess(paths, mode, char):
         for num, text1, text2 in zip(nums, text1s, text2s):
             f.write(num + ',' + text1 + ',' + text2 + '\n')
     if mode == 'train':
-        count(paths['len_freq'], text_lens)
         count(paths['vocab_freq'], vocabs)
+        count(paths['len_freq'], text_lens)
 
 
 if __name__ == '__main__':
