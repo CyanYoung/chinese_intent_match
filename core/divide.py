@@ -1,16 +1,6 @@
 from random import shuffle
 
 
-path_univ1 = 'data/univ1.csv'
-path_univ2 = 'data/univ2.csv'
-with open(path_univ1, 'r') as f:
-    line1s = f.readlines()
-with open(path_univ2, 'r') as f:
-    line2s = f.readlines()
-
-lines = line1s + line2s
-
-
 def reindex(path_data, path_label, lines, mode):
     pos = 0
     with open(path_data, 'w') as fd:
@@ -24,7 +14,12 @@ def reindex(path_data, path_label, lines, mode):
     print('{:<5} pos {:>5} rate {:.2f}'.format(mode, pos, pos / len(lines)))
 
 
-def divide(lines, paths):
+def divide(paths):
+    with open(paths['univ1'], 'r') as f:
+        line1s = f.readlines()
+    with open(paths['univ2'], 'r') as f:
+        line2s = f.readlines()
+    lines = line1s + line2s
     shuffle(lines)
     bound1 = int(len(lines) * 0.7)
     bound2 = int(len(lines) * 0.9)
@@ -35,10 +30,12 @@ def divide(lines, paths):
 
 if __name__ == '__main__':
     paths = dict()
+    paths['univ1'] = 'data/univ1.csv'
+    paths['univ2'] = 'data/univ2.csv'
     paths['train'] = 'data/train.csv'
     paths['train_label'] = 'data/train_label.txt'
     paths['dev'] = 'data/dev.csv'
     paths['dev_label'] = 'data/dev_label.txt'
     paths['test'] = 'data/test.csv'
     paths['test_label'] = 'data/test_label.txt'
-    divide(lines, paths)
+    divide(paths)
