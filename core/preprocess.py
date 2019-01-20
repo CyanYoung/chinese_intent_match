@@ -42,8 +42,9 @@ def insert(field, texts, text_lens, vocabs, char):
 
 def count(path_freq, items):
     item_freq = Counter(items)
+    head = 'item,freq'
     with open(path_freq, 'w') as f:
-        f.write('item,freq\n')
+        f.write(head + '\n')
         for item, freq in item_freq.most_common():
             f.write(str(item) + ',' + str(freq) + '\n')
 
@@ -60,8 +61,9 @@ def preprocess(paths, mode, char):
             nums.append(num)
             insert(text1, text1s, text_lens, vocabs, char)
             insert(text2, text2s, text_lens, vocabs, char)
+    head = 'num,text1,text2'
     with open(paths['data_clean'], 'w') as f:
-        f.write('num,text1,text2\n')
+        f.write(head + '\n')
         for num, text1, text2 in zip(nums, text1s, text2s):
             f.write(num + ',' + text1 + ',' + text2 + '\n')
     if mode == 'train':
