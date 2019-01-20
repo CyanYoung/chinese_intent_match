@@ -32,6 +32,6 @@ concat() 连接 diff 与 prod 得到 merge_features，SVC() 分类
 
 #### 5.nn
 
-dnn：average 算术平均、flat 展开，cnn：parallel 单层多核、serial 多层单核
+dnn：mean 算术平均、flat 展开，cnn：parallel 单层多核、serial 多层单核
 
 rnn：plain 单层单向，stack 双层单向，bi 单层双向，attend 加权平均
