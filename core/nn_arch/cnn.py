@@ -8,7 +8,7 @@ import keras.backend as K
 seq_len = 30
 
 
-def cnn_siam_parallel(embed_input1, embed_input2):
+def cnn_siam_wide(embed_input1, embed_input2):
     ca1 = Conv1D(filters=64, kernel_size=1, padding='same', activation='relu')
     ca2 = Conv1D(filters=64, kernel_size=2, padding='same', activation='relu')
     ca3 = Conv1D(filters=64, kernel_size=3, padding='same', activation='relu')
@@ -39,7 +39,7 @@ def cnn_siam_parallel(embed_input1, embed_input2):
     return da2(z)
 
 
-def cnn_siam_serial(embed_input1, embed_input2):
+def cnn_siam_deep(embed_input1, embed_input2):
     ca1 = Conv1D(filters=64, kernel_size=2, padding='same', activation='relu')
     ca2 = Conv1D(filters=64, kernel_size=3, padding='same', activation='relu')
     da1 = Dense(200, activation='relu')
@@ -65,7 +65,7 @@ def cnn_siam_serial(embed_input1, embed_input2):
     return da2(z)
 
 
-def cnn_join_parallel(embed_input1, embed_input2):
+def cnn_join_wide(embed_input1, embed_input2):
     ca1 = Conv2D(filters=64, kernel_size=1, padding='same', activation='relu')
     ca2 = Conv2D(filters=64, kernel_size=2, padding='same', activation='relu')
     ca3 = Conv2D(filters=64, kernel_size=3, padding='same', activation='relu')
@@ -86,7 +86,7 @@ def cnn_join_parallel(embed_input1, embed_input2):
     return da2(x)
 
 
-def cnn_join_serial(embed_input1, embed_input2):
+def cnn_join_deep(embed_input1, embed_input2):
     ca1 = Conv2D(filters=64, kernel_size=2, padding='same', activation='relu')
     ca2 = Conv2D(filters=64, kernel_size=3, padding='same', activation='relu')
     da1 = Dense(200, activation='relu')
