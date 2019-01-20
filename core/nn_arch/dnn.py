@@ -4,7 +4,7 @@ from keras.layers import Concatenate, Subtract, Multiply, Dot, Lambda
 import keras.backend as K
 
 
-def dnn_siam_average(embed_input1, embed_input2):
+def dnn_siam_mean(embed_input1, embed_input2):
     mean = Lambda(lambda a: K.mean(a, axis=1))
     da1 = Dense(200, activation='relu')
     da2 = Dense(200, activation='relu')
