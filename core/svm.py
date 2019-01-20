@@ -31,16 +31,6 @@ def multiply(sent_feats):
     return sent_prods
 
 
-def concat(sent_feats):
-    sent_feats = sent_feats.toarray()
-    feat_shape = sent_feats.shape
-    sent_concats = np.zeros((int(feat_shape[0] / 2), feat_shape[1] * 2))
-    for i in range(len(sent_feats) - 1):
-        if not i % 2:
-            sent_concats[int(i / 2)] = np.hstack((sent_feats[i], sent_feats[i + 1]))
-    return sent_concats
-
-
 def svm(paths, kernel, feat, mode, thre=None):
     logger = map_logger('svm')
     name = '_'.join(['svm', kernel, feat])
