@@ -10,7 +10,7 @@ def test(paths, path_output, model):
     if model == 'dnn':
         preds = nn(paths, 'dnn', 'siam_mean', 10, 'test', thre=0.3)
     elif model == 'cnn':
-        preds = nn(paths, 'cnn', 'siam_wide', 20, 'test', thre=0.2)
+        preds = nn(paths, 'cnn', 'siam_wide', 10, 'test', thre=0.2)
     elif model == 'rnn':
         preds = nn(paths, 'rnn', 'siam_plain', 10, 'test', thre=0.3)
     else:
