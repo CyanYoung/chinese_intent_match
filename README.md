@@ -20,9 +20,11 @@ texts_to_sequences() 表示为词索引、pad_sequences() 填充为相同长度
 
 #### 4.svm
 
-连接 diff、prod 特征，分别使用 line、rbf，通过 SVC() 构建匹配模型
+连接 diff、prod 特征，通过 line、rbf 的 svm 构建匹配模型
 
 #### 5.nn
+
+通过 siam、join 的 nn 构建匹配模型，join 使用点积交互、得到相似度矩阵
 
 dnn_mean 算术平均、dnn_flat 展开，cnn_wide 单层多核、cnn_deep
 
