@@ -25,9 +25,9 @@ def bow(sents, path_bow, path_bow_feat, stop_words, mode):
     else:
         with open(path_bow, 'rb') as f:
             model = pk.load(f)
-    sent_word_counts = model.transform(sents)
+    sent_counts = model.transform(sents)
     with open(path_bow_feat, 'wb') as f:
-        pk.dump(sent_word_counts, f)
+        pk.dump(sent_counts, f)
 
 
 def tfidf(path_bow_feat, path_tfidf, path_tfidf_feat, mode):
@@ -41,9 +41,9 @@ def tfidf(path_bow_feat, path_tfidf, path_tfidf_feat, mode):
     else:
         with open(path_tfidf, 'rb') as f:
             model = pk.load(f)
-    sent_word_weights = model.transform(sent_word_counts)
+    sent_weights = model.transform(sent_word_counts)
     with open(path_tfidf_feat, 'wb') as f:
-        pk.dump(sent_word_weights, f)
+        pk.dump(sent_weights, f)
 
 
 def embed(sents, path_word2ind, path_word_vec, path_embed, stop_words):
