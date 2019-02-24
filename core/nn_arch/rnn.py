@@ -1,13 +1,10 @@
-from keras.layers import LSTM, Dense, Masking, Dropout, Activation, Lambda
-from keras.layers import Flatten, RepeatVector, Permute, Concatenate, Subtract, Multiply, Dot
+from keras.layers import LSTM, Dense, Masking, Dropout, Lambda
+from keras.layers import Permute, Concatenate, Subtract, Multiply, Dot
 
 import keras.backend as K
 
 
-embed_len = 200
-
-
-def rnn_siam_plain(embed_input1, embed_input2):
+def rnn_siam(embed_input1, embed_input2):
     mask = Masking()
     ra = LSTM(200, activation='tanh')
     da = Dense(1, activation='sigmoid')
@@ -18,66 +15,11 @@ def rnn_siam_plain(embed_input1, embed_input2):
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
-    z = Dropout(0.5)(z)
+    z = Dropout(0.2)(z)
     return da(z)
 
 
-def rnn_siam_stack(embed_input1, embed_input2):
-    mask = Masking()
-    ra1 = LSTM(200, activation='tanh', return_sequences=True)
-    ra2 = LSTM(200, activation='tanh')
-    da = Dense(1, activation='sigmoid')
-    x = mask(embed_input1)
-    x = ra1(x)
-    x = ra2(x)
-    y = mask(embed_input2)
-    y = ra1(y)
-    y = ra2(y)
-    diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
-    prod = Multiply()([x, y])
-    z = Concatenate()([x, y, diff, prod])
-    z = Dropout(0.5)(z)
-    return da(z)
-
-
-def attend(x, y, embed_len):
-    da = Dense(200, activation='tanh')
-    dn = Dense(1)
-    softmax = Activation('softmax')
-    sum = Lambda(lambda a: K.sum(a, axis=1))
-    p = da(x)
-    p = dn(p)
-    p = Flatten()(p)
-    p = softmax(p)
-    p = RepeatVector(embed_len)(p)
-    p = Permute((2, 1))(p)
-    x = Multiply()([x, p])
-    x = sum(x)
-    p = da(y)
-    p = dn(p)
-    p = Flatten()(p)
-    p = softmax(p)
-    p = RepeatVector(embed_len)(p)
-    p = Permute((2, 1))(p)
-    y = Multiply()([y, p])
-    y = sum(y)
-    return x, y
-
-
-def rnn_siam_attend(embed_input1, embed_input2):
-    ra = LSTM(200, activation='tanh', return_sequences=True)
-    da = Dense(1, activation='sigmoid')
-    x = ra(embed_input1)
-    y = ra(embed_input2)
-    x, y = attend(x, y, embed_len)
-    diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
-    prod = Multiply()([x, y])
-    z = Concatenate()([x, y, diff, prod])
-    z = Dropout(0.5)(z)
-    return da(z)
-
-
-def rnn_join_plain(embed_input1, embed_input2):
+def rnn_join(embed_input1, embed_input2):
     ra = LSTM(30, activation='tanh')
     da = Dense(1, activation='sigmoid')
     dot_input1 = Dot(2)([embed_input1, embed_input2])
@@ -85,20 +27,5 @@ def rnn_join_plain(embed_input1, embed_input2):
     x1 = ra(dot_input1)
     x2 = ra(dot_input2)
     x = Concatenate()([x1, x2])
-    x = Dropout(0.5)(x)
-    return da(x)
-
-
-def rnn_join_stack(embed_input1, embed_input2):
-    ra1 = LSTM(30, activation='tanh', return_sequences=True)
-    ra2 = LSTM(30, activation='tanh')
-    da = Dense(1, activation='sigmoid')
-    dot_input1 = Dot(2)([embed_input1, embed_input2])
-    dot_input2 = Permute((2, 1))(dot_input1)
-    x1 = ra1(dot_input1)
-    x1 = ra2(x1)
-    x2 = ra1(dot_input2)
-    x2 = ra2(x2)
-    x = Concatenate()([x1, x2])
-    x = Dropout(0.5)(x)
+    x = Dropout(0.2)(x)
     return da(x)

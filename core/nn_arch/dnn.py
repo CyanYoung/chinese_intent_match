@@ -1,10 +1,10 @@
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Concatenate, Subtract, Multiply, Dot, Lambda
+from keras.layers import Dense, Dropout, Lambda
+from keras.layers import Flatten, Concatenate, Subtract, Multiply, Dot
 
 import keras.backend as K
 
 
-def dnn_siam_mean(embed_input1, embed_input2):
+def dnn_siam(embed_input1, embed_input2):
     mean = Lambda(lambda a: K.mean(a, axis=1))
     da1 = Dense(200, activation='relu')
     da2 = Dense(200, activation='relu')
@@ -18,11 +18,11 @@ def dnn_siam_mean(embed_input1, embed_input2):
     diff = Lambda(lambda a: K.abs(a))(Subtract()([x, y]))
     prod = Multiply()([x, y])
     z = Concatenate()([x, y, diff, prod])
-    z = Dropout(0.5)(z)
+    z = Dropout(0.2)(z)
     return da3(z)
 
 
-def dnn_join_flat(embed_input1, embed_input2):
+def dnn_join(embed_input1, embed_input2):
     da1 = Dense(500, activation='relu')
     da2 = Dense(200, activation='relu')
     da3 = Dense(1, activation='sigmoid')
@@ -30,5 +30,5 @@ def dnn_join_flat(embed_input1, embed_input2):
     x = Flatten()(dot_input)
     x = da1(x)
     x = da2(x)
-    x = Dropout(0.5)(x)
+    x = Dropout(0.2)(x)
     return da3(x)
