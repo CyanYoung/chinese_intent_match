@@ -32,16 +32,16 @@ def bow(sents, path_bow, path_bow_feat, stop_words, mode):
 
 def tfidf(path_bow_feat, path_tfidf, path_tfidf_feat, mode):
     with open(path_bow_feat, 'rb') as f:
-        sent_word_counts = pk.load(f)
+        sent_counts = pk.load(f)
     if mode == 'train':
         model = TfidfTransformer()
-        model.fit(sent_word_counts)
+        model.fit(sent_counts)
         with open(path_tfidf, 'wb') as f:
             pk.dump(model, f)
     else:
         with open(path_tfidf, 'rb') as f:
             model = pk.load(f)
-    sent_weights = model.transform(sent_word_counts)
+    sent_weights = model.transform(sent_counts)
     with open(path_tfidf_feat, 'wb') as f:
         pk.dump(sent_weights, f)
 
@@ -75,7 +75,7 @@ def align(sents, path_word2ind, path_pad):
 
 
 def vectorize(paths, mode):
-    sents = load_sent(paths['data_clean'])
+    sents = load_sent(paths['data'])
     stop_words = load_word(paths['stop_word'])
     bow(sents, paths['bow'], paths['bow_feat'], stop_words, mode)
     tfidf(paths['bow_feat'], paths['tfidf'], paths['tfidf_feat'], mode)
@@ -86,7 +86,7 @@ def vectorize(paths, mode):
 
 if __name__ == '__main__':
     paths = dict()
-    paths['data_clean'] = 'data/train_clean.csv'
+    paths['data'] = 'data/train_clean.csv'
     paths['stop_word'] = 'dict/stop_word.txt'
     paths['bow'] = 'model/vec/bow.pkl'
     paths['tfidf'] = 'model/vec/tfidf.pkl'
@@ -97,12 +97,12 @@ if __name__ == '__main__':
     paths['embed'] = 'feat/nn/embed.pkl'
     paths['pad'] = 'feat/nn/pad_train.pkl'
     vectorize(paths, 'train')
-    paths['data_clean'] = 'data/dev_clean.csv'
+    paths['data'] = 'data/dev_clean.csv'
     paths['bow_feat'] = 'feat/svm/bow_dev.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_dev.pkl'
     paths['pad'] = 'feat/nn/pad_dev.pkl'
     vectorize(paths, 'dev')
-    paths['data_clean'] = 'data/test_clean.csv'
+    paths['data'] = 'data/test_clean.csv'
     paths['bow_feat'] = 'feat/svm/bow_test.pkl'
     paths['tfidf_feat'] = 'feat/svm/tfidf_test.pkl'
     paths['pad'] = 'feat/nn/pad_test.pkl'
