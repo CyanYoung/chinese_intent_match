@@ -54,6 +54,6 @@ def svm(paths, kernel, feat, mode, thre=None):
             model = pk.load(f)
     probs = model.predict_proba(merge_feats)[:, 1]
     if mode == 'train' or mode == 'dev':
-        trial(paths['data_clean'], probs, labels, logger, name, mode)
+        trial(paths['data'], probs, labels, logger, name, mode)
     else:
         return probs > thre
