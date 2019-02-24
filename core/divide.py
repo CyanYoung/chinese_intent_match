@@ -15,11 +15,8 @@ def reindex(path_data, path_label, lines, mode):
 
 
 def divide(paths):
-    with open(paths['univ1'], 'r') as f:
-        line1s = f.readlines()
-    with open(paths['univ2'], 'r') as f:
-        line2s = f.readlines()
-    lines = line1s + line2s
+    with open(paths['univ'], 'r') as f:
+        lines = f.readlines()
     shuffle(lines)
     bound1 = int(len(lines) * 0.7)
     bound2 = int(len(lines) * 0.9)
@@ -30,8 +27,7 @@ def divide(paths):
 
 if __name__ == '__main__':
     paths = dict()
-    paths['univ1'] = 'data/univ1.csv'
-    paths['univ2'] = 'data/univ2.csv'
+    paths['univ'] = 'data/univ.csv'
     paths['train'] = 'data/train.csv'
     paths['train_label'] = 'data/train_label.txt'
     paths['dev'] = 'data/dev.csv'
