@@ -1,31 +1,39 @@
 ## Chinese Intent Match 2018-6
 
-测试命令：bash run.sh core/data/test.csv core/data/test_pred.csv
+#### 1.preprocess
 
-#### 1.divide
+prepare() 将按类文件保存的数据原地去重，去除停用词，统一替换地区、时间等
 
-train 70% / dev 20% / test 10% 划分，reindex() 重建索引、统计正例
+特殊词，merge() 将数据汇总、打乱，保存为 (text, label) 格式
 
-#### 2.preprocess
+make_pair() 对每条数据取同类组合为正例，从异类数据中抽样 fold 次
 
-delete() 删去无用字符，replace() 替换同音、同义词，count() 统计词频、长度
+组合为反例，汇总、打乱，保存为 (text1, text2, flag) 格式
 
-#### 3.vectorize
+#### 2.explore
 
-CountVectorizer()、TfidfTransformer() 分别得到每句的词频、词权特征
+统计词汇、长度、类别的频率，条形图可视化，计算 sent / word_per_sent 指标
 
-embed() 通过 word_inds 与 word_vecs 建立词索引到词向量的映射
+#### 3.represent
 
-texts_to_sequences() 表示为词索引、pad_sequences() 填充为相同长度
+vectorize() 和 vectorize_pair() 分别进行向量化，不处理 label、flag
 
-#### 4.svm
+#### 4.build
 
-连接 diff、prod 特征，通过 line、rbf 的 svm 构建匹配模型
+train 80% / dev 20% 划分，分别通过 dnn、cnn、rnn 构建匹配模型
 
-#### 5.nn
+#### 5.encode
 
-通过 siam、join 的 nn 构建匹配模型，join 使用点积交互、得到相似度矩阵
+定义模型的编码部分、按层名载入相应权重，对训练数据进行预编码
 
-dnn_mean 算术平均、dnn_flat 展开，cnn_wide 单层多核、cnn_deep
+每类编码内部进行 KMeans() 聚类、缓存固定数量的均值点，提高匹配效率
 
-多层单核，rnn_plain 单层单向、rnn_stack 双层单向、rnn_attend 加权平均
+#### 6.match
+
+使用余弦距离、省去定义模型的匹配部分，predict() 读取缓存数据
+
+去除停用词，统一替换地区、时间等特殊词，输出相似概率前 5 的语句
+
+#### 7.eval
+
+通过最近邻判决得到标签，test_pair() 和 test() 分别评估匹配、分类的准确率

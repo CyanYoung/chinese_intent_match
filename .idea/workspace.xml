@@ -2,9 +2,80 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="901cf5e2-42e6-4350-aa1b-d5e3bde8e713" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/core/nn_arch/cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/nn_arch/cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/nn_arch/dnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/nn_arch/dnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/nn_arch/rnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/nn_arch/rnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/dev.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/dev_clean.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/dev_label.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/test.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/test_clean.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/test_label.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/test_pred.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/train.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/train_clean.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/train_label.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/data/univ.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dict/cut_word.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dict/homo.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dict/inval_punc.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dict/stop_word.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/dict/syno.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/divide.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/nn/embed.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/nn/pad_dev.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/nn/pad_test.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/nn/pad_train.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/nn/word_vec.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/svm/bow_dev.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/svm/bow_test.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/svm/bow_train.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/svm/tfidf_dev.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/svm/tfidf_test.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/feat/svm/tfidf_train.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/cnn/error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/cnn/score.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/dnn/error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/dnn/score.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/rnn/error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/rnn/score.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/svm/error.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/log/svm/score.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/cnn/join_deep.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/cnn/join_wide.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/cnn/siam_deep.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/cnn/siam_wide.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/dnn/join_flat.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/dnn/siam_mean.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/rnn/join_plain.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/rnn/join_stack.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/rnn/siam_attend.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/rnn/siam_plain.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/rnn/siam_stack.h5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/svm/line_bow.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/svm/line_tfidf.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/svm/rbf_bow.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/svm/rbf_tfidf.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/vec/bow.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/vec/tfidf.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/model/vec/word2ind.pkl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/nn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/nn_arch/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/nn_arch/cnn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/nn_arch/dnn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/nn_arch/rnn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/preprocess.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/stat/len_freq.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/stat/vocab_freq.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/svm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/util/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/util/load.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/util/log.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/util/map.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/util/trial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/vectorize.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_cpu.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_cpu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_gpu.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_gpu.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,106 +110,10 @@
     <SUITE FILE_PATH="coverage/chinese_intent_match$divide.coverage" NAME="divide Coverage Results" MODIFIED="1550993548257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/core" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/preprocess.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/vectorize.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-81">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/svm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/nn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-466">
-              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/nn_arch/dnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/nn_arch/cnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#0#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/nn_arch/rnn.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-              <folding>
-                <element signature="e#0#74#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_gpu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>pad_seqs1</find>
-      <find>pad_seqs2</find>
       <find>pad_mat</find>
       <find>stack</find>
       <find>shape</find>
@@ -167,6 +142,8 @@
       <find>concat</find>
       <find>check</find>
       <find>split</find>
+      <find>data_clean</find>
+      <find>clean</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,7 +171,6 @@
         <option value="$PROJECT_DIR$/nlp_sim/preprocess.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/nlp_sim/info/cnn/score.log" />
-        <option value="$PROJECT_DIR$/train_cpu.py" />
         <option value="$PROJECT_DIR$/nlp_sim/info/dnn/score.log" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/nlp_sim/divide.py" />
@@ -205,20 +181,22 @@
         <option value="$PROJECT_DIR$/nlp_sim/vectorize.py" />
         <option value="$PROJECT_DIR$/nlp_sim/svm.py" />
         <option value="$PROJECT_DIR$/nlp_sim/nn.py" />
-        <option value="$PROJECT_DIR$/core/nn.py" />
-        <option value="$PROJECT_DIR$/train_gpu.py" />
         <option value="$PROJECT_DIR$/core/util/map.py" />
         <option value="$PROJECT_DIR$/core/log/dnn/score.log" />
         <option value="$PROJECT_DIR$/core/log/cnn/score.log" />
         <option value="$PROJECT_DIR$/core/log/rnn/score.log" />
-        <option value="$PROJECT_DIR$/core/preprocess.py" />
-        <option value="$PROJECT_DIR$/core/svm.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/run.sh" />
-        <option value="$PROJECT_DIR$/core/divide.py" />
-        <option value="$PROJECT_DIR$/core/nn_arch/rnn.py" />
         <option value="$PROJECT_DIR$/core/nn_arch/dnn.py" />
         <option value="$PROJECT_DIR$/core/nn_arch/cnn.py" />
+        <option value="$PROJECT_DIR$/core/nn_arch/rnn.py" />
+        <option value="$PROJECT_DIR$/core/vectorize.py" />
+        <option value="$PROJECT_DIR$/core/svm.py" />
+        <option value="$PROJECT_DIR$/core/nn.py" />
+        <option value="$PROJECT_DIR$/train_gpu.py" />
+        <option value="$PROJECT_DIR$/train_cpu.py" />
+        <option value="$PROJECT_DIR$/core/divide.py" />
+        <option value="$PROJECT_DIR$/core/preprocess.py" />
       </list>
     </option>
   </component>
@@ -238,11 +216,6 @@
             <path>
               <item name="chinese_intent_match" type="b2602c69:ProjectViewProjectNode" />
               <item name="chinese_intent_match" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="chinese_intent_match" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chinese_intent_match" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -417,16 +390,15 @@
       <workItem from="1547811404754" duration="598000" />
       <workItem from="1547991022828" duration="4175000" />
       <workItem from="1548035102544" duration="48000" />
-      <workItem from="1550992942931" duration="1619000" />
+      <workItem from="1550992942931" duration="5525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7625000" />
+    <option name="totallyTimeSpent" value="11531000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49933422" visible="true" weight="0.24765626" />
       <window_info id="Structure" order="1" sideWeight="0.5006658" side_tool="true" weight="0.24765626" />
@@ -460,17 +432,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/data/univ2.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/log/dnn/error.log">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/nlp_sim/data/test_cut.csv" />
     <entry file="file://$PROJECT_DIR$/nlp_sim/data/dev_cut.csv" />
     <entry file="file://$PROJECT_DIR$/nlp_sim/dict/special_word.txt" />
@@ -495,13 +456,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/dict/len_freq.csv" />
     <entry file="file://$PROJECT_DIR$/core/dict/vocab_freq.csv" />
-    <entry file="file://$PROJECT_DIR$/core/data/train_clean.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-333">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/dict/syno.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -517,13 +471,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model.png" />
-    <entry file="file://$PROJECT_DIR$/train_cpu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/keras/layers/recurrent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3">
@@ -572,46 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="4" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eval.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/util/trial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/util/log.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/util/load.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,13 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_gpu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -687,44 +587,6 @@
         </state>
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/train.csv">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/data/univ.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/divide.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/preprocess.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -746,63 +608,169 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/train.csv">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/core/vectorize.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-81">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="316">
+          <caret line="91" column="34" selection-start-line="91" selection-start-column="34" selection-end-line="91" selection-end-column="34" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/svm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/nn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-466">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/nn_arch/dnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/nn_arch/rnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/nn_arch/cnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="150">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/util/trial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/util/log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/util/load.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/nn_arch/rnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/nn_arch/dnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/nn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/train_clean.csv">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="-333">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/train_label.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/dev_label.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/svm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/data/univ.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eval.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/preprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/divide.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_cpu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_gpu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="45" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
         </state>
       </provider>
     </entry>
