@@ -1,17 +1,15 @@
 import pickle as pk
 
-import re
-
-import numpy as np
-
 from keras.models import load_model
 
 from keras.preprocessing.sequence import pad_sequences
 
 from preprocess import clean
 
-from util import load_word_re, load_pair, word_replace, map_item
+from util import load_word_re, load_pair, map_item
 
+
+seq_len = 30
 
 path_stop_word = 'dict/stop_word.txt'
 path_homo = 'dict/homo.csv'
@@ -27,10 +25,10 @@ with open(path_embed, 'rb') as f:
 with open(path_word2ind, 'rb') as f:
     word2ind = pk.load(f)
 
-paths = {'dnn': 'model/dnn.pkl',
-         'cnn_1d': 'model/cnn_1d.pkl',
-         'cnn_2d': 'model/cnn_2d.pkl',
-         'rnn': 'cache/rnn.pkl'}
+paths = {'dnn': 'model/dnn.h5',
+         'cnn_1d': 'model/cnn_1d.h5',
+         'cnn_2d': 'model/cnn_2d.h5',
+         'rnn': 'model/rnn.h5'}
 
 models = {'dnn': load_model(map_item('dnn', paths)),
           'cnn_1d': load_model(map_item('cnn_1d', paths)),
@@ -40,32 +38,19 @@ models = {'dnn': load_model(map_item('dnn', paths)),
 
 def predict(text1, text2, name):
     text1, text2 = clean(text1), clean(text2)
-
-    core_sents = map_item(name, caches)
-    seq = word2ind.texts_to_sequences([text])[0]
-    pad_seq = pad_sequences([seq], maxlen=seq_len)
-    encode = map_item(name + '_encode', models)
-    encode_seq = encode.predict([pad_seq])
-    sims = list()
-    for core_sent in core_sents:
-        sims.append(1 - cos_dist(encode_seq, core_sent))
-    sims = np.array(sims)
-    max_sims = sorted(sims, reverse=True)[:vote]
-    max_inds = np.argsort(-sims)[:vote]
-    max_preds = [core_labels[ind] for ind in max_inds]
-    if __name__ == '__main__':
-        formats = list()
-        for pred, sim in zip(max_preds, max_sims):
-            formats.append('{} {:.3f}'.format(pred, sim))
-        return ', '.join(formats)
-    else:
-        pairs = Counter(max_preds)
-        return pairs.most_common()[0][0]
+    seq1 = word2ind.texts_to_sequences([text1])[0]
+    seq2 = word2ind.texts_to_sequences([text2])[0]
+    pad_seq1 = pad_sequences([seq1], maxlen=seq_len)
+    pad_seq2 = pad_sequences([seq2], maxlen=seq_len)
+    model = map_item(name, models)
+    prob = model.predict([pad_seq1, pad_seq2])[0][0]
+    return '{:.3f}'.format(prob)
 
 
 if __name__ == '__main__':
     while True:
-        text = input('text: ')
-        print('dnn: %s' % predict(text, 'dnn', vote=5))
-        print('cnn: %s' % predict(text, 'cnn', vote=5))
-        print('rnn: %s' % predict(text, 'rnn', vote=5))
+        text1, text2 = input('text1: '), input('text2: ')
+        print('dnn: %s' % predict(text1, text2, 'dnn'))
+        print('cnn_1d: %s' % predict(text1, text2, 'cnn_1d'))
+        print('cnn_2d: %s' % predict(text1, text2, 'cnn_2d'))
+        print('rnn: %s' % predict(text1, text2, 'rnn'))

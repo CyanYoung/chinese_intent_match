@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score
 from keras.models import Model
 from keras.layers import Input, Embedding
 
-from nn_arch import dnn, cnn, rnn
+from nn_arch import dnn, cnn_1d, cnn_2d, rnn
 
 from match import predict
 
