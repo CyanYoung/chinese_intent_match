@@ -4,18 +4,14 @@ import re
 
 import numpy as np
 
+from keras.models import load_model
+
 from keras.preprocessing.sequence import pad_sequences
+
+from preprocess import clean
 
 from util import load_word_re, load_pair, word_replace, map_item
 
-
-def load_cache(path_cache):
-    with open(path_cache, 'rb') as f:
-        core_sents = pk.load(f)
-    return core_sents
-
-
-seq_len = 30
 
 path_stop_word = 'dict/stop_word.txt'
 path_homo = 'dict/homo.csv'
@@ -31,19 +27,20 @@ with open(path_embed, 'rb') as f:
 with open(path_word2ind, 'rb') as f:
     word2ind = pk.load(f)
 
-paths = {'dnn': 'cache/dnn.pkl',
-         'cnn': 'cache/cnn.pkl',
+paths = {'dnn': 'model/dnn.pkl',
+         'cnn_1d': 'model/cnn_1d.pkl',
+         'cnn_2d': 'model/cnn_2d.pkl',
          'rnn': 'cache/rnn.pkl'}
 
-models = {'dnn_encode': load_encode('dnn', embed_mat, seq_len),
-          'cnn_encode': load_encode('cnn', embed_mat, seq_len),
-          'rnn_encode': load_encode('rnn', embed_mat, seq_len)}
+models = {'dnn': load_model(map_item('dnn', paths)),
+          'cnn_1d': load_model(map_item('cnn_1d', paths)),
+          'cnn_2d': load_model(map_item('cnn_2d', paths)),
+          'rnn': load_model(map_item('rnn', paths))}
 
 
-def predict(text, name, vote):
-    text = re.sub(stop_word_re, '', text.strip())
-    text = word_replace(text, homo_dict)
-    text = word_replace(text, syno_dict)
+def predict(text1, text2, name):
+    text1, text2 = clean(text1), clean(text2)
+
     core_sents = map_item(name, caches)
     seq = word2ind.texts_to_sequences([text])[0]
     pad_seq = pad_sequences([seq], maxlen=seq_len)
