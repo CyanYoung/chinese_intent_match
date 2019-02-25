@@ -50,8 +50,7 @@ def vectorize(path_data, path_pair, path_label, mode):
     sents = sent1s + sent2s
     if mode == 'train':
         embed(sents, path_word2ind, path_word_vec, path_embed)
-    pad_seq1s = align(sent1s)
-    pad_seq2s = align(sent2s)
+    pad_seq1s, pad_seq2s = align(sent1s), align(sent2s)
     pairs = (pad_seq1s, pad_seq2s)
     labels = np.array(labels)
     with open(path_pair, 'wb') as f:
