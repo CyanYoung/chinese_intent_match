@@ -1,6 +1,6 @@
-from keras.layers import Dense, Conv1D, Conv2D, LSTM, Lambda
-from keras.layers import Dropout, GlobalMaxPooling1D, MaxPooling2D, Masking, Concatenate
-from keras.layers import Flatten, Reshape, Subtract, Multiply, Dot
+from keras.layers import Dense, SeparableConv1D, SeparableConv2D, LSTM
+from keras.layers import Dropout, GlobalMaxPooling1D, MaxPooling2D, Masking, Lambda
+from keras.layers import Concatenate, Flatten, Reshape, Subtract, Multiply, Dot
 
 import keras.backend as K
 
@@ -29,9 +29,9 @@ def dnn(embed_input1, embed_input2):
 
 
 def cnn_1d(embed_input1, embed_input2):
-    ca1 = Conv1D(filters=64, kernel_size=1, padding='same', activation='relu')
-    ca2 = Conv1D(filters=64, kernel_size=2, padding='same', activation='relu')
-    ca3 = Conv1D(filters=64, kernel_size=3, padding='same', activation='relu')
+    ca1 = SeparableConv1D(filters=64, kernel_size=1, padding='same', activation='relu')
+    ca2 = SeparableConv1D(filters=64, kernel_size=2, padding='same', activation='relu')
+    ca3 = SeparableConv1D(filters=64, kernel_size=3, padding='same', activation='relu')
     mp = GlobalMaxPooling1D()
     da1 = Dense(200, activation='relu')
     da2 = Dense(200, activation='relu')
@@ -61,8 +61,8 @@ def cnn_1d(embed_input1, embed_input2):
 
 
 def cnn_2d(embed_input1, embed_input2):
-    ca1 = Conv2D(filters=64, kernel_size=2, padding='same', activation='relu')
-    ca2 = Conv2D(filters=64, kernel_size=3, padding='same', activation='relu')
+    ca1 = SeparableConv2D(filters=64, kernel_size=2, padding='same', activation='relu')
+    ca2 = SeparableConv2D(filters=64, kernel_size=3, padding='same', activation='relu')
     mp1 = MaxPooling2D(3)
     mp2 = MaxPooling2D(5)
     da1 = Dense(200, activation='relu')

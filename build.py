@@ -65,7 +65,7 @@ def fit(name, epoch, embed_mat, pairs, labels):
 
 
 if __name__ == '__main__':
-    # fit('dnn', 10, embed_mat, pairs, labels)
+    fit('dnn', 10, embed_mat, pairs, labels)
     fit('cnn_1d', 10, embed_mat, pairs, labels)
     fit('cnn_2d', 10, embed_mat, pairs, labels)
     fit('rnn', 10, embed_mat, pairs, labels)
