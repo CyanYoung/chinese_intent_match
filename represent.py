@@ -63,7 +63,7 @@ def vectorize(path_data, path_pair, path_label, mode):
 if __name__ == '__main__':
     path_data = 'data/train.csv'
     path_pair = 'feat/pair_train.pkl'
-    path_label = 'feat/flag_train.pkl'
+    path_label = 'feat/label_train.pkl'
     vectorize(path_data, path_pair, path_label, 'train')
     path_data = 'data/test.csv'
     path_pair = 'feat/pair_test.pkl'
