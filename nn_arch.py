@@ -1,6 +1,6 @@
 from keras.layers import Dense, Conv1D, Conv2D, LSTM, Lambda
-from keras.layers import Dropout, GlobalMaxPooling1D, GlobalMaxPooling2D, Masking, Flatten
-from keras.layers import Permute, Reshape, Concatenate, Subtract, Multiply, Dot
+from keras.layers import Dropout, GlobalMaxPooling1D, MaxPooling2D, Masking, Concatenate
+from keras.layers import Flatten, Reshape, Subtract, Multiply, Dot
 
 import keras.backend as K
 
@@ -8,7 +8,7 @@ import keras.backend as K
 seq_len = 30
 
 
-def dnn_siam(embed_input1, embed_input2):
+def dnn(embed_input1, embed_input2):
     mean = Lambda(lambda a: K.mean(a, axis=1))
     da1 = Dense(200, activation='relu')
     da2 = Dense(200, activation='relu')
@@ -28,19 +28,7 @@ def dnn_siam(embed_input1, embed_input2):
     return da4(z)
 
 
-def dnn_join(embed_input1, embed_input2):
-    da1 = Dense(200, activation='relu')
-    da2 = Dense(200, activation='relu')
-    da3 = Dense(1, activation='sigmoid')
-    dot_input = Dot(2)([embed_input1, embed_input2])
-    x = Flatten()(dot_input)
-    x = da1(x)
-    x = da2(x)
-    x = Dropout(0.2)(x)
-    return da3(x)
-
-
-def cnn_siam(embed_input1, embed_input2):
+def cnn_1d(embed_input1, embed_input2):
     ca1 = Conv1D(filters=64, kernel_size=1, padding='same', activation='relu')
     ca2 = Conv1D(filters=64, kernel_size=2, padding='same', activation='relu')
     ca3 = Conv1D(filters=64, kernel_size=3, padding='same', activation='relu')
@@ -74,28 +62,26 @@ def cnn_siam(embed_input1, embed_input2):
     return da3(z)
 
 
-def cnn_join(embed_input1, embed_input2):
-    ca1 = Conv2D(filters=64, kernel_size=1, padding='same', activation='relu')
-    ca2 = Conv2D(filters=64, kernel_size=2, padding='same', activation='relu')
-    ca3 = Conv2D(filters=64, kernel_size=3, padding='same', activation='relu')
-    mp = GlobalMaxPooling2D()
+def cnn_2d(embed_input1, embed_input2):
+    ca1 = Conv2D(filters=64, kernel_size=2, padding='same', activation='relu')
+    ca2 = Conv2D(filters=64, kernel_size=3, padding='same', activation='relu')
+    mp1 = MaxPooling2D(3)
+    mp2 = MaxPooling2D(5)
     da1 = Dense(200, activation='relu')
     da2 = Dense(1, activation='sigmoid')
-    dot_input = Dot(2)([embed_input1, embed_input2])
-    dot_input = Reshape((seq_len, seq_len, 1))(dot_input)
-    x1 = ca1(dot_input)
-    x1 = mp(x1)
-    x2 = ca2(dot_input)
-    x2 = mp(x2)
-    x3 = ca3(dot_input)
-    x3 = mp(x3)
-    x = Concatenate()([x1, x2, x3])
+    x = Dot(2)([embed_input1, embed_input2])
+    x = Reshape((seq_len, seq_len, 1))(x)
+    x = ca1(x)
+    x = mp1(x)
+    x = ca2(x)
+    x = mp2(x)
+    x = Flatten()(x)
     x = da1(x)
     x = Dropout(0.2)(x)
     return da2(x)
 
 
-def rnn_siam(embed_input1, embed_input2):
+def rnn(embed_input1, embed_input2):
     mask = Masking()
     ra = LSTM(200, activation='tanh')
     da1 = Dense(200, activation='relu')
@@ -110,15 +96,3 @@ def rnn_siam(embed_input1, embed_input2):
     z = da1(z)
     z = Dropout(0.2)(z)
     return da2(z)
-
-
-def rnn_join(embed_input1, embed_input2):
-    ra = LSTM(30, activation='tanh')
-    da = Dense(1, activation='sigmoid')
-    dot_input1 = Dot(2)([embed_input1, embed_input2])
-    dot_input2 = Permute((2, 1))(dot_input1)
-    x1 = ra(dot_input1)
-    x2 = ra(dot_input2)
-    x = Concatenate()([x1, x2])
-    x = Dropout(0.2)(x)
-    return da(x)

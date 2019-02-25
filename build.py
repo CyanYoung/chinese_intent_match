@@ -6,7 +6,7 @@ from keras.optimizers import Adam
 from keras.callbacks import ModelCheckpoint
 from keras.utils import plot_model
 
-from nn_arch import dnn_siam, dnn_join, cnn_siam, cnn_join, rnn_siam, rnn_join
+from nn_arch import dnn, cnn_1d, cnn_2d, rnn
 
 from util import map_item
 
@@ -23,25 +23,19 @@ with open(path_pair, 'rb') as f:
 with open(path_label, 'rb') as f:
     labels = pk.load(f)
 
-funcs = {'dnn_siam': dnn_siam,
-         'dnn_join': dnn_join,
-         'cnn_siam': cnn_siam,
-         'cnn_join': cnn_join,
-         'rnn_siam': rnn_siam,
-         'rnn_join': rnn_join}
+funcs = {'dnn': dnn,
+         'cnn_1d': cnn_1d,
+         'cnn_2d': cnn_2d,
+         'rnn': rnn}
 
-paths = {'dnn_siam': 'model/dnn_siam.h5',
-         'dnn_join': 'model/dnn_join.h5',
-         'cnn_siam': 'model/cnn_siam.h5',
-         'cnn_join': 'model/cnn_join.h5',
-         'rnn_siam': 'model/rnn_siam.h5',
-         'rnn_join': 'model/rnn_join.h5',
-         'dnn_siam_plot': 'model/plot/dnn_siam.png',
-         'dnn_join_plot': 'model/plot/dnn_join.png',
-         'cnn_siam_plot': 'model/plot/cnn_siam.png',
-         'cnn_join_plot': 'model/plot/cnn_join.png',
-         'rnn_siam_plot': 'model/plot/rnn_siam.png',
-         'rnn_join_plot': 'model/plot/rnn_join.png'}
+paths = {'dnn': 'model/dnn.h5',
+         'cnn_1d': 'model/cnn_1d.h5',
+         'cnn_2d': 'model/cnn_2d.h5',
+         'rnn': 'model/rnn.h5',
+         'dnn_plot': 'model/plot/dnn.png',
+         'cnn_1d_plot': 'model/plot/cnn_1d.png',
+         'cnn_2d_plot': 'model/plot/cnn_2d.png',
+         'rnn_plot': 'model/plot/rnn.png'}
 
 
 def compile(name, embed_mat, seq_len):
@@ -71,9 +65,7 @@ def fit(name, epoch, embed_mat, pairs, labels):
 
 
 if __name__ == '__main__':
-    fit('dnn_siam', 10, embed_mat, pairs, labels)
-    fit('dnn_join', 10, embed_mat, pairs, labels)
-    fit('cnn_siam', 10, embed_mat, pairs, labels)
-    fit('cnn_join', 10, embed_mat, pairs, labels)
-    fit('rnn_siam', 10, embed_mat, pairs, labels)
-    fit('rnn_join', 10, embed_mat, pairs, labels)
+    fit('dnn', 10, embed_mat, pairs, labels)
+    fit('cnn_1d', 10, embed_mat, pairs, labels)
+    fit('cnn_2d', 10, embed_mat, pairs, labels)
+    fit('rnn', 10, embed_mat, pairs, labels)
