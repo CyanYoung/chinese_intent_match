@@ -1,5 +1,7 @@
 import pickle as pk
 
+from sklearn.svm import SVC
+
 from keras.models import Model
 from keras.layers import Input, Embedding
 from keras.optimizers import Adam
@@ -13,29 +15,49 @@ from util import map_item
 
 batch_size = 128
 
-path_embed = 'feat/embed.pkl'
-path_pair = 'feat/pair_train.pkl'
-path_label = 'feat/label_train.pkl'
+path_bow_sent = 'feat/svm/bow_sent_train.pkl'
+path_tfidf_sent = 'feat/svm/tfidf_sent_train.pkl'
+with open(path_bow_sent, 'rb') as f:
+    bow_sents = pk.load(f)
+with open(path_tfidf_sent, 'rb') as f:
+    tfidf_sents = pk.load(f)
+
+path_embed = 'feat/nn/embed.pkl'
+path_pair = 'feat/nn/pair_train.pkl'
 with open(path_embed, 'rb') as f:
     embed_mat = pk.load(f)
 with open(path_pair, 'rb') as f:
     pairs = pk.load(f)
+
+path_label = 'feat/label_train.pkl'
 with open(path_label, 'rb') as f:
     labels = pk.load(f)
+
+feats = {'bow': bow_sents,
+         'tfidf': tfidf_sents}
 
 funcs = {'dnn': dnn,
          'cnn_1d': cnn_1d,
          'cnn_2d': cnn_2d,
          'rnn': rnn}
 
-paths = {'dnn': 'model/dnn.h5',
-         'cnn_1d': 'model/cnn_1d.h5',
-         'cnn_2d': 'model/cnn_2d.h5',
-         'rnn': 'model/rnn.h5',
-         'dnn_plot': 'model/plot/dnn.png',
-         'cnn_1d_plot': 'model/plot/cnn_1d.png',
-         'cnn_2d_plot': 'model/plot/cnn_2d.png',
-         'rnn_plot': 'model/plot/rnn.png'}
+paths = {'svm': 'model/svm/svm.pkl',
+         'dnn': 'model/nn/dnn.h5',
+         'cnn_1d': 'model/nn/cnn_1d.h5',
+         'cnn_2d': 'model/nn/cnn_2d.h5',
+         'rnn': 'model/nn/rnn.h5',
+         'dnn_plot': 'model/nn/plot/dnn.png',
+         'cnn_1d_plot': 'model/nn/plot/cnn_1d.png',
+         'cnn_2d_plot': 'model/nn/plot/cnn_2d.png',
+         'rnn_plot': 'model/nn/plot/rnn.png'}
+
+
+def svm_fit(kernel, feat, labels):
+    sents = map_item(feat, feats)
+    model = SVC(C=100.0, kernel=kernel, probability=True, verbose=True)
+    model.fit(sents, labels)
+    with open(map_item('svm', paths), 'wb') as f:
+        pk.dump(model, f)
 
 
 def nn_compile(name, embed_mat, seq_len):
@@ -65,6 +87,7 @@ def nn_fit(name, epoch, embed_mat, pairs, labels):
 
 
 if __name__ == '__main__':
+    svm_fit('rbf', 'bow', labels)
     nn_fit('dnn', 10, embed_mat, pairs, labels)
     nn_fit('cnn_1d', 10, embed_mat, pairs, labels)
     nn_fit('cnn_2d', 10, embed_mat, pairs, labels)
