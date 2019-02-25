@@ -1,6 +1,7 @@
 import pickle as pk
 
 import numpy as np
+from scipy.sparse import csr_matrix
 
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
@@ -22,7 +23,7 @@ def bow(sents, path_bow, mode):
     else:
         with open(path_bow, 'rb') as f:
             model = pk.load(f)
-    return model.transform(sents)
+    return model.transform(sents).toarray()
 
 
 def tfidf(bow_sents, path_tfidf, mode):
@@ -34,27 +35,17 @@ def tfidf(bow_sents, path_tfidf, mode):
     else:
         with open(path_tfidf, 'rb') as f:
             model = pk.load(f)
-    return model.transform(bow_sents)
+    return model.transform(bow_sents).toarray()
 
 
-def get_diff(sent_feats):
-    sent_feats = sent_feats.toarray()
-    feat_shape = sent_feats.shape
-    sent_diffs = np.zeros((int(feat_shape[0] / 2), feat_shape[1]))
-    for i in range(len(sent_feats) - 1):
-        if not i % 2:
-            sent_diffs[int(i / 2)] = np.abs(sent_feats[i] - sent_feats[i + 1])
-    return sent_diffs
-
-
-def get_prod(sent_feats):
-    sent_feats = sent_feats.toarray()
-    feat_shape = sent_feats.shape
-    sent_prods = np.zeros((int(feat_shape[0] / 2), feat_shape[1]))
-    for i in range(len(sent_feats) - 1):
-        if not i % 2:
-            sent_prods[int(i / 2)] = sent_feats[i] * sent_feats[i + 1]
-    return sent_prods
+def merge(sents):
+    bound = int(len(sents) / 2)
+    sent1s, sent2s = sents[:bound], sents[bound:]
+    diffs, prods = list(), list()
+    for sent1, sent2 in zip(sent1s, sent2s):
+        diffs.append(np.abs(sent1 - sent2))
+        prods.append(sent1 * sent2)
+    return csr_matrix(np.hstack((diffs, prods)))
 
 
 def featurize(paths, mode):
@@ -64,11 +55,12 @@ def featurize(paths, mode):
     sents = sent1s + sent2s
     bow_sents = bow(sents, path_bow, mode)
     tfidf_sents = tfidf(bow_sents, path_tfidf, mode)
+    bow_feats, tfidf_feats = merge(bow_sents), merge(tfidf_sents)
     labels = np.array(labels)
     with open(paths['bow_sent'], 'wb') as f:
-        pk.dump(bow_sents, f)
+        pk.dump(bow_feats, f)
     with open(paths['tfidf_sent'], 'wb') as f:
-        pk.dump(tfidf_sents, f)
+        pk.dump(tfidf_feats, f)
     with open(paths['label'], 'wb') as f:
         pk.dump(labels, f)
 

@@ -38,7 +38,7 @@ paths = {'dnn': 'model/dnn.h5',
          'rnn_plot': 'model/plot/rnn.png'}
 
 
-def compile(name, embed_mat, seq_len):
+def nn_compile(name, embed_mat, seq_len):
     vocab_num, embed_len = embed_mat.shape
     embed = Embedding(input_dim=vocab_num, output_dim=embed_len,
                       weights=[embed_mat], input_length=seq_len, trainable=True, name='embed')
@@ -55,17 +55,17 @@ def compile(name, embed_mat, seq_len):
     return model
 
 
-def fit(name, epoch, embed_mat, pairs, labels):
+def nn_fit(name, epoch, embed_mat, pairs, labels):
     sent1s, sent2s = pairs
     seq_len = len(sent1s[0])
-    model = compile(name, embed_mat, seq_len)
+    model = nn_compile(name, embed_mat, seq_len)
     check_point = ModelCheckpoint(map_item(name, paths), monitor='val_loss', verbose=True, save_best_only=True)
     model.fit([sent1s, sent2s], labels, batch_size=batch_size, epochs=epoch,
               verbose=True, callbacks=[check_point], validation_split=0.2)
 
 
 if __name__ == '__main__':
-    fit('dnn', 10, embed_mat, pairs, labels)
-    fit('cnn_1d', 10, embed_mat, pairs, labels)
-    fit('cnn_2d', 10, embed_mat, pairs, labels)
-    fit('rnn', 10, embed_mat, pairs, labels)
+    nn_fit('dnn', 10, embed_mat, pairs, labels)
+    nn_fit('cnn_1d', 10, embed_mat, pairs, labels)
+    nn_fit('cnn_2d', 10, embed_mat, pairs, labels)
+    nn_fit('rnn', 10, embed_mat, pairs, labels)
