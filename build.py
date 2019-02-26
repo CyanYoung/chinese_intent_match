@@ -54,7 +54,7 @@ paths = {'svm': 'model/svm/svm.pkl',
 
 def svm_fit(kernel, feat, labels):
     sents = map_item(feat, feats)
-    model = SVC(C=100.0, kernel=kernel, probability=True, verbose=True)
+    model = SVC(C=100.0, kernel=kernel, probability=True, max_iter=100, verbose=True)
     model.fit(sents, labels)
     with open(map_item('svm', paths), 'wb') as f:
         pk.dump(model, f)
