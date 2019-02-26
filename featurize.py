@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from util import flat_read
 
 
-min_freq = 3
+min_freq = 5
 
 path_bow = 'model/svm/bow.pkl'
 path_tfidf = 'model/svm/tfidf.pkl'
