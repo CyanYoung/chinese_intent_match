@@ -58,7 +58,7 @@ def svm_predict(text1, text2, feat):
     sent = feat.transform(text).toarray()
     sent = merge(sent)
     model = map_item('svm', models)
-    prob = model.predict_proba(sent)[0][0]
+    prob = model.predict_proba(sent)[0][1]
     return '{:.3f}'.format(prob)
 
 

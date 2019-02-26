@@ -21,7 +21,7 @@ with open(path_label, 'rb') as f:
 def test(name, sents, labels, thre):
     model = map_item(name, models)
     if name == 'svm':
-        probs = model.predict_proba(sents)
+        probs = model.predict_proba(sents)[:, 1]
     else:
         sent1s, sent2s = sents
         probs = model.predict([sent1s, sent2s])
