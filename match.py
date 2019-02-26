@@ -6,6 +6,8 @@ from keras.preprocessing.sequence import pad_sequences
 
 from preprocess import clean
 
+from featurize import merge
+
 from util import load_word_re, load_pair, map_item
 
 
@@ -18,17 +20,30 @@ stop_word_re = load_word_re(path_stop_word)
 homo_dict = load_pair(path_homo)
 syno_dict = load_pair(path_syno)
 
-path_embed = 'feat/embed.pkl'
-path_word2ind = 'model/word2ind.pkl'
+path_bow = 'model/svm/bow.pkl'
+path_tfidf = 'model/svm/tfidf.pkl'
+path_svm = 'model/svm/svm.pkl'
+with open(path_bow, 'rb') as f:
+    bow = pk.load(f)
+with open(path_tfidf, 'rb') as f:
+    tfidf = pk.load(f)
+with open(path_svm, 'rb') as f:
+    svm = pk.load(f)
+
+path_embed = 'feat/nn/embed.pkl'
+path_word2ind = 'model/nn/word2ind.pkl'
 with open(path_embed, 'rb') as f:
     embed_mat = pk.load(f)
 with open(path_word2ind, 'rb') as f:
     word2ind = pk.load(f)
 
-paths = {'dnn': 'model/dnn.h5',
-         'cnn_1d': 'model/cnn_1d.h5',
-         'cnn_2d': 'model/cnn_2d.h5',
-         'rnn': 'model/rnn.h5'}
+feats = {'bow': bow,
+         'tfidf': tfidf}
+
+paths = {'dnn': 'model/nn/dnn.h5',
+         'cnn_1d': 'model/nn/cnn_1d.h5',
+         'cnn_2d': 'model/nn/cnn_2d.h5',
+         'rnn': 'model/nn/rnn.h5'}
 
 models = {'dnn': load_model(map_item('dnn', paths)),
           'cnn_1d': load_model(map_item('cnn_1d', paths)),
@@ -36,8 +51,16 @@ models = {'dnn': load_model(map_item('dnn', paths)),
           'rnn': load_model(map_item('rnn', paths))}
 
 
-def predict(text1, text2, name):
-    text1, text2 = clean(text1), clean(text2)
+def svm_predict(text1, text2, feat):
+    text = [text1, text2]
+    feat = map_item(feat, feats)
+    sent = feat.transform(text).toarray()
+    sent = merge(sent)
+    prob = svm.predict_proba(sent)[0][0]
+    return '{:.3f}'.format(prob)
+
+
+def nn_predict(text1, text2, name):
     seq1 = word2ind.texts_to_sequences([text1])[0]
     seq2 = word2ind.texts_to_sequences([text2])[0]
     pad_seq1 = pad_sequences([seq1], maxlen=seq_len)
@@ -50,7 +73,9 @@ def predict(text1, text2, name):
 if __name__ == '__main__':
     while True:
         text1, text2 = input('text1: '), input('text2: ')
-        print('dnn: %s' % predict(text1, text2, 'dnn'))
-        print('cnn_1d: %s' % predict(text1, text2, 'cnn_1d'))
-        print('cnn_2d: %s' % predict(text1, text2, 'cnn_2d'))
-        print('rnn: %s' % predict(text1, text2, 'rnn'))
+        text1, text2 = clean(text1), clean(text2)
+        print('svm: %s' % svm_predict(text1, text2, 'bow'))
+        print('dnn: %s' % nn_predict(text1, text2, 'dnn'))
+        print('cnn_1d: %s' % nn_predict(text1, text2, 'cnn_1d'))
+        print('cnn_2d: %s' % nn_predict(text1, text2, 'cnn_2d'))
+        print('rnn: %s' % nn_predict(text1, text2, 'rnn'))
