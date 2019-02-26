@@ -45,7 +45,8 @@ paths = {'dnn': 'model/nn/dnn.h5',
          'cnn_2d': 'model/nn/cnn_2d.h5',
          'rnn': 'model/nn/rnn.h5'}
 
-models = {'dnn': load_model(map_item('dnn', paths)),
+models = {'svm': svm,
+          'dnn': load_model(map_item('dnn', paths)),
           'cnn_1d': load_model(map_item('cnn_1d', paths)),
           'cnn_2d': load_model(map_item('cnn_2d', paths)),
           'rnn': load_model(map_item('rnn', paths))}
@@ -56,7 +57,8 @@ def svm_predict(text1, text2, feat):
     feat = map_item(feat, feats)
     sent = feat.transform(text).toarray()
     sent = merge(sent)
-    prob = svm.predict_proba(sent)[0][0]
+    model = map_item('svm', models)
+    prob = model.predict_proba(sent)[0][0]
     return '{:.3f}'.format(prob)
 
 
