@@ -31,8 +31,8 @@ def test(name, sents, labels, thre):
 
 
 if __name__ == '__main__':
-    test('svm', sents, labels, thre=0.5)
-    test('dnn', pairs, labels, thre=0.5)
-    test('cnn_1d', pairs, labels, thre=0.5)
-    test('cnn_2d', pairs, labels, thre=0.5)
-    test('rnn', pairs, labels, thre=0.5)
+    test('svm', sents, labels, thre=0.2)
+    test('dnn', pairs, labels, thre=0.2)
+    test('cnn_1d', pairs, labels, thre=0.2)
+    test('cnn_2d', pairs, labels, thre=0.2)
+    test('rnn', pairs, labels, thre=0.1)
