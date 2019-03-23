@@ -1,6 +1,6 @@
 import pickle as pk
 
-from sklearn.metrics import f1_score, accuracy_score
+from sklearn.metrics import accuracy_score, f1_score
 
 from match import models
 
