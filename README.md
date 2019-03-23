@@ -22,4 +22,4 @@ svm_fit() 通过 svm，nn_fit() 通过 dnn、cnn_1d、cnn_2d、rnn 构建匹配�
 
 #### 6.match
 
-predict() 实时交互，输入单句、经过清洗后预测，输出所有类别的概率
+predict() 实时交互，输入单句、经过清洗后预测，输出相似概率
