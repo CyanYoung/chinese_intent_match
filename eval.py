@@ -26,8 +26,8 @@ def test(name, sents, labels, thre):
         sent1s, sent2s = sents
         probs = model.predict([sent1s, sent2s])
     preds = probs > thre
-    print('\n%s f1: %.2f - acc: %.2f' % (name, f1_score(labels, preds),
-                                         accuracy_score(labels, preds)))
+    f1 = f1_score(labels, preds)
+    print('\n%s f1: %.2f - acc: %.2f' % (name, f1, accuracy_score(labels, preds)))
 
 
 if __name__ == '__main__':
