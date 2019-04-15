@@ -15,8 +15,8 @@ from util import map_item
 
 batch_size = 128
 
-path_bow_sent = 'feat/svm/bow_sent_train.pkl'
-path_tfidf_sent = 'feat/svm/tfidf_sent_train.pkl'
+path_bow_sent = 'feat/ml/bow_sent_train.pkl'
+path_tfidf_sent = 'feat/ml/tfidf_sent_train.pkl'
 with open(path_bow_sent, 'rb') as f:
     bow_sents = pk.load(f)
 with open(path_tfidf_sent, 'rb') as f:
@@ -41,7 +41,7 @@ funcs = {'dnn': dnn,
          'cnn_2d': cnn_2d,
          'rnn': rnn}
 
-paths = {'svm': 'model/svm/svm.pkl',
+paths = {'ml': 'model/ml/ml.pkl',
          'dnn': 'model/nn/dnn.h5',
          'cnn_1d': 'model/nn/cnn_1d.h5',
          'cnn_2d': 'model/nn/cnn_2d.h5',
@@ -57,7 +57,7 @@ def svm_fit(kernel, feat, labels):
     model = SVC(C=10.0, kernel=kernel, max_iter=-1, probability=True,
                 class_weight='balanced', verbose=True)
     model.fit(sents, labels)
-    with open(map_item('svm', paths), 'wb') as f:
+    with open(map_item('ml', paths), 'wb') as f:
         pk.dump(model, f)
 
 

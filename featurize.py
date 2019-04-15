@@ -10,8 +10,8 @@ from util import flat_read
 
 min_freq = 5
 
-path_bow = 'model/svm/bow.pkl'
-path_tfidf = 'model/svm/tfidf.pkl'
+path_bow = 'model/ml/bow.pkl'
+path_tfidf = 'model/ml/tfidf.pkl'
 
 
 def bow(sents, path_bow, mode):
@@ -67,7 +67,7 @@ def featurize(paths, mode):
 
 if __name__ == '__main__':
     paths = dict()
-    prefix = 'feat/svm/'
+    prefix = 'feat/ml/'
     paths['data'] = 'data/train.csv'
     paths['bow_sent'] = prefix + 'bow_sent_train.pkl'
     paths['tfidf_sent'] = prefix + 'tfidf_sent_train.pkl'
