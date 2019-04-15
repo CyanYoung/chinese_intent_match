@@ -15,7 +15,7 @@ seq_len = 30
 
 path_bow = 'model/ml/bow.pkl'
 path_tfidf = 'model/ml/tfidf.pkl'
-path_svm = 'model/ml/ml.pkl'
+path_svm = 'model/ml/svm.pkl'
 with open(path_bow, 'rb') as f:
     bow = pk.load(f)
 with open(path_tfidf, 'rb') as f:
@@ -35,7 +35,7 @@ paths = {'dnn': 'model/nn/dnn.h5',
          'cnn_2d': 'model/nn/cnn_2d.h5',
          'rnn': 'model/nn/rnn.h5'}
 
-models = {'ml': svm,
+models = {'svm': svm,
           'dnn': load_model(map_item('dnn', paths)),
           'cnn_1d': load_model(map_item('cnn_1d', paths)),
           'cnn_2d': load_model(map_item('cnn_2d', paths)),
@@ -47,7 +47,7 @@ def svm_predict(text1, text2, feat):
     feat = map_item(feat, feats)
     sent = feat.transform(text).toarray()
     sent = merge(sent)
-    model = map_item('ml', models)
+    model = map_item('svm', models)
     prob = model.predict_proba(sent)[0][1]
     return '{:.3f}'.format(prob)
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     while True:
         text1, text2 = input('text1: '), input('text2: ')
         text1, text2 = clean(text1), clean(text2)
-        print('ml: %s' % svm_predict(text1, text2, 'bow'))
+        print('svm: %s' % svm_predict(text1, text2, 'bow'))
         print('dnn: %s' % nn_predict(text1, text2, 'dnn'))
         print('cnn_1d: %s' % nn_predict(text1, text2, 'cnn_1d'))
         print('cnn_2d: %s' % nn_predict(text1, text2, 'cnn_2d'))

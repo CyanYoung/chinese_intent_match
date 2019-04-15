@@ -41,7 +41,7 @@ funcs = {'dnn': dnn,
          'cnn_2d': cnn_2d,
          'rnn': rnn}
 
-paths = {'ml': 'model/ml/ml.pkl',
+paths = {'svm': 'model/ml/svm.pkl',
          'dnn': 'model/nn/dnn.h5',
          'cnn_1d': 'model/nn/cnn_1d.h5',
          'cnn_2d': 'model/nn/cnn_2d.h5',
@@ -57,7 +57,7 @@ def svm_fit(kernel, feat, labels):
     model = SVC(C=10.0, kernel=kernel, max_iter=-1, probability=True,
                 class_weight='balanced', verbose=True)
     model.fit(sents, labels)
-    with open(map_item('ml', paths), 'wb') as f:
+    with open(map_item('svm', paths), 'wb') as f:
         pk.dump(model, f)
 
 
