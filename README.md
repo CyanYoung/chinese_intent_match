@@ -14,7 +14,7 @@ ml 特征化，分别通过 bow、tfidf 构建词袋模型，merge() 合并 diff
 
 #### 4.vectorize
 
-nn 向量化，embed() 建立词索引到词向量的映射，align() 填充为相同长度
+nn 向量化，embed() 建立词索引到词向量的映射，align() 将序列填充为相同长度
 
 #### 5.build
 
