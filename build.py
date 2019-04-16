@@ -2,6 +2,8 @@ import pickle as pk
 
 from sklearn.svm import SVC
 
+from xgboost.sklearn import XGBClassifier as XGBC
+
 from keras.models import Model
 from keras.layers import Input, Embedding
 from keras.optimizers import Adam
@@ -42,6 +44,7 @@ funcs = {'dnn': dnn,
          'rnn': rnn}
 
 paths = {'svm': 'model/ml/svm.pkl',
+         'xgb': 'model/ml/xgb.pkl',
          'dnn': 'model/nn/dnn.h5',
          'cnn_1d': 'model/nn/cnn_1d.h5',
          'cnn_2d': 'model/nn/cnn_2d.h5',
@@ -52,12 +55,21 @@ paths = {'svm': 'model/ml/svm.pkl',
          'rnn_plot': 'model/nn/plot/rnn.png'}
 
 
-def svm_fit(kernel, feat, labels):
+def svm_fit(feat, labels):
     sents = map_item(feat, feats)
-    model = SVC(C=10.0, kernel=kernel, max_iter=-1, probability=True,
+    model = SVC(C=10.0, kernel='rbf', max_iter=-1, probability=True,
                 class_weight='balanced', verbose=True)
     model.fit(sents, labels)
     with open(map_item('svm', paths), 'wb') as f:
+        pk.dump(model, f)
+
+
+def xgb_fit(feat, labels):
+    sents = map_item(feat, feats)
+    model = XGBC(max_depth=5, learning_rate=0.1, objective='binary:logistic',
+                 n_estimators=100, booster='gbtree')
+    model.fit(sents, labels)
+    with open(map_item('xgb', paths), 'wb') as f:
         pk.dump(model, f)
 
 
@@ -88,7 +100,8 @@ def nn_fit(name, epoch, embed_mat, pairs, labels):
 
 
 if __name__ == '__main__':
-    svm_fit('rbf', 'bow', labels)
+    svm_fit('bow', labels)
+    xgb_fit('bow', labels)
     nn_fit('dnn', 10, embed_mat, pairs, labels)
     nn_fit('cnn_1d', 10, embed_mat, pairs, labels)
     nn_fit('cnn_2d', 10, embed_mat, pairs, labels)
