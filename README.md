@@ -10,7 +10,7 @@ clean() 去除停用词，替换同音、同义词，prepare() 打乱后划分�
 
 #### 3.featurize
 
-svm 特征化，分别通过 bow、tfidf 构建词袋模型，merge() 合并 diff、prod
+ml 特征化，分别通过 bow、tfidf 构建词袋模型，merge() 合并 diff、prod
 
 #### 4.vectorize
 
@@ -18,7 +18,7 @@ nn 向量化，embed() 建立词索引到词向量的映射，align() 填充为�
 
 #### 5.build
 
-svm_fit() 通过 svm，nn_fit() 通过 dnn、cnn_1d、cnn_2d、rnn 构建匹配模型
+ml_fit() 通过 svm、xgb，nn_fit() 通过 dnn、cnn_1d、cnn_2d、rnn 构建匹配模型
 
 #### 6.match
 
