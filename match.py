@@ -47,6 +47,7 @@ models = {'svm': svm,
 
 
 def ml_predict(text1, text2, name, feat):
+    text1, text2 = clean(text1), clean(text2)
     text = [text1, text2]
     feat = map_item(feat, feats)
     sent = feat.transform(text).toarray()
@@ -57,6 +58,7 @@ def ml_predict(text1, text2, name, feat):
 
 
 def nn_predict(text1, text2, name):
+    text1, text2 = clean(text1), clean(text2)
     seq1 = word2ind.texts_to_sequences([text1])[0]
     seq2 = word2ind.texts_to_sequences([text2])[0]
     pad_seq1 = pad_sequences([seq1], maxlen=seq_len)
@@ -69,7 +71,6 @@ def nn_predict(text1, text2, name):
 if __name__ == '__main__':
     while True:
         text1, text2 = input('text1: '), input('text2: ')
-        text1, text2 = clean(text1), clean(text2)
         print('svm: %s' % ml_predict(text1, text2, 'svm', 'bow'))
         print('xgb: %s' % ml_predict(text1, text2, 'xgb', 'bow'))
         print('dnn: %s' % nn_predict(text1, text2, 'dnn'))
