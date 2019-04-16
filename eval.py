@@ -20,7 +20,7 @@ with open(path_label, 'rb') as f:
 
 def test(name, sents, labels, thre):
     model = map_item(name, models)
-    if name == 'svm':
+    if name == 'svm' or name == 'xgb':
         probs = model.predict_proba(sents)[:, 1]
     else:
         sent1s, sent2s = sents
@@ -32,7 +32,8 @@ def test(name, sents, labels, thre):
 
 if __name__ == '__main__':
     test('svm', sents, labels, thre=0.2)
+    test('xgb', sents, labels, thre=0.2)
     test('dnn', pairs, labels, thre=0.2)
     test('cnn_1d', pairs, labels, thre=0.2)
     test('cnn_2d', pairs, labels, thre=0.2)
-    test('rnn', pairs, labels, thre=0.1)
+    test('rnn', pairs, labels, thre=0.2)
