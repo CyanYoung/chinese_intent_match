@@ -17,12 +17,9 @@ from util import map_item
 
 batch_size = 128
 
-path_bow_sent = 'feat/ml/bow_sent_train.pkl'
-path_tfidf_sent = 'feat/ml/tfidf_sent_train.pkl'
-with open(path_bow_sent, 'rb') as f:
-    bow_sents = pk.load(f)
-with open(path_tfidf_sent, 'rb') as f:
-    tfidf_sents = pk.load(f)
+path_sent = 'feat/ml/sent_train.pkl'
+with open(path_sent, 'rb') as f:
+    sents = pk.load(f)
 
 path_embed = 'feat/nn/embed.pkl'
 path_pair = 'feat/nn/pair_train.pkl'
@@ -34,9 +31,6 @@ with open(path_pair, 'rb') as f:
 path_label = 'feat/label_train.pkl'
 with open(path_label, 'rb') as f:
     labels = pk.load(f)
-
-feats = {'bow': bow_sents,
-         'tfidf': tfidf_sents}
 
 funcs = {'dnn': dnn,
          'cnn_1d': cnn_1d,
@@ -55,8 +49,7 @@ paths = {'svm': 'model/ml/svm.pkl',
          'rnn_plot': 'model/nn/plot/rnn.png'}
 
 
-def svm_fit(feat, labels):
-    sents = map_item(feat, feats)
+def svm_fit(sents, labels):
     model = SVC(C=1.0, kernel='linear', max_iter=1000, probability=True,
                 class_weight='balanced', verbose=True)
     model.fit(sents, labels)
@@ -64,8 +57,7 @@ def svm_fit(feat, labels):
         pk.dump(model, f)
 
 
-def xgb_fit(feat, labels):
-    sents = map_item(feat, feats)
+def xgb_fit(sents, labels):
     model = XGBC(max_depth=5, learning_rate=0.1, objective='binary:logistic',
                  n_estimators=100, booster='gbtree')
     model.fit(sents, labels)
@@ -100,8 +92,8 @@ def nn_fit(name, epoch, embed_mat, pairs, labels):
 
 
 if __name__ == '__main__':
-    svm_fit('bow', labels)
-    xgb_fit('bow', labels)
+    svm_fit(sents, labels)
+    xgb_fit(sents, labels)
     nn_fit('dnn', 10, embed_mat, pairs, labels)
     nn_fit('cnn_1d', 10, embed_mat, pairs, labels)
     nn_fit('cnn_2d', 10, embed_mat, pairs, labels)

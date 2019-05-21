@@ -7,7 +7,7 @@ from match import models
 from util import map_item
 
 
-path_sent = 'feat/ml/bow_sent_test.pkl'
+path_sent = 'feat/ml/sent_test.pkl'
 path_pair = 'feat/nn/pair_test.pkl'
 path_label = 'feat/label_test.pkl'
 with open(path_sent, 'rb') as f:

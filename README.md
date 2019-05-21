@@ -10,7 +10,7 @@ clean() 去除停用词，替换同音、同义词，prepare() 打乱后划分�
 
 #### 3.featurize
 
-ml 特征化，分别通过 bow、tfidf 构建词袋模型，merge() 合并 diff、prod
+ml 特征化，bow() 构建词袋模型，merge() 合并 diff、prod
 
 #### 4.vectorize
 

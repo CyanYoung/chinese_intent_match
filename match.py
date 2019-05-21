@@ -14,13 +14,10 @@ from util import map_item
 seq_len = 30
 
 path_bow = 'model/ml/bow.pkl'
-path_tfidf = 'model/ml/tfidf.pkl'
 path_svm = 'model/ml/svm.pkl'
 path_xgb = 'model/ml/xgb.pkl'
 with open(path_bow, 'rb') as f:
     bow = pk.load(f)
-with open(path_tfidf, 'rb') as f:
-    tfidf = pk.load(f)
 with open(path_svm, 'rb') as f:
     svm = pk.load(f)
 with open(path_xgb, 'rb') as f:
@@ -29,9 +26,6 @@ with open(path_xgb, 'rb') as f:
 path_word2ind = 'model/nn/word2ind.pkl'
 with open(path_word2ind, 'rb') as f:
     word2ind = pk.load(f)
-
-feats = {'bow': bow,
-         'tfidf': tfidf}
 
 paths = {'dnn': 'model/nn/dnn.h5',
          'cnn_1d': 'model/nn/cnn_1d.h5',
@@ -46,11 +40,10 @@ models = {'svm': svm,
           'rnn': load_model(map_item('rnn', paths))}
 
 
-def ml_predict(text1, text2, name, feat):
+def ml_predict(text1, text2, name):
     text1, text2 = clean(text1), clean(text2)
     text = [text1, text2]
-    feat = map_item(feat, feats)
-    sent = feat.transform(text).toarray()
+    sent = bow.transform(text).toarray()
     sent = merge(sent)
     model = map_item(name, models)
     prob = model.predict_proba(sent)[0][1]
@@ -71,8 +64,8 @@ def nn_predict(text1, text2, name):
 if __name__ == '__main__':
     while True:
         text1, text2 = input('text1: '), input('text2: ')
-        print('svm: %s' % ml_predict(text1, text2, 'svm', 'bow'))
-        print('xgb: %s' % ml_predict(text1, text2, 'xgb', 'bow'))
+        print('svm: %s' % ml_predict(text1, text2, 'svm'))
+        print('xgb: %s' % ml_predict(text1, text2, 'xgb'))
         print('dnn: %s' % nn_predict(text1, text2, 'dnn'))
         print('cnn_1d: %s' % nn_predict(text1, text2, 'cnn_1d'))
         print('cnn_2d: %s' % nn_predict(text1, text2, 'cnn_2d'))
