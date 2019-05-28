@@ -15,9 +15,12 @@ seq_len = 30
 
 path_bow = 'model/ml/bow.pkl'
 path_svm = 'model/ml/svm.pkl'
+path_svd = 'model/ml/svd.pkl'
 path_xgb = 'model/ml/xgb.pkl'
 with open(path_bow, 'rb') as f:
     bow = pk.load(f)
+with open(path_svd, 'rb') as f:
+    svd = pk.load(f)
 with open(path_svm, 'rb') as f:
     svm = pk.load(f)
 with open(path_xgb, 'rb') as f:
@@ -43,7 +46,8 @@ models = {'svm': svm,
 def ml_predict(text1, text2, name):
     text1, text2 = clean(text1), clean(text2)
     text = [text1, text2]
-    sent = bow.transform(text).toarray()
+    sent = bow.transform(text)
+    sent = svd.transform(sent)
     sent = merge(sent)
     model = map_item(name, models)
     prob = model.predict_proba(sent)[0][1]
